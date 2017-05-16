@@ -3,7 +3,7 @@ const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync');
 const bower = require('gulp-bower');
 const eslint = require('gulp-eslint');
-const jasmine = require('gulp-jasmine');
+const mocha = require('gulp-mocha');
 const sass = require('gulp-sass');
 
 gulp.task('watch', () => {
@@ -45,13 +45,13 @@ gulp.task('bower', () => {
   bower().pipe(gulp.dest('./public/lib'));
 });
 
-gulp.task('jasmineTest', () => {
+gulp.task('mochaTest', () => {
   gulp.src(['test/**/*.js'])
-    .pipe(jasmine({
+    .pipe(mocha({
       reporter: 'spec',
     }));
 });
 
-gulp.task('test', ['jasmineTest']);
+gulp.task('test', ['mochaTest']);
 gulp.task('install', ['bower']);
 gulp.task('default', ['nodemon', 'watch', 'sass']);
