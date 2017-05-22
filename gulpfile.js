@@ -5,6 +5,11 @@ const bower = require('gulp-bower');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const sass = require('gulp-sass');
+const coveralls = require('gulp-coveralls');
+const cover = require('gulp-coverage');
+const istanbul = require('gulp-istanbul');
+const plumber = require('gulp-plumber');
+const jasmine = require('gulp-jasmine');
 
 gulp.task('watch', () => {
   gulp.watch('app/views/**', browserSync.reload());
@@ -45,13 +50,34 @@ gulp.task('bower', () => {
   bower().pipe(gulp.dest('./public/lib'));
 });
 
-gulp.task('mochaTest', () => {
-  gulp.src(['test/**/*.js'])
-    .pipe(mocha({
-      reporter: 'spec',
-    }));
-});
-
 gulp.task('test', ['mochaTest']);
 gulp.task('install', ['bower']);
 gulp.task('default', ['nodemon', 'watch', 'sass']);
+
+
+gulp.task('coveralls', () => {
+  if (!process.env.CI) return;
+  return gulp.src('./coverage/lcov.info')
+    .pipe(coveralls());
+});
+
+gulp.task('mochaTest', () => {
+  gulp.src('test/**/*.js')
+    .pipe(istanbul({ includeUntested: true }))
+    .pipe(istanbul.hookRequire())
+    .on('finish', () => {
+      gulp.src('test/**/*.js', { read: false })
+        .pipe(plumber())
+        .pipe(mocha({
+          reporter: 'spec',
+          timeout: 20000
+        }))
+        .pipe(cover.instrument({
+          pattern: ['test/**/*.js']
+        }))
+        .pipe(jasmine())
+        .pipe(cover.gather())
+        .pipe(cover.format({ reporter: 'lcov' }))
+        .pipe(istanbul.writeReports());
+    });
+});

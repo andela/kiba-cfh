@@ -6,3 +6,8 @@ c4h_keys.txt
 .env
 bower_components
 .vscode
+vscode
+ .coverdata/
+ coverage/
+ .coverrun
+ public/css/common.css
