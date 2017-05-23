@@ -37,6 +37,30 @@ gulp.task('nodemon', () => {
     }
   });
 });
+gulp.task('angular', () => {
+  gulp.src('bower_components/angular/**/*.js')
+    .pipe(gulp.dest('public/lib/angular'));
+});
+gulp.task('bootstrap', () => {
+  gulp.src('bower_components/bootstrap/**/*')
+    .pipe(gulp.dest('public/lib/bootstrap'));
+});
+gulp.task('jquery', () => {
+  gulp.src('bower_components/juery/**/*')
+    .pipe(gulp.dest('public/lib/jquery'));
+});
+gulp.task('underscore', () => {
+  gulp.src('bower_components/underscore/**/*')
+    .pipe(gulp.dest('public/lib/underscore'));
+});
+gulp.task('angularUtils', () => {
+  gulp.src('bower_components/angular-ui-utils/modules/route/route.js')
+    .pipe(gulp.dest('public/lib/angular-ui-utils/modules'));
+});
+gulp.task('angular-bootstrap', () => {
+  gulp.src('bower_components/angular-bootstrap/**/*')
+    .pipe(gulp.dest('public/lib/angular-bootstrap'));
+});
 gulp.task('lint', () => {
   gulp.src(['public/js/**/*.js',
     'app/**/*.js',
@@ -47,12 +71,13 @@ gulp.task('lint', () => {
 });
 
 gulp.task('bower', () => {
-  bower().pipe(gulp.dest('./public/lib'));
+  bower().pipe(gulp.dest('./bower_components'));
 });
 
 gulp.task('test', ['mochaTest']);
 gulp.task('install', ['bower']);
-gulp.task('default', ['nodemon', 'watch', 'sass']);
+gulp.task('default', ['nodemon', 'watch', 'sass', 'angular', 'underscore',
+  'bootstrap', 'angular-bootstrap', 'angularUtils', 'jquery']);
 
 
 gulp.task('coveralls', () => {
