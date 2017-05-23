@@ -7,7 +7,7 @@ c4h_keys.txt
 bower_components
 .vscode
 vscode
- .coverdata/
- coverage/
- .coverrun
- public/css/common.css
+.coverdata/
+coverage/
+.coverrun
+public/css/common.css
