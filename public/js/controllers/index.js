@@ -1,24 +1,74 @@
-angular.module('mean.system')
-.controller('IndexController', ['$scope', 'Global', '$location', 'socket', 'game', 'AvatarService', function ($scope, Global, $location, socket, game, AvatarService) {
+angular.module('mean.system').controller('IndexController', [
+  '$scope',
+  'Global',
+  '$http',
+  '$location',
+  'socket',
+  'game',
+  'AvatarService',
+  '$window',
+  ($scope, Global, $http, $location, socket, game, AvatarService, $window) => {
     $scope.global = Global;
+    $scope.errorMsg = '';
 
-    $scope.playAsGuest = function() {
+    if ($window.localStorage.getItem('token')) {
+      $scope.global.authenticated = true;
+    } else {
+      $scope.global.authenticated = false;
+    }
+
+    $scope.signup = () => {
+      const newUser = {
+        name: $scope.fullname,
+        email: $scope.email,
+        password: $scope.password
+      };
+      $http.post('api/auth/signup', newUser).then(
+        (response) => {
+          $window.localStorage.setItem('token', response.data.token);
+          $location.path('/');
+        },
+        (response) => {
+          $scope.errorMsg = response.data.message;
+        }
+      );
+    };
+
+    $scope.login = () => {
+      const user = {
+        email: $scope.email,
+        password: $scope.password
+      };
+      $http.post('api/auth/login', user).then(
+        (response) => {
+          $window.localStorage.setItem('token', response.data.token);
+          $location.path('/');
+        },
+        (response) => {
+          $scope.errorMsg = response.data.message;
+        }
+      );
+    };
+
+    $scope.logout = () => {
+      $window.localStorage.removeItem('token');
+    };
+
+    $scope.playAsGuest = () => {
       game.joinGame();
       $location.path('/app');
     };
 
-    $scope.showError = function() {
+    $scope.showError = () => {
       if ($location.search().error) {
         return $location.search().error;
-      } else {
-        return false;
       }
+      return false;
     };
 
     $scope.avatars = [];
-    AvatarService.getAvatars()
-      .then(function(data) {
-        $scope.avatars = data;
-      });
-
-}]);
+    AvatarService.getAvatars().then((data) => {
+      $scope.avatars = data;
+    });
+  }
+]);
