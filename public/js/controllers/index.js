@@ -1,4 +1,4 @@
-const app = angular.module('mean.system').controller('IndexController', [
+angular.module('mean.system').controller('IndexController', [
   '$scope',
   'Global',
   '$http',
@@ -7,7 +7,8 @@ const app = angular.module('mean.system').controller('IndexController', [
   'game',
   'AvatarService',
   '$window',
-  ($scope, Global, $http, $location, socket, game, AvatarService, $window) => {
+  '$cookies',
+  ($scope, Global, $http, $location, socket, game, AvatarService, $window, $cookies) => {
     $scope.global = Global;
     $scope.errorMsg = '';
 
@@ -25,7 +26,10 @@ const app = angular.module('mean.system').controller('IndexController', [
       };
       $http.post('api/auth/signup', newUser).then(
         (response) => {
+          const token = response.data.token;
           $window.localStorage.setItem('token', response.data.token);
+          console.log($cookies);
+          $cookies.put('yyyyyyyyyyyyy', token);
           $location.path('/');
         },
         (response) => {
@@ -41,7 +45,10 @@ const app = angular.module('mean.system').controller('IndexController', [
       };
       $http.post('/api/auth/login', user).then(
         (response) => {
+          const token = response.data.token;
           $window.localStorage.setItem('token', response.data.token);
+             console.log($cookies);
+          $cookies.put('yyyyyyyyyyyyy', token);
           $location.path('/');
         },
         (response) => {

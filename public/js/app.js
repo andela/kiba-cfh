@@ -1,4 +1,4 @@
-const apa = angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
+const app = angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ngRoute', 'mean.system', 'mean.directives'])
   .config(['$routeProvider',
       function($routeProvider) {
           $routeProvider.
@@ -55,7 +55,7 @@ angular.module('mean.system', []);
 angular.module('mean.directives', []);
 
 
-apa.factory('httpRequestInterceptor', function () {
+app.factory('httpRequestInterceptor', function () {
   var token = window.localStorage.getItem('token');
   return {
     request: function (config) {
@@ -68,7 +68,7 @@ apa.factory('httpRequestInterceptor', function () {
   };
 });
 
-apa.config(function ($httpProvider) {
+app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpRequestInterceptor');
 });
 
