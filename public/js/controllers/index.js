@@ -29,7 +29,7 @@ angular.module('mean.system').controller('IndexController', [
           const token = response.data.token;
           $window.localStorage.setItem('token', response.data.token);
           console.log($cookies);
-          $cookies.put('yyyyyyyyyyyyy', token);
+          $cookies.put('token', token);
           $location.path('/');
         },
         (response) => {
@@ -48,7 +48,7 @@ angular.module('mean.system').controller('IndexController', [
           const token = response.data.token;
           $window.localStorage.setItem('token', response.data.token);
              console.log($cookies);
-          $cookies.put('yyyyyyyyyyyyy', token);
+          $cookies.put('token', token);
           $location.path('/');
         },
         (response) => {

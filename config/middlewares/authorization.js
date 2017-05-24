@@ -2,7 +2,7 @@
  * Generic require login routing middleware
  */
 const jwt = require('jsonwebtoken'),
-secret = process.env.JWTSECRET
+  secret = process.env.JWTSECRET
 
 exports.requiresLogin = function (req, res, next) {
   if (!req.isAuthenticated()) {
@@ -16,7 +16,7 @@ exports.requiresLogin = function (req, res, next) {
  */
 exports.user = {
   hasAuthorization(req, res, next) {
-    if (req.profile.id != req.user.id) {
+    if (req.profile.id !== req.user.id) {
       return res.send(401, 'User is not authorized');
     }
     next();
@@ -26,9 +26,9 @@ exports.user = {
 // Routing process of the middleware to verify a user token
 exports.checkToken = (req, res, next) => {
   // checking header or url parameters or post parameters for token
-  const token = req.body.token || req.query.token || req.headers["x-access-token"];
-  console.log('I just got called.');
-  console.log(req.headers);
+  if (req.url.startsWith('/auth')) return next();
+
+  const token = req.cookies.token;
   // decoding the token
   if (token) {
     // verifies secret and checks
@@ -38,7 +38,7 @@ exports.checkToken = (req, res, next) => {
           message: 'Failed to authenticate token.'
         });
       }
-      // if the authentication process was succesful, save to request for use in other routes
+// if the authentication process was succesful, save to request for use in other routes
       req.decoded = decoded;
       next();
     });

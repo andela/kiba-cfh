@@ -4,11 +4,9 @@ const answers = require('../app/controllers/answers');
 const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
-// const middleware = require('./middlewares/authorization');
 
 module.exports = (app, passport, auth) => {
   // User Routes
-  // app.use(auth.checkToken);
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
