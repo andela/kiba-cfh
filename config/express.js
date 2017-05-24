@@ -5,6 +5,7 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
+    expressJwt = require('express-jwt'),
     config = require('./config');
 
 module.exports = function(app, passport, mongoose) {
@@ -37,6 +38,8 @@ module.exports = function(app, passport, mongoose) {
     app.configure(function() {
         //cookieParser should be above session
         app.use(express.cookieParser());
+
+        // app.use('/api', expressJwt({secret: 'secret'}));
 
         //bodyParser should be above methodOverride
         app.use(express.bodyParser());

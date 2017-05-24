@@ -1,4 +1,4 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
+const apa = angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
   .config(['$routeProvider',
       function($routeProvider) {
           $routeProvider.
@@ -12,6 +12,9 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
             templateUrl: '/views/privacy.html',
           }).
           when('/bottom', {
+            templateUrl: '/views/bottom.html'
+          }).
+           when('/api', {
             templateUrl: '/views/bottom.html'
           }).
           when('/signin', {
@@ -50,3 +53,22 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
 
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
+
+
+apa.factory('httpRequestInterceptor', function () {
+  var token = window.localStorage.getItem('token');
+  return {
+    request: function (config) {
+
+      config.headers['x-access-token'] = token;
+      // config.headers['Accept'] = 'application/json;odata=verbose';
+
+      return config;
+    }
+  };
+});
+
+apa.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('httpRequestInterceptor');
+});
+

@@ -1,4 +1,4 @@
-angular.module('mean.system').controller('IndexController', [
+const app = angular.module('mean.system').controller('IndexController', [
   '$scope',
   'Global',
   '$http',
@@ -39,7 +39,7 @@ angular.module('mean.system').controller('IndexController', [
         email: $scope.email,
         password: $scope.password
       };
-      $http.post('api/auth/login', user).then(
+      $http.post('/api/auth/login', user).then(
         (response) => {
           $window.localStorage.setItem('token', response.data.token);
           $location.path('/');
@@ -72,3 +72,4 @@ angular.module('mean.system').controller('IndexController', [
     });
   }
 ]);
+

@@ -57,6 +57,7 @@ require('./config/express')(app, passport, mongoose);
 
 // Bootstrap routes
 require('./config/routes')(app, passport, auth);
+app.use('api', auth.checkToken);
 
 
 // Start the app by listening on <port>
