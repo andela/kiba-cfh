@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/andela/kiba-cfh/badge.svg?branch=staging)](https://coveralls.io/github/andela/kiba-cfh?branch=staging)
 [![Build Status](https://www.travis-ci.org/andela/kiba-cfh.svg?branch=staging)](https://www.travis-ci.org/andela/kiba-cfh)
 
 Cards for Humanity - [http://cfh.io](http://cfh.io)
