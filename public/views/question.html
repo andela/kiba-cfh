@@ -37,10 +37,10 @@
               {{noUserMatch}}
             </p>
         </div>
-        <div class="collection" ng-if="searchResult.length > 0">
-        <p class="collection-item" ng-repeat="result in searchResult">
-          {{result.name}}
-          <button class="btn-floating waves-effect waves-light" ng-style="btnObj" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="disabled"  ng-click="addUser(result)"><i class="material-icons">+</i></button>
+        <div  class="collection" ng-if="searchResult.length > 0">
+        <p ng-style="searchNamesObj" class="collection-item" ng-repeat="result in searchResult" >
+            {{result.name}}
+          <button class="btn-floating waves-effect waves-light" ng-style="btnObj" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="disabled"  ng-click="addUser(result)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;><i class="material-icons">+</i></button>
         </p>
       </div>
     </div>

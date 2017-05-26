@@ -120,4 +120,9 @@ angular.module('mean.system')
       $scope.btnObj = {
         'margin-left': '90%',
       };
+
+      $scope.searchNamesObj = {
+        'padding-top': '25px',
+        'padding-bottom': '20px',
+      };
     }]);
