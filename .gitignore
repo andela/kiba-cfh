@@ -7,3 +7,8 @@ c4h_keys.txt
 bower_components
 .vscode
 sendgrid.env
+vscode
+.coverdata/
+coverage/
+.coverrun
+public/css/common.css
