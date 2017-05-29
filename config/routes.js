@@ -71,21 +71,23 @@ module.exports = function(app, passport, auth) {
 
     // Answer Routes
     let answers = require('../app/controllers/answers');
-    app.get('/answers', answers.all);
+    app.get('/answers/', answers.all);
     app.get('/answers/:answerId', answers.show);
     // Finish with setting up the answerId param
     app.param('answerId', answers.answer);
 
     // Question Routes
     let questions = require('../app/controllers/questions');
-    app.get('/questions', questions.all);
+    app.get('/questions/', questions.all);
     app.get('/questions/:questionId', questions.show);
+    app.post('/api/region', questions.byRegion);
+
     // Finish with setting up the questionId param
     app.param('questionId', questions.question);
 
     // Avatar Routes
     let avatars = require('../app/controllers/avatars');
-    app.get('/avatars', avatars.allJSON);
+    app.get('/avatars', avatars.allJSON)
 
     //Home route
     let index = require('../app/controllers/index');
@@ -95,5 +97,6 @@ module.exports = function(app, passport, auth) {
   // mail route
     const mail = require('../app/controllers/mail');
     app.post('/api/invite', mail.gameInvite);
+
 
 };
