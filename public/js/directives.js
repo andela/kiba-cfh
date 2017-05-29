@@ -1,3 +1,6 @@
+/* global $ */
+/* global window */
+
 angular.module('mean.directives', [])
   .directive('player', function (){
     return{
@@ -76,4 +79,72 @@ angular.module('mean.directives', [])
         }
       }
     };
-  });
+  })
+  .directive('chatbox', ['socket', socket => ({
+    restrict: 'AE',
+    replace: true,
+    link: (scope, element) => {
+       // Send chat message
+      scope.sendChatMessage = () => {
+        const chat = {};
+        chat.message = $('#chatInput').val();
+        if (!chat.message) return;
+        chat.date = new Date().toString();
+        chat.avatar = window.localStorage.getItem('avatar');
+        chat.username = window.localStorage.getItem('username');
+        socket.emit('chat message', chat);
+        $('#chatInput').val('');
+      };
+
+      // display a chat message
+      const displayChat = (chat) => {
+        const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const date = new Date(chat.date);
+        element.append(
+          `<div class="chat"> <div class="chat-meta">
+          <img src="${chat.avatar}"> ${chat.username} <br>
+          ${month[date.getMonth()]} ${date.getDate()},
+          ${date.getHours()}:${date.getMinutes()} </div>
+          <div class="clearfix"></div>
+          <div class="chat-message">${chat.message}</div></div>`
+        );
+        $('#chatContent').scrollTop(element.height());
+        if (chat.username !== window.localStorage.getItem('username')) {
+          $('#chatNotification').show();
+          const chatnum = Number(window.localStorage.getItem('chatcount')) + 1;
+          window.localStorage.setItem('chatcount', chatnum);
+          $('#chatcount').show();
+          $('#chatcount').html(chatnum);
+           
+        }
+      };
+
+      // set current players details to localStorage and initialize the emoji
+      scope.setPlayer = (avatar, username) => {
+        window.localStorage.setItem('avatar', avatar);
+        window.localStorage.setItem('username', username);
+        window.localStorage.setItem('chatcount', 0);
+        scope.isPlayerSet = true;
+      };
+
+        // Initializes chat when socket is connected
+      socket.on('initializeChat', (messages) => {
+        messages.forEach((chat) => {
+          displayChat(chat);
+        });
+      });
+
+        // listen for chat messages
+      socket.on('chat message', (chat) => {
+        displayChat(chat);
+      });
+
+        // Submit the chat when the 'enter' key is pressed
+      $('body').on('keyup', '#chatInput', (event) => {
+        if (event.which === 13) {
+          $('#chatInput').trigger('blur');
+          scope.sendChatMessage();
+        }
+      });
+    },
+  })]);
