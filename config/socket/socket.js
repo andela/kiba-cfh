@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
 const config = {
   apiKey: process.env.API_KEY,

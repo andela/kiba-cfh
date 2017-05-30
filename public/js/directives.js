@@ -100,22 +100,22 @@ angular.module('mean.directives', [])
       const displayChat = (chat) => {
         const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         const date = new Date(chat.date);
+        const time = date.toLocaleTimeString().replace(/:\d+ |\CDT/g, ' ');
         element.append(
           `<div class="chat"> <div class="chat-meta">
-          <img src="${chat.avatar}"> ${chat.username} <br>
-          ${month[date.getMonth()]} ${date.getDate()},
-          ${date.getHours()}:${date.getMinutes()} </div>
+          <img width="20" src="${chat.avatar}"> <b>${chat.username}</b> &emsp;<small>${time}</small><br>
+           <div class="chat-message">${chat.message}</div>
+           </div>
           <div class="clearfix"></div>
-          <div class="chat-message">${chat.message}</div></div>`
+          </div>`
         );
         $('#chatContent').scrollTop(element.height());
         if (chat.username !== window.localStorage.getItem('username')) {
           $('#chatNotification').show();
-          const chatnum = Number(window.localStorage.getItem('chatcount')) + 1;
-          window.localStorage.setItem('chatcount', chatnum);
-          $('#chatcount').show();
-          $('#chatcount').html(chatnum);
-           
+          const chatNum = Number(window.localStorage.getItem('chatCount')) + 1;
+          window.localStorage.setItem('chatCount', chatNum);
+          $('#chatCount').show();
+          $('#chatCount').html(chatNum);
         }
       };
 
