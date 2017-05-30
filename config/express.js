@@ -5,7 +5,6 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
-    expressJwt = require('express-jwt'),
     config = require('./config'),
     auth = require('./middlewares/authorization');
 
