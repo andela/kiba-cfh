@@ -13,6 +13,6 @@ $('body').on('click', '#startChat, #chatInput', () => {
 });
 $('body').on('click', '.chatbox', () => {
   $('#chatNotification').hide();
-  window.localStorage.setItem('chatcount', 0);
-  $('#chatcount').hide();
+  window.localStorage.setItem('chatCount', 0);
+  $('#chatCount').hide();
 });

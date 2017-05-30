@@ -8,7 +8,7 @@
   z-index: 1003;
 }
 .chatbox .chat-header {
-  background-color: #333;
+  background-color: #236484;
   padding: 6px 15px;
   color: #fff;
 }
@@ -57,17 +57,15 @@
    width: 25px;
  }
 
- .chat-meta {
-     text-transform: capitalize;
- }
-
  .send-message {
-     padding-bottom: 5px;
+    padding-bottom: 5px;
  }
 
  .send-message button {
-     padding: 2px 5px;
-     margin: 0 5px;
+    padding: 2px 5px;
+    margin: 0 5px;
+    background-color: #D67C2A;
+    border-radius: 10;
  }
 
  .chatbox .chat-begin{
@@ -84,15 +82,17 @@
   background-color: #f9f9f9;
   padding: 5px;
 }
-
-#chatcount{
-background-color:#EA212E;
-font-size: 8px;
-color: white;
-border-radius: 100%;
-padding: 5px;
-display: none;
-margin-left: 6px;
-position: relative;
-bottom: 10px;
+.chat-message{
+  margin-left: 0px !important;
+}
+#chatCount{
+  background-color:#EA212E;
+  font-size: 8px;
+  color: white;
+  border-radius: 100%;
+  padding: 5px;
+  display: none;
+  margin-left: 6px;
+  position: relative;
+  bottom: 10px;
 }
