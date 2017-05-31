@@ -61,13 +61,6 @@
     padding-bottom: 5px;
  }
 
- .send-message button {
-    padding: 2px 5px;
-    margin: 0 5px;
-    background-color: #D67C2A;
-    border-radius: 10;
- }
-
  .chatbox .chat-begin{
    font-size: 14px;
    color: #bbb;

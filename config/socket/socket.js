@@ -37,7 +37,7 @@ module.exports = (io) => {
     // initialize chat when a new socket is connected
     socket.emit('initializeChat', chatMessages);
 
-    // send recieved chat message to all connected sockets
+    // send received chat message to all connected sockets
     socket.on('chat message', (chat) => {
       io.sockets.in(gameID).emit('chat message', chat);
       socket.emit('onlineUsers', onlineUsers);

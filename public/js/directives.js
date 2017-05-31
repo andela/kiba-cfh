@@ -119,7 +119,7 @@ angular.module('mean.directives', [])
         }
       };
 
-      // set current players details to localStorage and initialize the emoji
+      // set current players details to localStorage
       scope.setPlayer = (avatar, username) => {
         window.localStorage.setItem('avatar', avatar);
         window.localStorage.setItem('username', username);
