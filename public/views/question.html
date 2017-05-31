@@ -13,11 +13,11 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+      <!--<div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
         <div id='start-game-button'>
           Start Game</br>with {{game.players.length}} players
         </div>
-      </div>
+      </div>-->
     </div>
     <!-- Game Over Stuff -->
     <div id="game-end-info">
@@ -36,3 +36,21 @@
   </div>
 </div>
 
+<!-- Materialize Modal to start Game. -->
+<!--<div ng-controller="GameStartController">-->
+  <!-- Modal Trigger -->
+  <button data-target="modal1" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
+  <!-- Modal Structure --> 
+  <div id="modal1" class="modal">
+    <div class="modal-content" ng-if="hasEnoughPlayers">
+      <p>Are you sure you want to be human for once!</p>
+      <div class="modal-footer">
+        <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="game.startGame()">Let's do this</button>
+        <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="notReady()">Not ready!</button>
+      </div>
+    </div>
+    <div class="modal-content" ng-if="!hasEnoughPlayers">
+      <p>You need at least 3 players to start game</p>
+    </div>
+  </div>
+<!--</div>-->
