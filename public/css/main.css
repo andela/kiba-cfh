@@ -437,10 +437,19 @@ nav li a:hover{
   margin-right:10px
 }
 
+#inviteButton {
+  background-color:#236484 !important;
+  float: left;
+  margin-left:10px
+}
+
 #startButton:hover {
   background-color:#236484 !important;
 }
 
+#inviteButton:hover {
+  background-color:#D67C2A !important;
+}
 #finding-players {
   font-size: 20px;
   font-weight: bold;
@@ -527,7 +536,6 @@ nav li a:hover{
   margin: auto;
   padding-top:20px;
   border-radius: 5px;
-  margin-top: -300px; 
 }
 
 #inner-text-container {

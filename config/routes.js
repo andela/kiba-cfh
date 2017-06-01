@@ -1,3 +1,6 @@
+
+const async = require('async');
+
 const jwt = require('./jwt');
 const users = require('../app/controllers/users');
 const answers = require('../app/controllers/answers');
@@ -5,12 +8,15 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 
-module.exports = (app, passport, auth) => {
+module.exports = function (app, passport, auth) {
   // User Routes
+  let users = require('../app/controllers/users');
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
   app.get('/signout', users.signout);
+  app.get('/users', users.all);
+  app.get('/api/search/users/:searchUsers?', users.findUsers);
 
   // Setting up the users api
   app.post('/users', users.create);
@@ -103,19 +109,32 @@ module.exports = (app, passport, auth) => {
     }),
     users.authCallback
   );
-
   // Finish with setting up the userId param
   app.param('userId', users.user);
 
   // Answer Routes
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
-  // Finish with setting up the answerId param
-  app.param('answerId', answers.answer);
+  app.post('/answers/region/', answers.byRegion);
+  // app.post('/api/region', answers.byRegion);
+
+
+  // Donation Routes
+  app.post('/donations', users.addDonation);
+
+  app.post('/users/session', passport.authenticate('local', {
+    failureRedirect: '/signin',
+    failureFlash: 'Invalid email or password.'
+  }), users.session);
+
+  app.get('/users/me', users.me);
+  app.get('/users/:userId', users.show);
+
 
   // Question Routes
   app.get('/questions', questions.all);
   app.get('/questions/:questionId', questions.show);
+  app.post('/questions/region/', questions.byRegion);
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
 
@@ -129,4 +148,13 @@ module.exports = (app, passport, auth) => {
   // JWT API endpoint
   app.post('/api/auth/login', jwt.SignInWithJwt);
   app.post('/api/auth/signup', jwt.SignUpWithJwt);
+  app.get('/avatars', avatars.allJSON);
+
+  // Home route
+  app.get('/play', index.play);
+  app.get('/', index.render);
+
+  // mail route
+  const mail = require('../app/controllers/mail');
+  app.post('/api/invite', mail.gameInvite);
 };
