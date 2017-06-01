@@ -20,6 +20,7 @@ let guestNames = [
 function Game(gameID, io) {
   this.io = io;
   this.gameID = gameID;
+  this.region = null;
   this.players = []; // Contains array of player models
   this.table = []; // Contains array of {card: card, player: player.id}
   this.winningCard = -1; // Index in this.table
@@ -242,7 +243,7 @@ Game.prototype.getQuestions = function(cb) {
 
 Game.prototype.getAnswers = function(cb) {
   answers.allAnswersForGame(function(data){
-    cb(null,data);
+    cb(null, data);
   });
 };
 

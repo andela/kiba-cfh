@@ -2,33 +2,33 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    config = require('../../config/config'),
-    Schema = mongoose.Schema;
+  config = require('../../config/config'),
+  Schema = mongoose.Schema;
 
 /**
  * Answer Schema
  */
 var AnswerSchema = new Schema({
-    id: {
-        type: Number
-    },
-    text: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    official: {
-        type: Boolean
-    },
-    expansion: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    region: {
-      type: String,
-      default: ''
-    }
+  id: {
+    type: Number
+  },
+  text: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  official: {
+    type: Boolean
+  },
+  expansion: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  region: {
+    type: String,
+    default: ''
+  }
 
 });
 
@@ -36,11 +36,11 @@ var AnswerSchema = new Schema({
  * Statics
  */
 AnswerSchema.statics = {
-    load: function(id, cb) {
-        this.findOne({
-            id: id
-        }).select('-_id').exec(cb);
-    }
+  load: function(id, cb) {
+    this.findOne({
+        id: id
+      }).select('-_id').exec(cb);
+  }
 };
 
 mongoose.model('Answer', AnswerSchema);
