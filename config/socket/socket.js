@@ -73,6 +73,15 @@ module.exports = function(io) {
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
     });
+
+    // socket.on('resolveRegions', (result) => {
+    //   if (allGames[socket.gameID]) {
+    //     const beginGame = allGames[socket.gameID];
+    //     // beginGame.resolveRegions(result.region);
+    //     console.log('setting game', socket.gameID);
+    //   }
+    //   return result.region;
+    // });
   });
 
   var joinGame = function(socket,data) {
