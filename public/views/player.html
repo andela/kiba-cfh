@@ -1,21 +1,38 @@
-<div id="player-container" ng-repeat="player in game.players" style="background-color:{{colors[player.color]}}">
-  <div id ="above-czar-container">
-    <div id="avatar_">
-      <span ng-show="isPremium($index)">
+<div id="player-container" ng-repeat="player in game.players" ng-hide="game.state === 'game ended' || game.state ==='game dissolved'">
+  <div class="row">
+    <div id="above-czar-container" class="col m3">
+      <div id="avatar">
+        <span ng-show="isPremium($index)">
         <img ng-src="img/king.png" id="king">
       </span>
-      <img ng-src="{{player.avatar}}"/>
+        <img ng-src="{{player.avatar}}" id="player-avatar" class="responsive-img" />
+      </div>
     </div>
-    <div id="player-container-inner">
-      <div id="player-name"><h4>{{player.username | upperFirstLetter}}</h4></div>
-      <div id="player-score"><h2>{{player.points}}/{{game.pointLimit}}</h2></div>
-      <div ng-show="isPlayer($index)" id="player-star">
-        <img src="../img/11.png"/>
+    <div class="col m9" id="name-czar">
+      <div>
+        <div id=" player-container-inner ">
+          <div id="player-name ">
+            <h4 id="player-name-inner">{{player.username | upperFirstLetter}}</h4>
+          </div>
+          <div id="player-score " class="col m6">
+            <h2 id="player-score-inner">{{player.points}}/{{game.pointLimit}}</h2>
+          </div>
+          <div ng-show="isPlayer($index) " id="player-star " class="col m6">
+            <img src="../img/11.png " class="responsive-img" id="isPlayer" />
+          </div>
+        </div>
+      </div>
+      <div id="czar-container " ng-show="currentCzar($index) ">
+        <span id='the-czar'>CZAR</span>
       </div>
     </div>
   </div>
-  <div id="czar-container" ng-show="currentCzar($index)">
-    <span id='the-czar'>CZAR</span>
-  </div>
 </div>
 
+<div id="charity-widget-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
+  <!-- This is real -->
+  <script type="text/javascript" src="https://www.crowdrise.com/widgets/donate/fundraiser/121142/?callback=userDonationCb"></script>
+  <!-- This is for testing -->
+  <!-- <a href="http://www.crowdrise.com" id="crowdriseStaticLink-project-36715" title="Fundraising Websites on Crowdrise">Fundraising Websites - Crowdrise</a> -->
+  <!-- <script type="text/javascript" src="https://apisandbox.crowdrise.com/widgets/donate/project/36715/?callback=userDonationCb"></script> -->
+</div>
