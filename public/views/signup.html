@@ -1,88 +1,119 @@
-<div id="main-bod">
-  <!-- Fixed Logo & Menu Bar Start -->
-  <div id="top-part">
-    <div class="wpb-top-bar">
-      <div class="mod-contain" id="navver">
-        <div class="row">
-          <!-- Logo -->
-          <div class="wpb-logo-container">
-            <div id="landing-logo"> 
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span> 
-              <span id="third-word">Humanity</span> 
-            </div> 
-            <div class="col-md-9 wpb-menu-container">
-              <ul class="wpb-main-menu">
-                <li><a href="/">Home</a></li>
-              </ul>
-            </div>
-          </div>      
-        </div>
-      </div>
+<div class="auth-container" ng-controller="IndexController">
+  <nav class="kiba-nav navbar-fixed nav-color main-navigation" role="navigation">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="#" class="brand-logo  white-text">
+        <span id="first-word">Cards</span>
+        <span id="second-word"> for</span>
+        <span id="third-word">Humanity</span>
+      </a>
+      <ul class="right hide-on-med-and-down main-navigation">
+        <li><a onClick="scroll(0,0)">Home</a></li>
+        <li><a onClick="scroll(0,742);">How to Play</a></li>
+        <li><a onClick="scroll(0,1411);">Charity</a></li>
+        <li><a onClick="scroll(0,2021);">About Us</a></li>
+        <span ng-show="showOptions">
+          <li><a href="#!/signup">Sign Up</a></li>
+          <li><a href="#!/signin">Sign In</a></li>
+          </span>
+        <span ng-hide="showOptions">
+            <li><a href="/signout">Sign Out</a></li>
+          </span>
+      </ul>
+      <ul id="nav-mobile" class="side-nav grey darken-4 white-text">
+        <li><a onClick="scroll(0,0)">Home</a></li>
+        <li><a onClick="scroll(0,742);">How to Play</a></li>
+        <li><a onClick="scroll(0,1411);">Charity</a></li>
+        <li><a onClick="scroll(0,2021);">About Us</a></li>
+        <span ng-show="showOptions">
+          <li><a href="#!/signup">Sign Up</a></li>
+          <li><a href="#!/signin">Sign In</a></li>
+        </span>
+        <span ng-hide="showOptions">
+            <li><a href="/signout">Sign Out</a></li>
+          </span>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
     </div>
-  </div>
-<!-- Fixed Logo & Menu Bar End -->
+  </nav>
 
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" ng-controller="IndexController" id="homer">
-  <div class="background-opacity"></div> 
-  <div class="modified-container">
-    <div class="row" id="main-text"> 
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign Up with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
-      </div>
-      <p id="create">Or create a username/password and select an avatar:</p>
+<!-- Fixed Logo & Nav Bar End -->
 
-      <div class="sign-body">
-        <div class="more-sign">
-          <div class="sign-error">
-            {{errorMsg}}
+<!-- Sign Up Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col s6 offset-s3 main signup-main center">
+        <div class="row">
+          <div class="col s6 offset-s3 header-text signup-header-text">
+            <h2>SIGN UP</h2>
+            <p> Signing up is super easy! Sign up with your email and password</p>
           </div>
-          <form class="signup form-horizontal" method="post">
-            <div class="control-group">
-              <label for="name" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="name" type="text" name="name" ng-model="fullname"  placeholder="Full name" required novalidate />
+          <br clear="all">
+          <hr>
+        </div>
+        <div class="row">
+          <form class="col s8 offset-s2 center form-style" method="post">
+            <div class="input-field col s12">
+              <input id="name" name="name" type="text" required novalidate
+               placeholder="Full Name*" class="placeholder-text" ng-model="fullname">
+            </div>
+            <div class="input-field col s12">
+              <input id="email" type="email" name="email" class="placeholder-text" required novalidate ng-model="email" placeholder="Email*">
+            </div>
+            <div class="input-field col s12">
+              <input id="password" type="password" required name="password" ng-model="password" placeholder="Password*">
+            </div>
+            <div class="input-field col s12">
+              <input id="password" type="password" required placeholder="Confirm Password*">
+            </div>
+            <div class="row">
+              <div class="col s12 center">
+                <div class="col s8 center header-text">
+                  <p>
+                    Select Avatar:
+                  </p>
+                </div>
+                <br clear="all">
+                <div>
+                  <ul class="avatar-list">
+                    <li ng-repeat="avatar in avatars" class="col s2 input-radio-style ng-scope">
+                      <input name="avatar" type='radio' value="{{$index}}" id="{{$index}}">
+                        <label for="{{$index}}"><img width="25" height="25" ng-src="{{avatar}}"></label>
+                      </input>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="email" name="email" ng-model="email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" ng-model="password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div id="contain-avatars">
-              <ul ng-controller="IndexController" class="avatar-list">
-                <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
-                    <img ng-src="{{avatar}}">
-                  </input>
-                </li>
-              </ul>
-            </div>
-            <div class="form-actions">
-              <button id="sign-up-btn-other" type='submit' ng-click="signup()">Sign Up</button>
+            <div class="col s6 offset-s3 center">
+              <button type="submit" class="submit btn signin-button" ng-click="signup()">SIGN UP</button>
             </div>
           </form>
         </div>
+        <hr>
+        <div class="row">
+          <div class="col s6 offset-s3 header-text">
+            <p>
+              or sign up with one of these services
+            </p>
+          </div>
+          <div class="col s10 offset-s2">
+            <a href="/auth/github" class="col s5 waves-effect waves-light btn btn-soc social github">
+              <i class="fa fa-github"></i>Github
+            </a>
+            <a href="/auth/google" class="col s5 waves-effect waves-light btn btn-soc social google">
+              <i class="fa fa-google"></i> Google
+            </a>
+
+            <a href="/auth/twitter" class="col s6 waves-effect waves-light btn btn-soc social twitter">
+              <i class="fa fa-twitter"></i> Twitter
+            </a>
+            <a href="/auth/facebook" class="col s6 waves-effect waves-light btn btn-soc social facebook">
+              <i class="fa fa-facebook"></i>Facebook
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-    </div>
-  </div>
+    </div>   <!--/row-->
+  </div>    <!-- /container -->
 </div>
-
-
 
