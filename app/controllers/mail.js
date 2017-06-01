@@ -1,6 +1,6 @@
-
 const helper = require('sendgrid').mail;
-const http = require('http');
+const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+
 exports.gameInvite = (req, res) => {
   const gameUrl = req.body.link;
   const fromEmail = new helper.Email('game-invite@kibacfh.com');
@@ -8,10 +8,15 @@ exports.gameInvite = (req, res) => {
   const subject = 'Welcome to Kiba';
   const sender = req.body.gameOwner;
   const invitee = req.body.name;
-  const content = new helper.Content('text/plain', ` Hello ${invitee}, Welcome to CARDS for HUMANITY, You have been invited by ${sender} to play a game. Follow this link to get started ${gameUrl}`);
+
+  const content = new helper.Content(
+    'text/plain',
+    `Hello ${invitee}, Welcome to CARDS for HUMANITY,
+    You have been invited by ${sender} to play a game.
+    Follow this link to get started ${gameUrl}`
+  );
   const mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
-  const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
   const request = sg.emptyRequest({
     method: 'POST',
     path: '/v3/mail/send',
