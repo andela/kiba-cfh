@@ -52,7 +52,8 @@
         <h6>Kindly select a region:</h6>
       </div>
       <div class="col m6">
-        <select ng-model="region" class="form-control" ng-options="countries.region for countries in regions" />
+        <select ng-model="region" class="form-control" ng-options="countries.region for countries in regions">
+          <option value="" selected="disable selected">Select a region</option>
         </select>
       </div>
     </div>
