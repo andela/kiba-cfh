@@ -301,7 +301,7 @@ footer.page-footer {
     }
 
 .section-parallax {
-  margin-top: 230px
+  margin-top: 230px !important;
 }
 
 nav li a:hover{

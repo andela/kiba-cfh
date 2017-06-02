@@ -52,6 +52,7 @@ angular.module('mean.system').controller('IndexController', [
         (response) => {
           const token = response.data.token;
           $cookies.put('token', token);
+          $scope.showOptions = false;
           $location.path('/');
         },
         (response) => {
@@ -60,6 +61,7 @@ angular.module('mean.system').controller('IndexController', [
       );
     };
     $scope.logout = () => {
+      $scope.showOptions = true;
       $cookies.remove('token');
     };
     $scope.playAsGuest = () => {
