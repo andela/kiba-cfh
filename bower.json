@@ -11,7 +11,8 @@
     "underscore": "~1.5.2",
     "ng-materialize": "^0.1.2",
     "angular-animate": "^1.6.4",
-    "angular-sanitize": "^1.6.4"
+    "angular-sanitize": "^1.6.4",
+    "materialize-social": "*"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -25,6 +26,7 @@
   },
   "resolutions": {
     "angular": "1.6.4",
-    "angular-animate": "^1.6.4"
+    "angular-animate": "^1.6.4",
+    "jquery": ">=2.1.1"
   }
 }
