@@ -17,14 +17,14 @@
           <div id="player-score " class="col m6">
             <h2 id="player-score-inner">{{player.points}}/{{game.pointLimit}}</h2>
           </div>
-          <div ng-show="isPlayer($index) " id="player-star " class="col m6">
+          <div ng-show="isPlayer($index) " id="player-star " class="col m3">
             <img src="../img/11.png " class="responsive-img" id="isPlayer" />
             <span ng-if="!isPlayerSet && isPlayer($index)">{{setPlayer(player.avatar, player.username)}}</span>
           </div>
+          <div id="czar-container " ng-show="currentCzar($index) " class="col m3">
+            <p id='the-czar'>CZAR</p>
+          </div>
         </div>
-      </div>
-      <div id="czar-container " ng-show="currentCzar($index) ">
-        <span id='the-czar'>CZAR</span>
       </div>
     </div>
   </div>
