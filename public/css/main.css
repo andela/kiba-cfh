@@ -359,7 +359,9 @@ nav li a:hover{
 }
 
 #writing{
-  padding-top:50px
+  padding-top:50px;
+  margin-top: -30px;
+  margin-bottom:-30px;
 }
 
 #bg-img2{
@@ -562,3 +564,7 @@ nav li a:hover{
   background-color:#236484 !important;
 }
 
+#how-to-play{
+  background-color: aliceblue;
+  margin-bottom:-30px;
+}
