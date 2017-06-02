@@ -568,3 +568,7 @@ nav li a:hover{
   background-color: aliceblue;
   margin-bottom:-30px;
 }
+
+select {
+  display: block !important;
+}

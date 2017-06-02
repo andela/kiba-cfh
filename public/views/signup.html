@@ -1,5 +1,5 @@
 <div class="auth-container" ng-controller="IndexController">
-  <nav class="kiba-nav navbar-fixed nav-color main-navigation" role="navigation">
+  <nav class="navbar-fixed nav-color main-navigation" role="navigation">
     <div class="nav-wrapper">
       <a id="logo-container" href="#" class="brand-logo  white-text">
         <span id="first-word">Cards</span>
@@ -36,9 +36,9 @@
     </div>
   </nav>
 
-<!-- Fixed Logo & Nav Bar End -->
+  <!-- Fixed Logo & Nav Bar End -->
 
-<!-- Sign Up Start -->
+  <!-- Sign Up Start -->
   <div class="container">
     <div class="row">
       <div class="col s6 offset-s3 main signup-main center">
@@ -53,8 +53,7 @@
         <div class="row">
           <form class="col s8 offset-s2 center form-style" method="post">
             <div class="input-field col s12">
-              <input id="name" name="name" type="text" required novalidate
-               placeholder="Full Name*" class="placeholder-text" ng-model="fullname">
+              <input id="name" name="name" type="text" required novalidate placeholder="Full Name*" class="placeholder-text" ng-model="fullname">
             </div>
             <div class="input-field col s12">
               <input id="email" type="email" name="email" class="placeholder-text" required novalidate ng-model="email" placeholder="Email*">
@@ -77,7 +76,7 @@
                   <ul class="avatar-list">
                     <li ng-repeat="avatar in avatars" class="col s2 input-radio-style ng-scope">
                       <input name="avatar" type='radio' value="{{$index}}" id="{{$index}}">
-                        <label for="{{$index}}"><img width="25" height="25" ng-src="{{avatar}}"></label>
+                      <label for="{{$index}}"><img width="25" height="25" ng-src="{{avatar}}"></label>
                       </input>
                     </li>
                   </ul>
@@ -97,23 +96,24 @@
             </p>
           </div>
           <div class="col s10 offset-s2">
-            <a href="/auth/github" class="col s5 waves-effect waves-light btn btn-soc social github">
+            <a href="/auth/github" class="col s5 waves-effect waves-light btn btn-soc social github" style="width: 41.6666666667% !important;">
               <i class="fa fa-github"></i>Github
             </a>
-            <a href="/auth/google" class="col s5 waves-effect waves-light btn btn-soc social google">
+            <a href="/auth/google" class="col s5 waves-effect waves-light btn btn-soc social google" style="width: 41.6666666667% !important;">
               <i class="fa fa-google"></i> Google
             </a>
 
-            <a href="/auth/twitter" class="col s6 waves-effect waves-light btn btn-soc social twitter">
+            <a href="/auth/twitter" class="col s6 waves-effect waves-light btn btn-soc social twitter" style="width: 41.6666666667% !important;">
               <i class="fa fa-twitter"></i> Twitter
             </a>
-            <a href="/auth/facebook" class="col s6 waves-effect waves-light btn btn-soc social facebook">
+            <a href="/auth/facebook" class="col s6 waves-effect waves-light btn btn-soc social facebook" style="width: 41.6666666667% !important;">
               <i class="fa fa-facebook"></i>Facebook
             </a>
           </div>
         </div>
       </div>
-    </div>   <!--/row-->
-  </div>    <!-- /container -->
+    </div>
+    <!--/row-->
+  </div>
+  <!-- /container -->
 </div>
-

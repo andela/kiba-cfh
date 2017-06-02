@@ -1,5 +1,5 @@
 .auth-container{
-  font-family: 'Lora', serif;
+  font-family: 'Lora', serif !important;
   background-image: url('../img/background2.jpg') !important;
 }
 
@@ -13,20 +13,20 @@ input{
 }
 
 .header-text{
-  color: #236484;
+  color: #236484 !important;
 }
 .header-text p{
-  font-size: 15px;
-  color: #1f1f1f;
+  font-size: 15px !important;
+  color: #1f1f1f !important;
 }
 .form-style{
-  margin-bottom: 30px;
+  margin-bottom: 30px !important;
 }
 .main{
-  background-color: #EFF7FB;
-  padding: 40px;
+  background-color: #EFF7FB !important;
+  padding: 40px !important;
   /*margin: 20px;*/
-  margin-top: 30px;
+  margin-top: 30px !important;
 }
 .signup-button{
   margin-top: 0px !important;
@@ -34,30 +34,30 @@ input{
 .signin-button {
   width: 13.5rem !important;
   background-color: #236484 !important;
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  margin-top: 25px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  margin-bottom: 0 !important;
+  margin-top: 25px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.42857143 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  -ms-touch-action: manipulation !important;
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
 }
 .signin-button:hover{
   background-color: #D67C2A !important;
-  transition: all 0.3s linear;
+  transition: all 0.3s linear !important;
 }
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:after {
@@ -70,17 +70,17 @@ input{
 }
 
 .header-text{
-  margin-top: 20px;
+  margin-top: 20px !important;
 }
 .signup-header-text{
-  margin-top: 8px;
+  margin-top: 8px !important;
 }
 .input-radio-style{
-  margin: 4px 8px 4px 8px;
+  margin: 4px 8px 4px 8px !important;
 }
 .btn-soc{
   display:block !important;
-  margin-top: 20px;
+  margin-top: 20px !important;
   width: 17rem !important;
   margin: 0px 5px 35px 5px !important;
   padding: 0.8rem 2rem 0 0 !important;
@@ -88,50 +88,53 @@ input{
 .placeholder-text{
   color: #000 !important;
 }
-.kiba-nav{
+/*.kiba-nav{
   height: 65px !important;
   background-color: #236484 !important;
   color: #fff;
   margin-bottom: 0px !important;
   font-size: 17px;
+}*/
+.kiba-social-login{
+  width: 41.6666666667% !important;
 }
  /*START OF MATERIALIZE-CSS CODE*/
 .btn.social > :first-child,
 .btn-large.social > :first-child,
 .col.social > :first-child {
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
 }
 .btn.social,
 .btn-large.social,
 .col.social {
-  padding: 0 2rem 0 0;
+  padding: 0 2rem 0 0 !important;
 }
 .btn.social i,
 .btn-large.social i,
 .col.social i {
-  padding: 0 1rem;
-  margin-right: 1rem;
+  padding: 0 1rem !important;
+  margin-right: 1rem !important;
 }
 .btn.social-icon,
 .btn-large.social-icon,
 .col.social-icon {
-  padding: 0;
+  padding: 0!important;
 }
 .btn.social-icon i,
 .btn-large.social-icon i,
 .col.social-icon i {
-  padding: 0 1rem;
-  margin-right: 0;
+  padding: 0 1rem !important;
+  margin-right: 0 !important;
 }
 .btn-large.social-icon {
-  padding: 0 1rem;
+  padding: 0 1rem !important;
 }
 .col.social {
-  width: 100%;
-  text-align: left;
+  width: 100% !important;
+  text-align: left !important;
 }
 .col.social i.fa-fw {
-  width: 3.2rem;
+  width: 3.2rem !important;
 }
 .facebook {
   background-color: #3b5998 !important;
