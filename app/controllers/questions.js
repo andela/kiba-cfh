@@ -52,7 +52,6 @@ exports.all = (req, res) => {
  * List of Questions (for Game class)
  */
 exports.allQuestionsForGame = (cb) => {
-  //console.log(gameRegion, 'region');
   Question.find({ official: true, numAnswers: { $lt: 3 }, region: gameRegion }).select('-_id').exec((err, questions) => {
     if (err) {
       console.log(err);

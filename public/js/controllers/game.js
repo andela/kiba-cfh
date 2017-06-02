@@ -1,29 +1,13 @@
-angular.module('mean.system').controller('GameController', [
-  '$scope',
-  '$http',
-  '$q',
-  'game',
-  '$timeout',
-  '$location',
-  'MakeAWishFactsService',
-  '$dialog',
-  function (
-    $scope,
-    $http,
-    $q,
-    game,
-    $timeout,
-    $location,
-    MakeAWishFactsService,
-    $dialog
-  ) {
+angular.module('mean.system')
+  .controller('GameController', ['$scope', 'game','$http','$q', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $http, $q, $timeout, $location, MakeAWishFactsService, $dialog) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
     $scope.modalShown = false;
+    $scope.hasEnoughPlayers = false;
     $scope.game = game;
     $scope.pickedCards = [];
-    var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+    const makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
     $scope.makeAWishFact = makeAWishFacts.pop();
 
     $scope.pickCard = function (card) {
@@ -47,12 +31,11 @@ angular.module('mean.system').controller('GameController', [
     };
 
     $scope.pointerCursorStyle = function () {
-      if (
-        $scope.isCzar() && $scope.game.state === 'waiting for czar to decide'
-      ) {
-        return { cursor: 'pointer' };
+      if ($scope.isCzar() && $scope.game.state === 'waiting for czar to decide') {
+        return { 'cursor': 'pointer' };
+      } else {
+        return {};
       }
-      return {};
     };
 
     $scope.sendPickedCards = function () {
@@ -77,15 +60,17 @@ angular.module('mean.system').controller('GameController', [
     $scope.firstAnswer = function ($index) {
       if ($index % 2 === 0 && game.curQuestion.numAnswers > 1) {
         return true;
+      } else {
+        return false;
       }
-      return false;
     };
 
     $scope.secondAnswer = function ($index) {
       if ($index % 2 === 1 && game.curQuestion.numAnswers > 1) {
         return true;
+      } else {
+        return false;
       }
-      return false;
     };
 
     $scope.showFirst = function (card) {
@@ -111,7 +96,7 @@ angular.module('mean.system').controller('GameController', [
     };
 
     $scope.isCustomGame = function () {
-      return !/^\d+$/.test(game.gameID) && game.state === 'awaiting players';
+      return !(/^\d+$/).test(game.gameID) && game.state === 'awaiting players';
     };
 
     $scope.isPremium = function ($index) {
@@ -128,10 +113,6 @@ angular.module('mean.system').controller('GameController', [
       }
       return '#f9f9f9';
     };
-    // $scope.startGame = function () {
-    //    $('#regionModal').modal('toggle');
-    //     game.startGame();
-    // };
 
     $scope.pickWinning = function (winningSet) {
       if ($scope.isCzar()) {
@@ -151,6 +132,7 @@ angular.module('mean.system').controller('GameController', [
 
     // Catches changes to round to update when no players pick card
     // (because game.state remains the same)
+
     $scope.$watch('game.round', () => {
       $scope.hasPickedCards = false;
       $scope.showTable = false;
@@ -164,13 +146,11 @@ angular.module('mean.system').controller('GameController', [
 
     // In case player doesn't pick a card in time, show the table
     $scope.$watch('game.state', () => {
-      if (
-        game.state === 'waiting for czar to decide' &&
-        $scope.showTable === false
-      ) {
+      if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
         $scope.showTable = true;
       }
     });
+
 
     $scope.$watch('game.gameID', () => {
       if (game.gameID && game.state === 'awaiting players') {
@@ -183,18 +163,17 @@ angular.module('mean.system').controller('GameController', [
           // where the link is meant to be shared.
           $location.search({ game: game.gameID });
           if (!$scope.modalShown) {
+
             setTimeout(() => {
               var link = document.URL;
-              var txt =
-                'Give the following link to your friends so they can join your game: ';
+              var txt ='Give the following link to your friends so they can join your game: ';
               $('#lobby-how-to-play').text(txt);
-              $('#oh-el')
-                .css({
-                  'text-align': 'center',
-                  'font-size': '22px',
-                  background: 'white',
-                  color: 'black'
-                })
+              $('#oh-el').css({
+                'text-align': 'center',
+                'font-size': '22px',
+                background: 'white',
+                color: 'black'
+              })
                 .text(link);
             }, 200);
             $scope.modalShown = true;
@@ -202,11 +181,24 @@ angular.module('mean.system').controller('GameController', [
         }
       }
     });
+    $scope.showModal = () => {
+      if (game.players.length < game.playerMinLimit) {
+        $('.modal').modal({
+          opacity: 0.9,
+          startingTop: '50%',
+        });
+      }
+      if (game.players.length >= game.playerMinLimit && game.players.length <
+        game.playerMaxLimit) {
+        $scope.hasEnoughPlayers = true;
+        $scope.startGame();
+      }
+    };
 
-    if ($location.search().game && !/^\d+$/.test($location.search().game)) {
-      console.log('joining custom game');
-      game.joinGame('joinGame', $location.search().game);
-    } else if ($location.search().custom) {
+    if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
+  console.log('joining custom game');
+  game.joinGame('joinGame', $location.search().game);
+} else if ($location.search().custom) {
       game.joinGame('joinGame', null, true);
     } else {
       game.joinGame();
@@ -268,7 +260,7 @@ angular.module('mean.system').controller('GameController', [
       });
 
     $scope.startGame = () => {
-      $('#regionModal').modal('toggle');
+      $('.modal').modal();
       $scope.beginGame = (regionId) => {
         $q
           .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
@@ -278,5 +270,7 @@ angular.module('mean.system').controller('GameController', [
           });
       };
     };
-  }
-]);
+    $scope.selectOption = {
+       'display': 'block',
+     };
+  }]);

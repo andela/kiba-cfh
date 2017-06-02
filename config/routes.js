@@ -1,8 +1,13 @@
 let async = require('async');
+const jwt = require('./jwt');
+const users = require('../app/controllers/users');
+const answers = require('../app/controllers/answers');
+const questions = require('../app/controllers/questions');
+const avatars = require('../app/controllers/avatars');
+const index = require('../app/controllers/index');
 
-module.exports = function (app, passport, auth) {
+module.exports = (app, passport, auth) => {
   // User Routes
-  let users = require('../app/controllers/users');
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
@@ -16,8 +21,7 @@ module.exports = function (app, passport, auth) {
 
   // Donation Routes
   app.post('/donations', users.addDonation);
-
-  app.post(
+app.post(
     '/users/session',
     passport.authenticate('local', {
       failureRedirect: '/signin',
@@ -101,21 +105,18 @@ module.exports = function (app, passport, auth) {
     }),
     users.authCallback
   );
-
+  
   // Finish with setting up the userId param
   app.param('userId', users.user);
 
   // Answer Routes
-  let answers = require('../app/controllers/answers');
   app.get('/answers/', answers.all);
   app.get('/answers/:answerId', answers.show);
   app.post('/answers/region/', answers.byRegion);
-  // app.post('/api/region', answers.byRegion);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
-  let questions = require('../app/controllers/questions');
   app.get('/questions/', questions.all);
   app.get('/questions/:questionId', questions.show);
   app.post('/questions/region/', questions.byRegion);
@@ -135,4 +136,14 @@ module.exports = function (app, passport, auth) {
   // mail route
   const mail = require('../app/controllers/mail');
   app.post('/api/invite', mail.gameInvite);
+  app.get('/avatars', avatars.allJSON);
+
+  // Home route
+  app.get('/play', index.play);
+  app.get('/', index.render);
+
+  // JWT API endpoint
+  app.post('/api/auth/login', jwt.SignInWithJwt);
+  app.post('/api/auth/signup', jwt.SignUpWithJwt);
+
 };
