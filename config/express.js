@@ -5,7 +5,8 @@ var express = require('express'),
     mongoStore = require('connect-mongo')(express),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
-    config = require('./config');
+    config = require('./config'),
+    auth = require('./middlewares/authorization');
 
 module.exports = function(app, passport, mongoose) {
     app.set('showStackError', true);
@@ -61,6 +62,9 @@ module.exports = function(app, passport, mongoose) {
         //use passport session
         app.use(passport.initialize());
         app.use(passport.session());
+
+        app.use('/api', auth.checkToken);
+
 
         //routes should be at the last
         app.use(app.router);
