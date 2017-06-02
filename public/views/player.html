@@ -19,6 +19,7 @@
           </div>
           <div ng-show="isPlayer($index) " id="player-star " class="col m6">
             <img src="../img/11.png " class="responsive-img" id="isPlayer" />
+            <span ng-if="!isPlayerSet && isPlayer($index)">{{setPlayer(player.avatar, player.username)}}</span>
           </div>
         </div>
       </div>

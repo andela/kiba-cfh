@@ -572,3 +572,11 @@ nav li a:hover{
 select {
   display: block !important;
 }
+
+#question-text {
+  padding-top: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #236484;
+}
