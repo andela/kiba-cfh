@@ -105,7 +105,7 @@ app.post(
     }),
     users.authCallback
   );
-  
+
   // Finish with setting up the userId param
   app.param('userId', users.user);
 
@@ -132,11 +132,6 @@ app.post(
   let index = require('../app/controllers/index');
   app.get('/play', index.play);
   app.get('/', index.render);
-
-  // mail route
-  const mail = require('../app/controllers/mail');
-  app.post('/api/invite', mail.gameInvite);
-  app.get('/avatars', avatars.allJSON);
 
   // Home route
   app.get('/play', index.play);

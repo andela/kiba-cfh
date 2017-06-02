@@ -29,7 +29,6 @@
   </div>
 </div>
   <!-- Materialize Modal to start Game. -->
-<!--<div ng-controller="GameStartController">-->
   <!-- Modal Trigger -->
   <button data-target="showModal" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
   <!-- Modal Structure -->
@@ -58,43 +57,6 @@
     </div>
    </div>
 <!--</div>-->
-
-  <!-- Materialize-CSS Modal Trigger -->
-  <div ng-controller="InviteController">
-
-    <a class="waves-effect waves-light btn" ng-click="openModal()">Invite Players</a>
-  <!-- Modal Structure -->
-  <div class="modal modal-fixed-footer" ng-style="myObj" id="exampleModal">
-    <div class="modal-content">
-      <h4>Send Invites</h4>
-      <div ng-if="emailSentNotif" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">
-        <p>{{emailSentNotif}}</p>
-        </div>
-        <div class="row">
-          <input type="text" ng-model="searchUsers" ng-style="myObj" ng-keyup="findUsers()" placeholder="Search for users here..." class="col m9"/>&nbsp;
-          <button class="waves-effect waves-light btn col m2 pull-right" type="submit" ng-click="sendMail()">INVITE</button>
-        </div>
-        <div ng-repeat="names in invitedEmailList" class="chip">
-          {{names}}
-           <i ng-click="deleteUser(names)" class="close material-icons" data-dismiss="chip">x</i>
-        </div>
-        <div ng-if="noUserMatch">
-            <p>
-              {{noUserMatch}}
-            </p>
-        </div>
-        <div class="collection" ng-if="searchResult.length > 0">
-        <p class="collection-item" ng-repeat="result in searchResult">
-          {{result.name}}
-          <button class="btn-floating waves-effect waves-light" ng-style="btnObj" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="disabled"  ng-click="addUser(result)"><i class="material-icons">+</i></button>
-        </p>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">Close</a>
-    </div>
-  </div>
-<!---->
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
       </div>
