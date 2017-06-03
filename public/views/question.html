@@ -42,6 +42,26 @@
 </div>
 
 <!-- Materialize Modal to start Game. -->
+<div id="shuffleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <h4 id="shuffleText">You are the Czar - Click card to pick the next question</h4>
+      <div class="center">
+        <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin: auto;'>
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard' />
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard' />
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard' />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 <!-- Modal Structure -->
 <div class="modal" id="showModal">
   <div class="modal-content" ng-if="hasEnoughPlayers">

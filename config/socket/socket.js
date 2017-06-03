@@ -84,12 +84,6 @@ module.exports = (io) => {
     socket.on('startGame', () => {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];
-        console.log(
-          'comparing',
-          thisGame.players[0].socket.id,
-          'with',
-          socket.id
-        );
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach((game, index) => {
@@ -110,6 +104,10 @@ module.exports = (io) => {
     socket.on('disconnect', () => {
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
+    });
+
+    socket.on('czarCardSelected', () => {
+      allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
     });
   });
 

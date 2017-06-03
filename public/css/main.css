@@ -288,16 +288,25 @@ footer.page-footer {
 }
 
 .sectionHumanity {
-  background-color: #236484
+  background-color: #236484;
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
+p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+p a {
+  color: #D67C2A;
+}
 .nav-color {
   background-color: #236484
 }
 
 .parallax-container {
       height: 680px;
-      background: rgba(0,0,0,0.5)
+      background: rgba(0,0,0,0.5);
+      font-family: "Comic Sans MS", cursive, sans-serif;
     }
 
 .section-parallax {
@@ -333,6 +342,7 @@ nav li a:hover{
   color: white !important;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 #take-tour:hover{
@@ -575,7 +585,16 @@ select {
   display: block !important;
 }
 
+#shuffleText {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #236484;
+}
+
 #question-text {
+  margin: auto;
   padding-top: 100px;
   font-size: 20px;
   font-weight: bold;
