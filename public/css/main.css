@@ -322,7 +322,16 @@ nav li a:hover{
   color: white !important;
 }
 
+#custom-button {
+  background-color: #D67C2A !important;
+  color: white !important;
+}
 #signup-button:hover {
+  background-color: white !important;
+  color: #D67C2A !important; 
+}
+
+#custom-button:hover {
   background-color: white !important;
   color: #D67C2A !important; 
 }

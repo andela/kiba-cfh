@@ -62,6 +62,7 @@ angular.module('mean.system').controller('IndexController', [
     };
     $scope.logout = () => {
       $scope.showOptions = true;
+      $scope.global.authenticated = false;
       $cookies.remove('token');
     };
     $scope.playAsGuest = () => {

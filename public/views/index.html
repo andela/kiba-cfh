@@ -1,208 +1,206 @@
-<div landing id="main-bod" ng-controller="IndexController">
-  <div ng-init="load()">
-    <div class="navbar-fixed">
-      <nav class="navbar-fixed nav-color main-navigation" role="navigation">
-        <div class="nav-wrapper">
-          <a id="logo-container" href="#" class="brand-logo  white-text">
+<div landing id="main-bod">
+  <div ng-controller="IndexController">
+    <div ng-init="load()">
+      <div class="navbar-fixed">
+        <nav class="navbar-fixed nav-color main-navigation" role="navigation">
+          <div class="nav-wrapper">
+            <a id="logo-container" href="#" class="brand-logo  white-text">
             <span id="first-word">Cards</span>
             <span id="second-word"> for</span>
             <span id="third-word">Humanity</span>
           </a>
-          <ul class="right hide-on-med-and-down main-navigation">
-            <li><a onClick="scroll(0,0)">Home</a></li>
-            <li><a onClick="scroll(0,742);">How to Play</a></li>
-            <li><a onClick="scroll(0,1411);">Charity</a></li>
-            <li><a onClick="scroll(0,2021);">About Us</a></li>
-            <span ng-show="showOptions">
-                  <li><a href="#!/signup">Sign Up</a></li>
-                  <li><a href="#!/signin">Sign In</a></li>
-                </span>
-            <span ng-hide="showOptions">
-                  <li><a href="/signout">Sign Out</a></li>
-                </span>
-          </ul>
-          <ul id="nav-mobile" class="side-nav grey darken-4 white-text">
-            <li><a onClick="scroll(0,0)">Home</a></li>
-            <li><a onClick="scroll(0,742);">How to Play</a></li>
-            <li><a onClick="scroll(0,1411);">Charity</a></li>
-            <li><a onClick="scroll(0,2021);">About Us</a></li>
-            <span ng-show="showOptions">
-                  <li><a href="#!/signup">Sign Up</a></li>
-                  <li><a href="#!/signin">Sign In</a></li>
-                </span>
-            <span ng-hide="showOptions">
-                  <li><a href="/signout">Sign Out</a></li>
-                </span>
-          </ul>
-          <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
-        </div>
-      </nav>
-    </div>
-
-    <div id="index-banner" class="parallax-container">
-      <div class="section no-pad-bot">
-        <div class="container section-parallax">
-          <br><br>
-          <div class="row center">
-            <h5 class="header col s12 white-text">A Game for Horrible People <span id="third-word">Desperately</span> Trying to do Good</h5>
+            <ul class="right hide-on-med-and-down main-navigation">
+              <li><a onClick="scroll(0,0)">Home</a></li>
+              <li><a onClick="scroll(0,742);">How to Play</a></li>
+              <li><a onClick="scroll(0,1411);">Charity</a></li>
+              <li><a onClick="scroll(0,2021);">About Us</a></li>
+              <li><a href="#!/signup" ng-show="showOptions">Sign Up</a></li>
+              <li><a href="#!/signin" ng-show="showOptions">Sign In</a></li>
+              <li><a href="/signout" ng-hide="showOptions" ng-click="logout()">Sign Out</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav grey darken-4 white-text">
+              <li><a onClick="scroll(0,0)">Home</a></li>
+              <li><a onClick="scroll(0,742);">How to Play</a></li>
+              <li><a onClick="scroll(0,1411);">Charity</a></li>
+              <li><a onClick="scroll(0,2021);">About Us</a></li>
+              <li><a href="#!/signup" ng-show="showOptions">Sign Up</a></li>
+              <li><a href="#!/signin" ng-show="showOptions">Sign In</a></li>
+              <li><a href="/signout" ng-hide="showOptions" ng-click="logout()">Sign Out</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
           </div>
-          <h3 class="header center white-text text-darken-4">
-            <bold>Get Started
-            </bold>
-          </h3>
-          <div class="row center">
-            <a href="#!/signup" id="signup-button" class="btn btn-large waves-effect waves-light grey darken-4">Sign Up</a>
-            <a href="/play" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play As Guest</a>
-          </div>
-          <br><br>
-
-        </div>
+        </nav>
       </div>
-      <div class="parallax">
-        <div id="canvas" width="" height="">
-        </div>
-        <img id="bg-img1" src="../img/background2.jpg" alt="Unsplashed background img 1">
-      </div>
-    </div>
-    <div class="sectionHumanity">
-      <div class="container">
-        <div id="writing" class="section intro ">
-          <h4 class="header center grey-text text-lighten-4">
-            What is Cards for Humanity?
-          </h4>
-          <p class="header ppad center grey-text text-lighten-4">
-            Cards for Humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/"
-              target="_blank">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need - all
-            while remaining as despicable and awkward as you naturally are.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- Landing End -->
 
-
-    <!-- How to Play Start -->
-    <div id="how-to-play">
-      <div class="container">
-        <div class="row">
-
-          <!--           hier -->
-          <ul class="notifications"></ul>
-          <div>
-            <div id="waypoint" class="row">
-              <div class="col m3">
-                <div class="home_cona">
-                  <div class="icon_box img1">
-                    <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_02-128.png">
-                  </div>
-                  <div class="text1">
-                    <h1>Step 1</h1>
-                    <div class="tline"></div>
-                    <p>Each player begins with, and will always have, 10 white answer cards.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col m3">
-                <div class="home_cona">
-                  <div class="icon_box img2">
-                    <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_14-128.png">
-                  </div>
-                  <div class="text2">
-                    <h1>Step 2</h1>
-                    <div class="tline"></div>
-                    <p>For each round, one player is randomly chosen as the Card Czar.</p>
-                    <!--<a class="btn was_btn_meer" href="#index-banner2">LEES MEER &gt; </a>-->
-                  </div>
-                </div>
-              </div>
-              <div class="col m3">
-                <div class="home_cona">
-                  <div class="icon_box img3">
-                    <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_16-128.png">
-                  </div>
-                  <div class="text3">
-                    <h1>Step 3</h1>
-                    <div class="tline"></div>
-                    <p>Everyone else answers the black question card by clicking on the answer card they want to use.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col m3">
-                <div class="home_cona">
-                  <div class="icon_box img3">
-                    <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_16-128.png">
-                  </div>
-                  <div class="text3">
-                    <h1>Step 4</h1>
-                    <div class="tline"></div>
-                    <p>The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</p>
-                  </div>
-                </div>
-              </div>
-
+      <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+          <div class="container section-parallax">
+            <br><br>
+            <div class="row center">
+              <h5 class="header col s12 white-text">A Game for Horrible People <span id="third-word">Desperately</span> Trying to do Good</h5>
             </div>
-            <div class="center" id="tour-button">
-              <a id="take-tour" class="header btn was_btn_meer white black-text" href="#index-banner2">Take A Tour </a>
+            <h3 class="header center white-text text-darken-4">
+              <bold>Get Started
+              </bold>
+            </h3>
+            <div class="row center" ng-show="showOptions">
+              <a href="#!/signup" id="signup-button" class="btn btn-large waves-effect waves-light grey darken-4">Sign Up</a>
+              <a href="/play" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play As Guest</a>
             </div>
+            <div class="row center" ng-hide="showOptions">
+              <a href="/play" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Strangers</a>
+              <a href="/play?custom" id="custom-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Friends</a>
+            </div>
+            <br><br>
+
           </div>
-          <!--           hier -->
-
-
-
         </div>
-
+        <div class="parallax">
+          <div id="canvas" width="" height="">
+          </div>
+          <img id="bg-img1" src="../img/background2.jpg" alt="Unsplashed background img 1">
+        </div>
       </div>
-    </div>
-
-    <div class="parallax-container valign-wrapper">
-      <div class="section">
+      <div class="sectionHumanity">
         <div class="container">
-          <div class="row">
-            <div class="col s6 center wp1">
-              <h3><i class="mdi-content-send text-darken-4 ">Make A Donation</i></h3>
-              <p> We're quite sure you feel the same way, so we've integrated donation widgets (via <a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">crowdrise.com</a>),
-                along with some not-so-subtle reminders throughout the game to give you the opportunity to donate. If you're
-                signed in when you donate, we'll even upgrade your account and place a crown on your avatar's head (to remind
-                other players how much better you are than them).</p>
-              <p>
-                All donations go to the Make-a-Wish Foundation and benefit children in need.
-              </p>
-              <a href="#" id="donate-button" class="btn btn-large waves-effect waves-light grey darken-4">Donate Now</a>
-            </div>
-            <div class="col s6 center wp2">
-              <div class="video-container" id="video-container">
-                <iframe width="640" height="460" src="https://www.youtube.com/embed/XFO4hGhBwJc" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="parallax">
-        <img src="/img/playing-cards.jpg" alt="Unsplashed background img 3" id="bg-img2">
-      </div>
-    </div>
-
-    <footer class="page-footer grey darken-4">
-      <div class="container">
-        <div class="row">
-          <div class="col l12 s12">
-            <p class="grey-text text-lighten-4"></p>
-
-            <p class="grey-text text-lighten-4">
-              <span id="warning-word">Warning!</span> This game contains offensive, profane, explicit content created by
-              <a href="http://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a> and provided here, uncensored
-              and complete, in digital form.
+          <div id="writing" class="section intro ">
+            <h4 class="header center grey-text text-lighten-4">
+              What is Cards for Humanity?
+            </h4>
+            <p class="header ppad center grey-text text-lighten-4">
+              Cards for Humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/"
+                target="_blank">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need -
+              all while remaining as despicable and awkward as you naturally are.
             </p>
           </div>
-
         </div>
       </div>
-      <div class="footer-copyright">
+      <!-- Landing End -->
+
+
+      <!-- How to Play Start -->
+      <div id="how-to-play">
         <div class="container">
+          <div class="row">
+
+            <!--           hier -->
+            <ul class="notifications"></ul>
+            <div>
+              <div id="waypoint" class="row">
+                <div class="col m3">
+                  <div class="home_cona">
+                    <div class="icon_box img1">
+                      <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_02-128.png">
+                    </div>
+                    <div class="text1">
+                      <h1>Step 1</h1>
+                      <div class="tline"></div>
+                      <p>Each player begins with, and will always have, 10 white answer cards.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col m3">
+                  <div class="home_cona">
+                    <div class="icon_box img2">
+                      <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_14-128.png">
+                    </div>
+                    <div class="text2">
+                      <h1>Step 2</h1>
+                      <div class="tline"></div>
+                      <p>For each round, one player is randomly chosen as the Card Czar.</p>
+                      <!--<a class="btn was_btn_meer" href="#index-banner2">LEES MEER &gt; </a>-->
+                    </div>
+                  </div>
+                </div>
+                <div class="col m3">
+                  <div class="home_cona">
+                    <div class="icon_box img3">
+                      <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_16-128.png">
+                    </div>
+                    <div class="text3">
+                      <h1>Step 3</h1>
+                      <div class="tline"></div>
+                      <p>Everyone else answers the black question card by clicking on the answer card they want to use.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col m3">
+                  <div class="home_cona">
+                    <div class="icon_box img3">
+                      <img class="" alt="" src="https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_16-128.png">
+                    </div>
+                    <div class="text3">
+                      <h1>Step 4</h1>
+                      <div class="tline"></div>
+                      <p>The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="center" id="tour-button">
+                <a id="take-tour" class="header btn was_btn_meer white black-text" href="#index-banner2">Take A Tour </a>
+              </div>
+            </div>
+            <!--           hier -->
+
+
+
+          </div>
 
         </div>
       </div>
-    </footer>
+
+      <div class="parallax-container valign-wrapper">
+        <div class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col s6 center wp1">
+                <h3><i class="mdi-content-send text-darken-4 ">Make A Donation</i></h3>
+                <p> We're quite sure you feel the same way, so we've integrated donation widgets (via <a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">crowdrise.com</a>),
+                  along with some not-so-subtle reminders throughout the game to give you the opportunity to donate. If you're
+                  signed in when you donate, we'll even upgrade your account and place a crown on your avatar's head (to
+                  remind other players how much better you are than them).</p>
+                <p>
+                  All donations go to the Make-a-Wish Foundation and benefit children in need.
+                </p>
+                <a href="#" id="donate-button" class="btn btn-large waves-effect waves-light grey darken-4">Donate Now</a>
+              </div>
+              <div class="col s6 center wp2">
+                <div class="video-container" id="video-container">
+                  <iframe width="640" height="460" src="https://www.youtube.com/embed/XFO4hGhBwJc" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="parallax">
+          <img src="/img/playing-cards.jpg" alt="Unsplashed background img 3" id="bg-img2">
+        </div>
+      </div>
+
+      <footer class="page-footer grey darken-4">
+        <div class="container">
+          <div class="row">
+            <div class="col l12 s12">
+              <p class="grey-text text-lighten-4"></p>
+
+              <p class="grey-text text-lighten-4">
+                <span id="warning-word">Warning!</span> This game contains offensive, profane, explicit content created by
+                <a href="http://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a> and provided here,
+                uncensored and complete, in digital form.
+              </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 </div>
