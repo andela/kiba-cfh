@@ -154,12 +154,6 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.round++;
   self.dealAnswers();
-  // Rotate card czar
-  if (self.czar >= self.players.length - 1) {
-    self.czar = 0;
-  } else {
-    self.czar++;
-  }
   self.sendUpdate();
 
   self.choosingTimeout = setTimeout(() => {
@@ -176,8 +170,7 @@ Game.prototype.selectFirst = function () {
     this.winnerAutopicked = true;
     this.stateResults(this);
   } else {
-    // console.log(this.gameID,'no cards were picked!');
-    this.stateChoosing(this);
+    this.changeCzar(this);
   }
 };
 
@@ -212,7 +205,7 @@ Game.prototype.stateResults = function (self) {
     if (winner !== -1) {
       self.stateEndGame(winner);
     } else {
-      self.stateChoosing(self);
+      self.changeCzar(self);
     }
   }, self.timeLimits.stateResults * 1000);
 };
@@ -449,6 +442,7 @@ Game.prototype.changeCzar = (self) => {
 
 
 Game.prototype.startNextRound = (self) => {
+  debugger;
   if (self.state === 'czar pick card') {
     self.stateChoosing(self);
   } else if (self.state === 'czar left game') {
