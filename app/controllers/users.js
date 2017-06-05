@@ -205,22 +205,3 @@ exports.user = function (req, res, next, id) {
         }
     });
 };
-/**
- *
- *Search for users in the database
- * @param {string} req
- * @param {object} res
- */
-exports.findUsers = function (req, res) {
-  const queryString = req.params.searchUsers || '';
-  User.find({  name: new RegExp(queryString, 'i') }).limit(10)
-    .exec(function (err, users) {
-      if (err) {
-          res.render('error', {
-            status: 500,
-          });
-      } else {
-          res.jsonp(users);
-      }
-  });
-};

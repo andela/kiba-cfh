@@ -13,8 +13,6 @@ module.exports = (app, passport, auth) => {
   app.get('/chooseavatars', users.checkAvatar);
   app.get('/signout', users.signout);
   app.get('/users', users.all);
-  app.get('/api/search/users/:searchUsers?', users.findUsers);
-
   // Setting up the users api
   app.post('/users', users.create);
   app.post('/users/avatars', users.avatars);
