@@ -7,7 +7,7 @@ angular.module('mean.system')
      * @return {void}
      */
       $scope.openModal = () => {
-        $('#exampleModal').modal('toggle');
+        $('#exampleModal').modal();
       };
 
       $scope.disabled = false;
@@ -65,7 +65,7 @@ angular.module('mean.system')
         const userIndex = $scope.invitedEmailList.indexOf(email);
         if ($scope.invitedEmailList.indexOf(email) > -1) {
           $scope.invitedEmailList.splice(userIndex, 1);
-          $(`#${$scope.getUserId(email)}`).prop('disabled', false);
+          $scope.disabled = false;
         }
         return $scope.invitedNameList;
       };

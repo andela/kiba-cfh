@@ -1,4 +1,3 @@
-const async = require('async');
 const jwt = require('./jwt');
 const users = require('../app/controllers/users');
 const answers = require('../app/controllers/answers');
@@ -6,8 +5,9 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 
-module.exports = function (app, passport, auth) {
-    // User Routes
+
+module.exports = (app, passport, auth) => {
+  // User Routes
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
@@ -26,6 +26,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin',
     failureFlash: 'Invalid email or password.'
   }), users.session);
+
 
   app.get('/users/me', users.me);
   app.get('/users/:userId', users.show);
