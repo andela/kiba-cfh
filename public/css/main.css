@@ -1,0 +1,400 @@
+#waypoint h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+#waypoint p {
+  margin-bottom: 80px;
+  height: 30px;
+}
+
+#waypoint a {
+  border: 4px solid #3cafe2;
+  color: #3cafe2;
+  background: #fff;
+  height: 70px;
+  line-height: 70px;
+  transition: .3s ease;
+  font-weight: 600;
+  position: relative;
+}
+#waypoint a:hover {
+  border-color: #3cafe2;
+  color: #fff;
+  background: #3cafe2;
+  text-decoration: none;
+}
+#waypoint a:focus {
+  color: #3cafe2;
+  background: #fff;
+  text-decoration: none;
+}
+#waypoint a:active {
+  color: #fff;
+  background: #3cafe2;
+}
+
+.notifications {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: #3cafe2;
+}
+
+.tline {
+  background: #3cafe2;
+  width: 48px;
+  height: 2px;
+  margin: 15px auto;
+}
+
+.icon_box img {
+  width: 100px;
+}
+
+.icon_box {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 250px;
+  background: #fff;
+  text-align: center;
+  padding-top: 20%;
+  background: url("https://cdn2.iconfinder.com/data/icons/freecns-cumulus/16/519681-188_FormPolygonBorder-128.png") center center no-repeat;
+  background-size: contain;
+  height: 195px;
+  line-height: 195px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+/* IMG ANI */
+.slideIn1, .slideIn2, .slideIn3 {
+  -webkit-transition: all 0.8s ease-in-out;
+  -moz-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  -ms-transition: all 0.8s ease-in-out;
+}
+
+.bounceIn1, .bounceIn2, .bounceIn3 {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+}
+
+.img1,
+.img2,
+.img3 {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+.slideIn1 {
+  transform: translateY(0px) !important;
+  opacity: 1 !important;
+  transition-delay: 0s;
+  -webkit-transition-delay: 0s;
+}
+
+.slideIn2 {
+  transform: translateY(0px) !important;
+  opacity: 1 !important;
+  transition-delay: 0.5s;
+  -webkit-transition-delay: 0.5s;
+}
+
+.slideIn3 {
+  transform: translateY(0px) !important;
+  opacity: 1 !important;
+  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+}
+
+/* text ANI */
+.text1,
+.text2,
+.text3 {
+  opacity: 0;
+  text-align: center;
+  transform: scale(0.5);
+}
+
+.bounceIn1 {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  transition-delay: 1.5s;
+  -webkit-transition-delay: 1.5s;
+}
+
+.bounceIn2 {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  transition-delay: 1.9s;
+  -webkit-transition-delay: 1.9s;
+}
+
+.bounceIn3 {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  transition-delay: 2.3s;
+  -webkit-transition-delay: 2.3s;
+}
+
+.slideInLeft {
+  transform: translate(0) !important;
+  opacity: 1 !important;
+}
+
+.slideInRight {
+  transform: translate(0) !important;
+  opacity: 1 !important;
+}
+
+.shake {
+  animation: shake 1s;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-5deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 100vh;
+  min-height: 60vh;
+  line-height: 0;
+  height: auto;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  .parallax-container .section {
+    position: absolute;
+  }
+
+  #index-banner .section {
+    top: 10%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+#nav-mobile {
+  margin-top: 64px;
+}
+
+#nav-mobile li {
+  padding: 0px;
+}
+
+.main-navigation {
+  z-index: 999;
+}
+
+.intro {
+  overflow: hidden;
+}
+
+.ppad {
+  padding: 30px;
+}
+
+.wp1, .wp2, .wp3, .wp4 {
+  transition: 1.4s ease;
+}
+
+.wp1 {
+  opacity: 0;
+  text-align: center;
+  transform: translateX(-100px);
+}
+
+.wp2 {
+  opacity: 0;
+  text-align: center;
+  transform: translateX(100px);
+}
+
+.wp3 {
+  opacity: 0;
+  text-align: center;
+  transform: translateX(-100px);
+}
+
+.wp4 {
+  opacity: 0;
+  text-align: center;
+  transform: translateX(100px);
+}
+
+.parallax #canvas {
+  position: absolute;
+  height: 200%;
+  width: 100%;
+  z-index: 999999;
+  opacity: .9;
+}
+
+.main-navigation li a {
+  color: #fff !important;
+}
+
+.sectionHumanity {
+  background-color: #236484;
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+p {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+p a {
+  color: #D67C2A;
+}
+.nav-color {
+  background-color: #236484
+}
+
+.parallax-container {
+      height: 680px;
+      background: rgba(0,0,0,0.5);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+.section-parallax {
+  margin-top: 230px !important;
+}
+
+nav li a:hover{
+  color: #D67C2A !important
+}
+
+#signup-button {
+  background-color: #D67C2A !important;
+  color: white !important;
+}
+
+#custom-button {
+  background-color: #D67C2A !important;
+  color: white !important;
+}
+#signup-button:hover {
+  background-color: white !important;
+  color: #D67C2A !important; 
+}
+
+#custom-button:hover {
+  background-color: white !important;
+  color: #D67C2A !important; 
+}
+
+#guest-button{
+  background-color: white !important;
+  color: #236484 !important;
+}
+
+#guest-button:hover{
+  background-color: #236484 !important;
+  color: white !important;
+}
+
+#take-tour{
+  background-color: #236484 !important;
+  color: white !important;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#take-tour:hover{
+  background-color: white !important;
+  color: #236484 !important;
+}
+
+#donate-button{
+  background-color: #D67C2A !important;
+  color: white !important;
+}
+
+#donate-button:hover{
+  background-color: white !important;
+  color: #D67C2A !important; 
+}
+
+.brand-logo{
+  padding-left: 40px !important
+}
+
+#how-to-play{
+  padding-top: 50px
+}
+
+#writing{
+  padding-top:50px;
+  margin-top: -30px;
+  margin-bottom:-30px;
+}
+
+#bg-img2{
+  filter: blur(5px)
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 1280px;
+  width: 93%;
+}
+
+@media only screen and (max-width: 414px) {
+
+   body { font-size: 10px; }
+   h3{font-size: 15px;}
+}
+
+footer {
+   padding-bottom: 20px;
+}

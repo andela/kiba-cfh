@@ -50,3 +50,4 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ngRoute', 'm
 
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
+
