@@ -154,10 +154,6 @@ input{
 .btn-large.social-icon {
   padding: 0 1rem !important;
 }
-.col.social {
-  /*width: 100% !important;*/
-  /*text-align: left !important;*/
-}
 .col.social i.fa-fw {
   width: 3.2rem !important;
 }
