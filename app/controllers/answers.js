@@ -26,7 +26,7 @@ exports.show = function (req, res) {
 };
 
 exports.byRegion = (req, res) => {
-  gameRegion = req.body.regionId;
+  gameRegion = req.query.id;
   res.send('tango');
 };
 /**

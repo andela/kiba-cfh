@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .controller('GameController', ['$scope', 'game','$http','$q', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $http, $q, $timeout, $location, MakeAWishFactsService, $dialog) {
+  .controller('GameController', ['$scope', 'toastr', 'game', '$http', '$q', '$timeout', '$location', 'MakeAWishFactsService', '$dialog',  ($scope,toastr, game, $http, $q, $timeout, $location, MakeAWishFactsService, $dialog) => {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -196,81 +196,47 @@ angular.module('mean.system')
     };
 
     if ($location.search().game && !(/^\d+$/).test($location.search().game)) {
-  console.log('joining custom game');
-  game.joinGame('joinGame', $location.search().game);
-} else if ($location.search().custom) {
-      game.joinGame('joinGame', null, true);
-    } else {
-      game.joinGame();
-    }
+      console.log('joining custom game');
+      game.joinGame('joinGame', $location.search().game);
+    } else if ($location.search().custom) {
+  game.joinGame('joinGame', null, true);
+} else {
+  game.joinGame();
+}
 
-    $scope.regions = [
-      {
-        region: 'Nigeria',
-        regionId: 'NGN'
-      },
-      {
-        region: 'United Kingdom',
-        regionId: 'UK'
-      },
-      {
-        region: 'United State of America',
-        regionId: 'USA'
-      },
-      {
-        region: 'China',
-        regionId: 'CHN'
-      },
-      {
-        region: 'Germany',
-        regionId: 'GER'
-      },
-      {
-        region: 'Australia',
-        regionId: 'AUT'
-      },
-      {
-        region: 'Mexico',
-        regionId: 'MEX'
-      },
-      {
-        region: 'Ghana',
-        regionId: 'GHN'
-      }
-    ];
+    $http.get('/region.json')
+      .then((res) => {
+        $scope.regions = res.data;
+      });
 
     $scope.findQuestions = region =>
       $http({
-        method: 'POST',
-        url: '/questions/region/',
-        data: {
-          regionId: region
-        },
-        headers: { 'Content-Type': 'application/json' }
+        method: 'GET',
+        url: `/api/questions/?id=${region}`
       });
 
     $scope.findAnswers = region =>
       $http({
-        method: 'POST',
-        url: '/answers/region/',
-        data: {
-          regionId: region
-        },
-        headers: { 'Content-Type': 'application/json' }
+        method: 'GET',
+        url: `/api/answers/?id=${region}`
       });
 
     $scope.startGame = () => {
       $('.modal').modal();
       $scope.beginGame = (regionId) => {
-        $q
-          .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
-          .then((response) => {
-            console.log(response);
-            game.startGame();
-          });
+        if (regionId === undefined) {
+          toastr.error('A region must be selected before starting the game');
+        } else {
+          $q
+            .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
+            .then((response) => {
+              console.log(response);
+              game.startGame();
+            });
+        }
       };
     };
     $scope.selectOption = {
-       'display': 'block',
-     };
+      'display': 'block',
+    };
   }]);

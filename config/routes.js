@@ -7,6 +7,10 @@ const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 
 module.exports = (app, passport, auth) => {
+  // region Route
+  app.get('/region.json', (req, res) => {
+    return res.json(require('./region.json'));
+  });
   // User Routes
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
@@ -110,14 +114,14 @@ app.post(
   // Answer Routes
   app.get('/answers/', answers.all);
   app.get('/answers/:answerId', answers.show);
-  app.post('/answers/region/', answers.byRegion);
+  app.get('/api/answers', answers.byRegion);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
   app.get('/questions/', questions.all);
   app.get('/questions/:questionId', questions.show);
-  app.post('/questions/region/', questions.byRegion);
+  app.get('/api/questions', questions.byRegion);
 
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
