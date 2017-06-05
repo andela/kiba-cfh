@@ -21,7 +21,7 @@ exports.answer = (req, res, next, id) => {
 /**
  * Show an answer
  */
-exports.show = function (req, res) {
+exports.show = (req, res) => {
   res.jsonp(req.answer);
 };
 
