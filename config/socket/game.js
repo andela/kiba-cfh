@@ -170,7 +170,7 @@ Game.prototype.selectFirst = function () {
     this.winnerAutopicked = true;
     this.stateResults(this);
   } else {
-    this.changeCzar(this);
+    this.stateChoosing(this);
   }
 };
 
