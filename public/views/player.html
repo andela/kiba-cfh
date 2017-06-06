@@ -15,7 +15,7 @@
             <h4 id="player-name-inner">{{player.username | upperFirstLetter}}</h4>
           </div>
           <div id="player-score " class="col m6">
-            <h2 id="player-score-inner">{{player.points}}/{{game.pointLimit}}</h2>
+            <h2 id="player-score-inner">{{player.points}} / {{game.pointLimit}}</h2>
           </div>
           <div ng-show="isPlayer($index) " id="player-star " class="col m3">
             <img src="../img/11.png " class="responsive-img" id="isPlayer" />
@@ -28,8 +28,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div id="charity-widget-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
-  <script type="text/javascript" src="https://www.crowdrise.com/widgets/donate/fundraiser/121142/?callback=userDonationCb"></script>
 </div>

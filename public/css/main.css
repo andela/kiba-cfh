@@ -297,7 +297,7 @@ p {
   font-family: "lato, roboto";
 }
 p a {
-  color: #D67C2A;
+  color: #F37B1F;
 }
 .nav-color {
   background-color: #236484;
@@ -315,26 +315,26 @@ p a {
 }
 
 nav li a:hover{
-  color: #D67C2A !important
+  color: #F37B1F !important;
 }
 
 #signup-button {
-  background-color: #D67C2A !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   color: white !important;
 }
 
 #custom-button {
-  background-color: #D67C2A !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   color: white !important;
 }
 #signup-button:hover {
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: white !important;
+  color: #F37B1F !important; 
 }
 
 #custom-button:hover {
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: white !important;
+  color: #F37B1F !important; 
 }
 
 #guest-button{
@@ -361,13 +361,13 @@ nav li a:hover{
 }
 
 #donate-button{
-  background-color: #D67C2A !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   color: white !important;
 }
 
 #donate-button:hover{
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: white !important;
+  color: #F37B1F !important; 
 }
 
 .brand-logo{
@@ -400,7 +400,7 @@ nav li a:hover{
   width: 90%;
   max-height: 90px;
   margin-bottom: 8px;
-  background-color: aliceblue;
+  background-color: #F8F9FB;
   border-radius: 3%;
 }
 
@@ -418,13 +418,16 @@ nav li a:hover{
 }
 
 #player-name-inner {
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: bold;
   font-family: "lato, roboto";
+  color: #236484;
   margin-bottom:-10px;
 }
 
 #player-score-inner {
-  font-size: 17px
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #the-czar {
@@ -432,6 +435,9 @@ nav li a:hover{
   max-width: 10px;
   margin-top: 10px;
   font-size: 8px;
+  font-family: "lato, roboto";
+  font-weight: bold;
+  color: #236484;
 }
 
 #name-czar {
@@ -448,7 +454,7 @@ nav li a:hover{
   width: 100%;
   max-height: 240px;
   height: 240px;
-  background-color: aliceblue;
+  background-color: #F8F9FB;
 }
 
 #startGame {
@@ -456,7 +462,7 @@ nav li a:hover{
 }
 
 #startButton {
-  background-color:#D67C2A !important;
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   float: right;
   margin-right:10px
 }
@@ -468,11 +474,11 @@ nav li a:hover{
 }
 
 #startButton:hover {
-  background-color:#236484 !important;
+  background:#236484 !important;
 }
 
 #inviteButton:hover {
-  background-color:#D67C2A !important;
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
 }
 #finding-players {
   font-size: 20px;
@@ -506,9 +512,9 @@ nav li a:hover{
   height: 100%;
   margin: initial; 
 }
-#time {
+.time {
   font-size: 150px;
-  color: aliceblue;
+  color: #F8F9FB;
   padding-left: 60px;
   margin-bottom: -20px;
 }
@@ -516,23 +522,26 @@ nav li a:hover{
   font-size: 30px;
   margin: initial;
   font-family: "lato, roboto";
-  color:aliceblue;
+  color:#F8F9FB;
 }
 #info-container {
   font-family:"lato, roboto";
-  color: aliceblue;
+  color: #F8F9FB;
 }
 
 #czar-blank-inner {
   font-family:"lato, roboto";
   font-size: 20px;
-  color:aliceblue;
+  color:#F8F9FB;
 }
 
 #charity-fact-container {
-  background-color: #bdbdbd;
+  background-color: #F8F9FB;
   max-width: 254px;
   border-radius: 5px;
+  font-family: "lato, roboto";
+  font-weight: bold;
+  color: #236484;
   float: right;
 }
 
@@ -553,13 +562,14 @@ nav li a:hover{
 }
 
 #inner-info-exit {
-  background-color: aliceblue;
+  background-color: #F8F9FB;
   max-height: 400px;
   height: 230px;
   max-width: 583.4px;
   margin: auto;
   padding-top:20px;
   border-radius: 5px;
+  margin-top: 48px;
 }
 
 #inner-text-container {
@@ -573,21 +583,21 @@ nav li a:hover{
 }
 
 #joinGame{
-  background-color:#D67C2A !important;
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
 }
 
 #joinGame:hover {
   background-color:#236484 !important;
 }
 #lobby:hover {
-  background-color:#D67C2A !important;
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
 }
 #lobby{
   background-color:#236484 !important;
 }
 
 #how-to-play{
-  background-color: aliceblue;
+  background-color: #F8F9FB;
   margin-bottom:-30px;
 }
 
@@ -620,12 +630,29 @@ select {
     height: 215px;
     padding: 1%;
     margin: 1%;
-    background-color: aliceblue;
+    background-color: #F8F9FB;
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     font-family: "lato, roboto";
     color: #236484;
+    vertical-align: top;
+}
+
+.answerCard:hover{
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 17.5%;
+    height: 215px;
+    padding: 1%;
+    margin: 1%;
+    background-color: #236484;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "lato, roboto";
+    color: #F8F9FB;
     vertical-align: top;
 }
 

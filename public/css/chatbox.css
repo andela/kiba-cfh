@@ -1,8 +1,8 @@
 .chatbox {
   width: 300px;
   position: fixed;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: aliceblue;
+  border: 1px solid aliceblue;
   bottom: 10px;
   right: 10px;
   z-index: 1003;
@@ -10,7 +10,7 @@
 .chatbox .chat-header {
   background-color: #236484;
   padding: 6px 15px;
-  color: #fff;
+  color: aliceblue;
   max-height: 50px;
 }
 .chatbox .chat-header h3 {
@@ -44,7 +44,7 @@
 .chatbox .chat .chat-message {
   display: inline-block;
   margin: 5px 0px 20px 20px;
-  background-color: #e6e6e6;
+  background-color: #F8F9FB;
   padding: 5px;
 }
 .chatbox .chat-header .fa-chevron-down,
@@ -61,7 +61,7 @@
  }
  .chatbox .chat-begin{
    font-size: 14px;
-   color: #bbb;
+   color: #F8F9FB;
    margin-bottom: 6px;
  }
 .chatbox .chat-header .fa-chevron-down {
@@ -70,7 +70,7 @@
 .chatbox .chat .chat-message {
   display: inline-block;
   margin: 5px 0px 20px 20px;
-  background-color: #f9f9f9;
+  background-color: #F8F9FB;
   padding: 5px;
 }
 .chat-message{
