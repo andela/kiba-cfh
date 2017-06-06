@@ -103,7 +103,7 @@ angular.module('mean.directives', [])
         const time = date.toLocaleTimeString().replace(/:\d+ |\CDT/g, ' ');
         element.append(
           `<div class="chat"> <div class="chat-meta">
-          <img width="20" src="${chat.avatar}"> <b>${chat.username}</b> &emsp;<small>${time}</small><br>
+          <img width="10" height="45" src="${chat.avatar}"> <b>${chat.username}</b> &emsp;<small style="color:#bbb"=>${time}</small><br>
            <div class="chat-message">${chat.message}</div>
            </div>
           <div class="clearfix"></div>

@@ -69,8 +69,8 @@
 }
 .chatbox .chat .chat-message {
   display: inline-block;
-  margin: 5px 0px 20px 20px;
-  background-color: #f9f9f9;
+  margin: 0px 0px 20px 20px;
+  background-color: #fff;
   padding: 5px;
 }
 .chat-message{
