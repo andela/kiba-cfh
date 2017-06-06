@@ -142,7 +142,7 @@ angular.module('mean.system')
         game.czar = data.czar;
         if (game.czar === game.playerIndex) {
           addToNotificationQueue(
-            `You are now a Czar, 
+            `You are now a Czar,
             click black card to pop a new question`
           );
         } else {

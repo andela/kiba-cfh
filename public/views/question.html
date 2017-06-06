@@ -1,9 +1,7 @@
 <div id="question-container-inner">
   <div class="card longBlack">
-    <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
-
+    <span ng-bind-html="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
-
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
       <div id="player-count-container">
@@ -13,11 +11,6 @@
       <div id="loading-container">
         <div id="loading-gif"><img ng-src="../img/loader.gif" /></div>
       </div>
-      <!--<div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
-        <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
-        </div>
-      </div>-->
     </div>
     <!-- Game Over Stuff -->
     <div id="game-end-info">
@@ -37,6 +30,46 @@
     </div>
   </div>
 </div>
+  <!-- Materialize Modal to start Game. -->
+  <!-- Modal Trigger -->
+  <button data-target="showModal" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
+  <!-- Modal Structure -->
+          <div class="modal" id="showModal">
+        <div class="modal-content" ng-if="hasEnoughPlayers">
+          <div class="modal-header">
+            <h3>Cards For Humanity</h3>
+          </div>
+          <div class="row">
+            <div class="col m6">
+              <h6>Kindly select a region:</h6>
+            </div>
+            <div class="col m6">
+              <select ng-model="region" class="form-control" ng-style="selectOption" ng-options="countries.region for countries in regions">
+                <option value="" selected="disable selected">Select a region</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="beginGame(region.regionId)" data-dismiss="modal" ng-show="region.regionId">Start</button>
+            <button class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    <div class="modal-content" ng-if="!hasEnoughPlayers">
+      <p>You need at least 3 players to start game</p>
+    </div>
+   </div>
+<!--</div>-->
+      <!--<div id="loading-container">
+        <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
+      </div>
+      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+        <div id='start-game-button'>
+          Start Game</br>with {{game.players.length}} players
+        </div>
+      </div>
+    </div>-->
+
+<!--</div>-->
 
 <!-- Materialize Modal to start Game. -->
 <div id="shuffleModal" class="modal fade" role="dialog">
@@ -59,11 +92,11 @@
     </div>
   </div>
 </div>
-<!--<div ng-controller="GameStartController">-->
+<!--<div ng-controller="GameStartController">
 <!-- Modal Trigger -->
-<button data-target="modal1" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
+<!--<button data-target="modal1" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>-->
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<!--<div id="modal1" class="modal">
   <div class="modal-content" ng-if="hasEnoughPlayers">
     <p>Are you sure you want to be human for once!</p>
     <div class="modal-footer">
@@ -74,5 +107,5 @@
   <div class="modal-content" ng-if="!hasEnoughPlayers">
     <p>You need at least 3 players to start game</p>
   </div>
-</div>
+</div>-->-->
 <!--</div>-->
