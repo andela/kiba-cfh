@@ -1,3 +1,4 @@
+const firebase = require('firebase');
 var Game = require('./game');
 var Player = require('./player');
 require("console-stamp")(console, "m/dd HH:MM:ss");
@@ -6,19 +7,43 @@ var User = mongoose.model('User');
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
-module.exports = function (io) {
+const config = {
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASEURL,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID
+};
+firebase.initializeApp(config);
 
+module.exports = (io) => {
   var game;
   var allGames = {};
   var allPlayers = {};
   var gamesNeedingPlayers = [];
   var gameID = 0;
+  const onlineUsers = [];
+  let chatMessages = [];
+
+  const database = firebase.database();
 
   io.sockets.on('connection', function (socket) {
     console.log(socket.id + ' Connected');
     socket.emit('id', { id: socket.id });
+
+    // initialize chat when a new socket is connected
+    socket.emit('initializeChat', chatMessages);
+
+    // send received chat message to all connected sockets
+    socket.on('chat message', (chat) => {
+      io.sockets.in(socket.gameID).emit('chat message', chat);
+      socket.emit('onlineUsers', onlineUsers);
+      chatMessages.push(chat);
+      database.ref(`chat/${socket.gameID}`).set(chatMessages);
+    });
 
     socket.on('pickCards', function (data) {
       console.log(socket.id, "picked", data);
@@ -43,7 +68,7 @@ module.exports = function (io) {
       }
     });
 
-    socket.on('joinNewGame', function (data) {
+    socket.on('joinNewGame', (data) => {
       exitGame(socket);
       joinGame(socket, data);
     });
@@ -94,7 +119,7 @@ module.exports = function (io) {
     if (data.userID !== 'unauthenticated') {
       User.findOne({
         _id: data.userID
-      }).exec(function (err, user) {
+      }).exec((err, user) => {
         if (err) {
           console.log('err', err);
           return err; // Hopefully this never happens.
@@ -130,8 +155,10 @@ module.exports = function (io) {
       // the new game ID, causing the view to reload.
       // Also checking the number of players, so node doesn't crash when
       // no one is in this custom room.
-      if (game.state === 'awaiting players' && (!game.players.length ||
-        game.players[0].socket.id !== socket.id)) {
+      if (
+        game.state === 'awaiting players' &&
+        (!game.players.length || game.players[0].socket.id !== socket.id)
+      ) {
         // Put player into the requested game
         console.log('Allowing player to join', requestedGameId);
         allPlayers[socket.id] = true;
@@ -141,7 +168,7 @@ module.exports = function (io) {
         game.assignPlayerColors();
         game.assignGuestNames();
         game.sendUpdate();
-        game.sendNotification(player.username + ' has joined the game!');
+        game.sendNotification(`${player.username} has joined the game!`);
         if (game.players.length >= game.playerMaxLimit) {
           gamesNeedingPlayers.shift();
           game.prepareGame();
@@ -158,7 +185,6 @@ module.exports = function (io) {
         fireGame(player, socket);
       }
     }
-
   };
 
   var fireGame = function (player, socket) {
@@ -187,7 +213,7 @@ module.exports = function (io) {
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
-      game.sendNotification(player.username + ' has joined the game!');
+      game.sendNotification(`${player.username} has joined the game!`);
       if (game.players.length >= game.playerMaxLimit) {
         gamesNeedingPlayers.shift();
         game.prepareGame();
@@ -204,7 +230,7 @@ module.exports = function (io) {
       for (var i = 0; i < 6; i++) {
         uniqueRoom += chars[Math.floor(Math.random() * chars.length)];
       }
-      if (!allGames[uniqueRoom] && !(/^\d+$/).test(uniqueRoom)) {
+      if (!allGames[uniqueRoom] && !/^\d+$/.test(uniqueRoom)) {
         isUniqueRoom = true;
       }
     }
@@ -236,9 +262,14 @@ module.exports = function (io) {
         }
         game.killGame();
         delete allGames[socket.gameID];
+        chatMessages = [];
+      }
+      if (game.players.length === 1) {
+        chatMessages = [];
+        game.sendUpdate();
       }
     }
     socket.leave(socket.gameID);
   };
-
 };
+
