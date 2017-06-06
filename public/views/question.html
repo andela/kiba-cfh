@@ -58,18 +58,41 @@
       <p>You need at least 3 players to start game</p>
     </div>
    </div>
-<!--</div>-->
-      <!--<div id="loading-container">
-        <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
-      </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
-        <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
+<!-- Invite Players Modal Trigger -->
+  <div ng-controller="InviteController">
+    <a class="waves-effect waves-light btn" data-target="invitePlayersModal" style="background-color: #236484" ng-click="openModal()">Invite Players</a>
+  <!-- Invite Players Modal Content -->
+  <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal">
+    <div class="modal-content">
+      <h4>Send Invites</h4>
+      <div ng-if="emailSentNotification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">
+        <p>{{emailSentNotification}}</p>
         </div>
+        <div class="row">
+          <input type="text" ng-model="searchUsers" ng-style="invitePlayersModal" ng-keyup="findUsers()" placeholder="Search for users here..." class="col m9"/>&nbsp;
+          <button class="waves-effect waves-light btn col m2 pull-right" style="background-color: #236484" type="submit" ng-click="sendMail()">INVITE</button>
+        </div>
+        <div ng-repeat="names in invitedEmailList" class="chip">
+          {{names}}
+           <i ng-click="deleteUser(names)" ng-style="deleteUserButton" data-dismiss="chip">x</i>
+        </div>
+        <div ng-if="noUserMatch">
+            <p>
+              {{noUserMatch}}
+            </p>
+        </div>
+        <div  class="collection" ng-if="searchResult.length > 0">
+        <p ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult" >
+            {{result.name}}
+          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)"  ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;"><span style="padding-bottom: 5px">+</span></button>
+        </p>
       </div>
-    </div>-->
-
-<!--</div>-->
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-light-blue darken-3 btn-flat" data-dismiss="modal">Close</a>
+    </div>
+  </div>
+<!---->
 
 <!-- Materialize Modal to start Game. -->
 <div id="shuffleModal" class="modal fade" role="dialog">
@@ -84,28 +107,10 @@
           <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard3' />
         </div>
       </div>
-
       <div class="modal-footer">
         <button type="button" class="btn" id="close" data-dismiss="modal" style="display:none; ">Close</button>
       </div>
-
     </div>
   </div>
 </div>
-<!--<div ng-controller="GameStartController">
-<!-- Modal Trigger -->
-<!--<button data-target="modal1" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>-->
-<!-- Modal Structure -->
-<!--<div id="modal1" class="modal">
-  <div class="modal-content" ng-if="hasEnoughPlayers">
-    <p>Are you sure you want to be human for once!</p>
-    <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="game.startGame()">Let's do this</button>
-      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="notReady()">Not ready!</button>
-    </div>
-  </div>
-  <div class="modal-content" ng-if="!hasEnoughPlayers">
-    <p>You need at least 3 players to start game</p>
-  </div>
-</div>-->-->
-<!--</div>-->
+

@@ -28,6 +28,26 @@
 
   <!-- Fixed Logo & Menu Bar End -->
 
+      <div class="sign-body">
+        <div class="more-sign">
+          <div class="sign-error">
+             {{errorMsg}}
+          </div>
+          <form class="signup form-horizontal" method="post">
+            <div class="control-group">
+              <label for="email" class="control-label"></label>
+              <div class="controls">
+                <input class="input-info" id="email" type="text" name="email" ng-model="email" placeholder="Email" required novalidate />
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="password" class="control-label"></label>
+              <div class="controls">
+                <input class="input-info" id="password" type="password" name="password" ng-model="password"  placeholder="Password" required novalidate />
+              </div>
+            </div>
+            <div class="form-actions top-margin">
+              <button id="sign-up-btn-other" type='submit' ng-click="login()">Sign In</button>
   <!-- Landing Start -->
   <div class="container">
     <div class="row">
