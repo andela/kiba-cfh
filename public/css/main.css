@@ -610,3 +610,20 @@ select {
   font-family: "Comic Sans MS", cursive, sans-serif;
   color: #236484;
 }
+
+.answerCard {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 17.5%;
+    height: 215px;
+    padding: 1%;
+    margin: 1%;
+    background-color: aliceblue;
+    border-radius: 8px;
+    color: #252525;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: top;
+}

@@ -3,7 +3,7 @@
 
     <span ng-show="winnerPicked()"></span>
 
-    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()"
+    <div ng-style="{'cursor':'pointer'}" class="answerCard" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()"
       ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
       <span ng-bind-html="card.text"></span>
       <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
