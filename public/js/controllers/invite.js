@@ -7,7 +7,7 @@ angular.module('mean.system')
      * @return {void}
      */
       $scope.openModal = () => {
-        $('#exampleModal').modal();
+        $('#invitePlayersModal').modal();
       };
 
       $scope.disabled = false;
@@ -31,7 +31,7 @@ angular.module('mean.system')
           mail = {};
         } else {
           $scope.disabled = true;
-          toastr.error('Oops! Only a maximum of 11 users can be invited.');
+          toastr.error('You can only invite 11 players.');
         }
       };
 
@@ -87,10 +87,10 @@ angular.module('mean.system')
               name: $scope.invitedList[i].name,
             }
           }).then((response) => {
-            $scope.emailSentNotif = 'Email successfully sent';
+            $scope.emailSentNotification = 'Email successfully sent';
             return response;
           }, (error) => {
-            $scope.emailSentNotif = `Aww shucks...Could not send invite to
+            $scope.emailSentNotification = `Aww shucks...Could not send invite to
             ${$scope.invitedList[i].name}. Try again?`;
             return error;
           });
@@ -113,18 +113,21 @@ angular.module('mean.system')
           }
         });
       };
-      $scope.myObj = {
+      $scope.invitePlayersModal = {
         'font-size': '17px',
         'border-bottom': '1px solid #236484',
-
       };
-      $scope.btnObj = {
+      $scope.invitePlayersButton = {
         'margin-left': '90%',
         'background-color': '#236484',
       };
 
-      $scope.searchNamesObj = {
+      $scope.searchedNamesList = {
         'padding-top': '25px',
         'padding-bottom': '20px',
+      };
+      $scope.deleteUserButton = {
+        color: '#bbb',
+        cursor: 'pointer',
       };
     }]);
