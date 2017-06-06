@@ -27,6 +27,7 @@ module.exports = (io) => {
   var gameID = 0;
   const onlineUsers = [];
   let chatMessages = [];
+
   const database = firebase.database();
 
   io.sockets.on('connection', (socket) => {
@@ -39,10 +40,10 @@ module.exports = (io) => {
 
     // send received chat message to all connected sockets
     socket.on('chat message', (chat) => {
-      io.sockets.in(gameID).emit('chat message', chat);
+      io.sockets.in(socket.gameID).emit('chat message', chat);
       socket.emit('onlineUsers', onlineUsers);
       chatMessages.push(chat);
-      database.ref(`chat/${gameID}`).set(chatMessages);
+      database.ref(`chat/${socket.gameID}`).set(chatMessages);
     });
 
     socket.on('pickCards', (data) => {

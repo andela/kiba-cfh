@@ -126,14 +126,6 @@ angular.module('mean.directives', [])
         window.localStorage.setItem('chatcount', 0);
         scope.isPlayerSet = true;
       };
-
-        // Initializes chat when socket is connected
-      socket.on('initializeChat', (messages) => {
-        messages.forEach((chat) => {
-          displayChat(chat);
-        });
-      });
-
         // listen for chat messages
       socket.on('chat message', (chat) => {
         displayChat(chat);
