@@ -114,14 +114,14 @@ app.post(
   // Answer Routes
   app.get('/answers/', answers.all);
   app.get('/answers/:answerId', answers.show);
-  app.get('/api/answers', answers.byRegion);
+  app.post('/api/answers/:region', answers.byRegion);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
   app.get('/questions/', questions.all);
   app.get('/questions/:questionId', questions.show);
-  app.get('/api/questions', questions.byRegion);
+  app.post('/api/questions/:region', questions.byRegion);
 
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);

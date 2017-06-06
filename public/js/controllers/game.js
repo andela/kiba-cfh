@@ -198,14 +198,14 @@ angular.module('mean.system')
 
     $scope.findQuestions = region =>
       $http({
-        method: 'GET',
-        url: `/api/questions/?id=${region}`
+        method: 'POST',
+        url: `/api/questions/${region}`
       });
 
     $scope.findAnswers = region =>
       $http({
-        method: 'GET',
-        url: `/api/answers/?id=${region}`
+        method: 'POST',
+        url: `/api/answers/${region}`
       });
 
     $scope.startGame = () => {

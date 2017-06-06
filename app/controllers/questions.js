@@ -29,7 +29,7 @@ exports.show = (req, res) => {
 
 
 exports.byRegion = (req, res) => {
-  gameRegion = req.query.id;
+  gameRegion = req.params.region;
   res.send('yipeee');
 };
 
