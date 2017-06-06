@@ -512,13 +512,13 @@ nav li a:hover{
   height: 100%;
   margin: initial; 
 }
-.time {
+#time {
   font-size: 150px;
   color: #F8F9FB;
   padding-left: 60px;
   margin-bottom: -20px;
 }
-#timer-status-round{
+.timer-status-round{
   font-size: 30px;
   margin: initial;
   font-family: "lato, roboto";

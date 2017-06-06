@@ -9,7 +9,7 @@
         <div id="finding-players">Finding Players</div>
         <div id="player-count-container">
           <div>
-            <p id="player-count">{{game.players.length}} / 6 players available</p>
+            <p id="player-count">{{game.players.length}} / 12 players available</p>
           </div>
         </div>
         <div id="loading-container">
@@ -132,7 +132,7 @@
       <div class="row">
         <input type="text" ng-model="searchUsers" ng-style="myObj" ng-keyup="findUsers()" placeholder="Search for users here..."
           class="col m9" />&nbsp;
-        <button class="waves-effect waves-light btn col m2 pull-right" type="submit" ng-click="sendMail()">INVITE</button>
+        <button class="waves-effect waves-light btn col m2 pull-right" id="inviteButton" type="submit" ng-click="sendMail()">INVITE</button>
       </div>
       <div ng-repeat="names in invitedEmailList" class="chip">
         {{names}}
