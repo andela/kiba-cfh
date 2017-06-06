@@ -1,5 +1,5 @@
 body {
-  background-image: url('../img/background2.jpg');
+  background-image: url('../img/wooden-background.jpg');
 }
 #waypoint h1 {
   font-size: 20px;
@@ -290,23 +290,24 @@ footer.page-footer {
 .sectionHumanity {
   background-color: #236484;
   color: white;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 
 p {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 p a {
   color: #D67C2A;
 }
 .nav-color {
-  background-color: #236484
+  background-color: #236484;
+  font-family: "lato, roboto";
 }
 
 .parallax-container {
       height: 680px;
       background: rgba(0,0,0,0.5);
-      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-family: "lato, roboto";
     }
 
 .section-parallax {
@@ -351,7 +352,7 @@ nav li a:hover{
   color: white !important;
   margin-top: 50px;
   margin-bottom: 50px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 
 #take-tour:hover{
@@ -399,7 +400,7 @@ nav li a:hover{
   width: 90%;
   max-height: 90px;
   margin-bottom: 8px;
-  background-color: #bdbdbd;
+  background-color: aliceblue;
   border-radius: 3%;
 }
 
@@ -418,7 +419,7 @@ nav li a:hover{
 
 #player-name-inner {
   font-size: 17px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   margin-bottom:-10px;
 }
 
@@ -476,7 +477,7 @@ nav li a:hover{
 #finding-players {
   font-size: 20px;
   font-weight: bold;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color: #236484;
   margin-bottom: 10px;
 }
@@ -496,7 +497,7 @@ nav li a:hover{
   padding-top: 100px;
   font-size: 20px;
   font-weight: bold;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color: #236484;
 }
 
@@ -514,16 +515,16 @@ nav li a:hover{
 #timer-status-round{
   font-size: 30px;
   margin: initial;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color:aliceblue;
 }
 #info-container {
-  font-family:"Comic Sans MS", cursive, sans-serif;
+  font-family:"lato, roboto";
   color: aliceblue;
 }
 
 #czar-blank-inner {
-  font-family:"Comic Sans MS", cursive, sans-serif;
+  font-family:"lato, roboto";
   font-size: 20px;
   color:aliceblue;
 }
@@ -537,14 +538,14 @@ nav li a:hover{
 
 #charity-fact-tagline{
   font-size: 18px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   margin-left: 5px;
   margin-bottom: 10px;
 }
 
 #charity-fact {
   margin-left: 5px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 
 #make-a-wish {
@@ -567,7 +568,7 @@ nav li a:hover{
 
 .game-end-answer-text {
   margin:auto;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color: #236484;
 }
 
@@ -598,7 +599,7 @@ select {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color: #236484;
 }
 
@@ -607,7 +608,7 @@ select {
   padding-top: 100px;
   font-size: 20px;
   font-weight: bold;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
   color: #236484;
 }
 
@@ -621,9 +622,14 @@ select {
     margin: 1%;
     background-color: aliceblue;
     border-radius: 8px;
-    color: #252525;
-    font-family: Arial;
     font-size: 20px;
     font-weight: bold;
+    font-family: "lato, roboto";
+    color: #236484;
     vertical-align: top;
+}
+
+.scrollable {
+  max-height: 250px;
+  overflow-y: auto;
 }

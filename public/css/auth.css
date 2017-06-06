@@ -1,6 +1,5 @@
 .auth-container{
-  font-family: 'Lora', serif !important;
-  background-image: url('../img/background2.jpg') !important;
+  font-family: "lato, roboto" !important;
 }
 
 input{
