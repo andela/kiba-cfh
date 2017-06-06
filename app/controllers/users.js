@@ -49,7 +49,7 @@ exports.session = function(req, res) {
   res.redirect('/');
 };
 
-/** 
+/**
  * Check avatar - Confirm if the user who logged in via passport
  * already has an avatar. If they don't have one, redirect them
  * to our Choose an Avatar page.
@@ -174,15 +174,34 @@ exports.me = function(req, res) {
 /**
  * Find user by id
  */
-exports.user = function(req, res, next, id) {
+exports.user = function (req, res, next, id) {
+
   User
     .findOne({
       _id: id
     })
-    .exec(function(err, user) {
+    .exec(function (err, user) {
       if (err) return next(err);
       if (!user) return next(new Error('Failed to load User ' + id));
       req.profile = user;
       next();
+    });
+};
+
+  /**
+   *
+   *Finds all the users in the database
+   * @param {string} req
+   * @param {object} res
+   */
+  exports.all = function(req, res) {
+    User.find({}).exec(function (err, users) {
+        if (err) {
+            res.render('error', {
+              status: 500,
+            });
+        } else {
+            res.jsonp(users);
+        }
     });
 };

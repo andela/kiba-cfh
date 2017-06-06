@@ -1,9 +1,7 @@
 <div id="question-container-inner">
   <div class="card longBlack">
-    <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
-
+    <span ng-bind-html="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
-
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Players</div>
       <div id="player-count-container">
@@ -11,12 +9,7 @@
         <div id="the-word-players"> Players </div>
       </div>
       <div id="loading-container">
-        <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
-      </div>
-      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
-        <div id='start-game-button'>
-          Start Game</br>with {{game.players.length}} players
-        </div>
+        <div id="loading-gif"><img ng-src="../img/loader.gif" /></div>
       </div>
     </div>
     <!-- Game Over Stuff -->
@@ -26,7 +19,9 @@
         Our sincere apologies.
       </div>
       <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
-        <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde it all for youself.
+        <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you
+        feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde
+        it all for youself.
       </div>
       <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
         <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
@@ -35,4 +30,82 @@
     </div>
   </div>
 </div>
+  <!-- Materialize Modal to start Game. -->
+  <!-- Modal Trigger -->
+  <button data-target="showModal" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
+  <!-- Modal Structure -->
+          <div class="modal" id="showModal">
+        <div class="modal-content" ng-if="hasEnoughPlayers">
+          <div class="modal-header">
+            <h3>Cards For Humanity</h3>
+          </div>
+          <div class="row">
+            <div class="col m6">
+              <h6>Kindly select a region:</h6>
+            </div>
+            <div class="col m6">
+              <select ng-model="region" class="form-control" ng-style="selectOption" ng-options="countries.region for countries in regions">
+                <option value="" selected="disable selected">Select a region</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="beginGame(region.regionId)" data-dismiss="modal" ng-show="region.regionId">Start</button>
+            <button class="modal-action modal-close waves-effect waves-green btn-flat" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    <div class="modal-content" ng-if="!hasEnoughPlayers">
+      <p>You need at least 3 players to start game</p>
+    </div>
+   </div>
+<!--</div>-->
+      <!--<div id="loading-container">
+        <div id="loading-gif"><img ng-src="../img/loader.gif"/></div>
+      </div>
+      <div id="start-game-container" ng-click="startGame()" ng-show="(game.playerIndex === 0 || game.joinOverride) && game.players.length >= game.playerMinLimit">
+        <div id='start-game-button'>
+          Start Game</br>with {{game.players.length}} players
+        </div>
+      </div>
+    </div>-->
 
+<!--</div>-->
+
+<!-- Materialize Modal to start Game. -->
+<div id="shuffleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <h4 id="shuffleText">You are the Czar - Click card to pick the next question</h4>
+      <div class="center">
+        <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin: auto;'>
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard1' />
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard2' />
+          <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard3' />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn" id="close" data-dismiss="modal" style="display:none; ">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--<div ng-controller="GameStartController">
+<!-- Modal Trigger -->
+<!--<button data-target="modal1" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>-->
+<!-- Modal Structure -->
+<!--<div id="modal1" class="modal">
+  <div class="modal-content" ng-if="hasEnoughPlayers">
+    <p>Are you sure you want to be human for once!</p>
+    <div class="modal-footer">
+      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="game.startGame()">Let's do this</button>
+      <button class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="notReady()">Not ready!</button>
+    </div>
+  </div>
+  <div class="modal-content" ng-if="!hasEnoughPlayers">
+    <p>You need at least 3 players to start game</p>
+  </div>
+</div>-->-->
+<!--</div>-->

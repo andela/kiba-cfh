@@ -10,7 +10,12 @@
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
     "intro.js": "^2.4.0",
-    "angular-intro.js": "^3.2.4"
+    "angular-intro.js": "^3.2.4",
+    "ng-materialize": "^0.1.2",
+    "angular-animate": "^1.6.4",
+    "angular-sanitize": "^1.6.4",
+    "angular-toastr": "^2.1.1",
+    "materialize-social": "*"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -21,5 +26,10 @@
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
+  },
+  "resolutions": {
+    "angular": "1.4.14",
+    "angular-animate": "^1.6.4",
+    "jquery": ">=2.1.1"
   }
 }
