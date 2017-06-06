@@ -30,10 +30,9 @@ module.exports = (io) => {
 
   const database = firebase.database();
 
-  io.sockets.on('connection', (socket) => {
-    console.log(`${socket.id} Connected`);
+  io.sockets.on('connection', function (socket) {
+    console.log(socket.id + ' Connected');
     socket.emit('id', { id: socket.id });
-    socket.emit('onlineUsers', onlineUsers);
 
     // initialize chat when a new socket is connected
     socket.emit('initializeChat', chatMessages);
@@ -46,32 +45,24 @@ module.exports = (io) => {
       database.ref(`chat/${socket.gameID}`).set(chatMessages);
     });
 
-    socket.on('pickCards', (data) => {
-      console.log(socket.id, 'picked', data);
+    socket.on('pickCards', function (data) {
+      console.log(socket.id, "picked", data);
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
       } else {
-        console.log(
-          'Received pickCard from',
-          socket.id,
-          'but game does not appear to exist!'
-        );
+        console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
       }
     });
 
-    socket.on('pickWinning', (data) => {
+    socket.on('pickWinning', function (data) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
       } else {
-        console.log(
-          'Received pickWinning from',
-          socket.id,
-          'but game does not appear to exist!'
-        );
+        console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
       }
     });
 
-    socket.on('joinGame', (data) => {
+    socket.on('joinGame', function (data) {
       if (!allPlayers[socket.id]) {
         joinGame(socket, data);
       }
@@ -82,18 +73,16 @@ module.exports = (io) => {
       joinGame(socket, data);
     });
 
-    socket.on('startGame', () => {
+    socket.on('czarCardSelected', () => {
+      allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
+    });
+    socket.on('startGame', function () {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];
-        console.log(
-          'comparing',
-          thisGame.players[0].socket.id,
-          'with',
-          socket.id
-        );
+        console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
-          gamesNeedingPlayers.forEach((game, index) => {
+          gamesNeedingPlayers.forEach(function (game, index) {
             if (game.gameID === socket.gameID) {
               return gamesNeedingPlayers.splice(index, 1);
             }
@@ -104,11 +93,11 @@ module.exports = (io) => {
       }
     });
 
-    socket.on('leaveGame', () => {
+    socket.on('leaveGame', function () {
       exitGame(socket);
     });
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', function () {
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
     });
@@ -133,8 +122,7 @@ module.exports = (io) => {
         } else {
           player.username = user.name;
           player.premium = user.premium || 0;
-          player.avatar =
-            user.avatar || avatars[Math.floor(Math.random() * 4) + 12];
+          player.avatar = user.avatar || avatars[Math.floor(Math.random() * 4) + 12];
         }
         getGame(player, socket, data.room, data.createPrivate);
       });
@@ -251,15 +239,12 @@ module.exports = (io) => {
 
   var exitGame = function (socket) {
     console.log(socket.id, 'has disconnected');
-    if (allGames[socket.gameID]) {
-      // Make sure game exists
+    if (allGames[socket.gameID]) { // Make sure game exists
       var game = allGames[socket.gameID];
       console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
-      if (
-        game.state === 'awaiting players' ||
-        game.players.length - 1 >= game.playerMinLimit
-      ) {
+      if (game.state === 'awaiting players' ||
+        game.players.length - 1 >= game.playerMinLimit) {
         game.removePlayer(socket.id);
       } else {
         game.stateDissolveGame();
@@ -278,3 +263,4 @@ module.exports = (io) => {
     socket.leave(socket.gameID);
   };
 };
+
