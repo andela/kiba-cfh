@@ -11,6 +11,7 @@
   background-color: #236484;
   padding: 6px 15px;
   color: #fff;
+  max-height: 50px;
 }
 .chatbox .chat-header h3 {
   display: inline-block;
@@ -52,15 +53,12 @@
   font-size: 18px;
   cursor: pointer;
 }
-
  #chatInner .emojioneemoji{
    width: 25px;
  }
-
  .send-message {
     padding-bottom: 5px;
  }
-
  .chatbox .chat-begin{
    font-size: 14px;
    color: #bbb;
@@ -89,3 +87,11 @@
   position: relative;
   bottom: 10px;
 }
+#chatInput{
+  background-color: #f1f1f1 !important;
+  padding: 0px 1px !important;
+}
+
+
+
+
