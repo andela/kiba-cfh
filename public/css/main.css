@@ -502,7 +502,6 @@ nav li a:hover{
 .game-end-headline {
   padding-top: 100px;
   font-size: 20px;
-  font-weight: bold;
   font-family: "lato, roboto";
   color: #236484;
 }
@@ -580,6 +579,7 @@ nav li a:hover{
   margin:auto;
   font-family: "lato, roboto";
   color: #236484;
+  ont-size: 16px;
 }
 
 #joinGame{
@@ -660,3 +660,12 @@ select {
   max-height: 250px;
   overflow-y: auto;
 }
+
+#tweet-container{
+   display: inline-block;
+   position: relative;
+   color:aliceblue !important;
+   border-radius: 5px;
+   padding-top: initial;
+}
+
