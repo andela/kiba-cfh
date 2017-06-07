@@ -6,7 +6,7 @@ $('body').on('click', '#endChat', () => {
   $('#startChat').show();
   $('.chat-content').slideUp();
 });
-$('body').on('click', '#startChat, #chatInput', () => {
+$('body').on('click', '#startChat, #chatInput','.emojionearea-editor', () => {
   $('#startChat').hide();
   $('#endChat').show();
   $('.chat-content').slideDown();

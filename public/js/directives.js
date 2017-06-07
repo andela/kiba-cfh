@@ -15,13 +15,12 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/answers.html',
       link: function(scope, elem, attr) {
-
         scope.$watch('game.state', function() {
           if (scope.game.state === 'winner has been chosen') {
             var curQ = scope.game.curQuestion;
             var curQuestionArr = curQ.text.split('_');
             var startStyle = "<span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>";
-            var endStyle = "</span>";
+            var endStyle = '</span>';
             var shouldRemoveQuestionPunctuation = false;
             var removePunctuation = function(cardIndex) {
               var cardText = scope.game.table[scope.game.winningCard].card[cardIndex].text;
@@ -41,7 +40,7 @@ angular.module('mean.directives', [])
                 cardText = removePunctuation(1);
                 curQuestionArr.splice(3,0,startStyle+cardText+endStyle);
               }
-              curQ.text = curQuestionArr.join("");
+              curQ.text = curQuestionArr.join('');
               // Clean up the last punctuation mark in the question if there already is one in the answer
               if (shouldRemoveQuestionPunctuation) {
                 if (curQ.text.indexOf('.',curQ.text.length-2) === curQ.text.length-1) {
@@ -93,6 +92,7 @@ angular.module('mean.directives', [])
         chat.avatar = window.localStorage.getItem('avatar');
         chat.username = window.localStorage.getItem('username');
         socket.emit('chat message', chat);
+        $('.emojionearea-editor').html('');
         $('#chatInput').val('');
       };
 
@@ -131,10 +131,16 @@ angular.module('mean.directives', [])
         displayChat(chat);
       });
 
+      // $('#chatInput').emojioneArea();
+
+      $('#chatInput').emojioneArea({
+        hidePickerOnBlur: true
+      });
+
         // Submit the chat when the 'enter' key is pressed
-      $('body').on('keyup', '#chatInput', (event) => {
+      $('body').on('keyup', '.emojionearea-editor', (event) => {
         if (event.which === 13) {
-          $('#chatInput').trigger('blur');
+          $('.emojionearea-editor').trigger('blur');
           scope.sendChatMessage();
         }
       });
