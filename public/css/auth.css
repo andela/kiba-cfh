@@ -3,16 +3,16 @@
 }
 
 input{
-  border-bottom: 1px solid #236484 !important;
+  border-bottom: 1px solid #2D3352 !important;
   font-size: 15px !important;
 }
 
 .header, .header2{
-  color: #236484;
+  color: #2D3352;
 }
 
 .header-text{
-  color: #236484 !important;
+  color: #2D3352 !important;
 }
 .header-text p{
   font-size: 15px !important;
@@ -32,7 +32,7 @@ input{
 }
 .signin-button {
   width: 13.5rem !important;
-  background-color: #236484 !important;
+  background-color: #2D3352 !important;
   display: inline-block !important;
   padding: 6px 12px !important;
   margin-bottom: 0 !important;
@@ -60,12 +60,12 @@ input{
 }
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:after {
-  background-color: #236484 !important;
+  background-color: #2D3352 !important;
 }
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:before,
 [type="radio"].with-gap:checked+label:after {
-    border: 2px solid #236484 !important;;
+    border: 2px solid #2D3352 !important;;
 }
 
 .header-text{
@@ -89,7 +89,7 @@ input{
 }
 /*.kiba-nav{
   height: 65px !important;
-  background-color: #236484 !important;
+  background-color: #2D3352 !important;
   color: #fff;
   margin-bottom: 0px !important;
   font-size: 17px;

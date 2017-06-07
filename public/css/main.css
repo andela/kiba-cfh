@@ -1,5 +1,5 @@
 body {
-  background-image: url('../img/wooden-background.jpg');
+  background-color: #7086FF;
 }
 #waypoint h1 {
   font-size: 20px;
@@ -12,8 +12,8 @@ body {
 }
 
 #waypoint a {
-  border: 4px solid #3cafe2;
-  color: #3cafe2;
+  border: 4px solid #2D3352;
+  color: #2D3352;
   background: #fff;
   height: 70px;
   line-height: 70px;
@@ -22,30 +22,30 @@ body {
   position: relative;
 }
 #waypoint a:hover {
-  border-color: #3cafe2;
+  border-color: #2D3352;
   color: #fff;
-  background: #3cafe2;
+  background: #2D3352;
   text-decoration: none;
 }
 #waypoint a:focus {
-  color: #3cafe2;
+  color: #2D3352;
   background: #fff;
   text-decoration: none;
 }
 #waypoint a:active {
   color: #fff;
-  background: #3cafe2;
+  background: #2D3352;
 }
 
 .notifications {
   position: fixed;
   right: 0;
   top: 0;
-  background: #3cafe2;
+  background: #2D3352;
 }
 
 .tline {
-  background: #3cafe2;
+  background: #2D3352;
   width: 48px;
   height: 2px;
   margin: 15px auto;
@@ -185,7 +185,7 @@ p {
 }
 
 .button-collapse {
-  color: #26a69a;
+  color: #2D3352;
 }
 
 .parallax-container {
@@ -288,8 +288,8 @@ footer.page-footer {
 }
 
 .sectionHumanity {
-  background-color: #236484;
-  color: white;
+  background-color: #2D3352;
+  color: #EEEEEE;
   font-family: "lato, roboto";
 }
 
@@ -300,13 +300,13 @@ p a {
   color: #F37B1F;
 }
 .nav-color {
-  background-color: #236484;
+  background-color: #2D3352;
   font-family: "lato, roboto";
 }
 
 .parallax-container {
       height: 680px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.3);
       font-family: "lato, roboto";
     }
 
@@ -320,53 +320,53 @@ nav li a:hover{
 
 #signup-button {
   background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
-  color: white !important;
+  color: #EEEEEE !important;
 }
 
 #custom-button {
   background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
-  color: white !important;
+  color: #EEEEEE !important;
 }
 #signup-button:hover {
-  background: white !important;
+  background: #EEEEEE !important;
   color: #F37B1F !important; 
 }
 
 #custom-button:hover {
-  background: white !important;
+  background: #EEEEEE !important;
   color: #F37B1F !important; 
 }
 
 #guest-button{
-  background-color: white !important;
-  color: #236484 !important;
+  background-color: #EEEEEE !important;
+  color: #2D3352 !important;
 }
 
 #guest-button:hover{
-  background-color: #236484 !important;
-  color: white !important;
+  background-color: #2D3352 !important;
+  color: #EEEEEE !important;
 }
 
 #take-tour{
-  background-color: #236484 !important;
-  color: white !important;
+  background-color: #2D3352 !important;
+  color: #EEEEEE !important;
   margin-top: 50px;
   margin-bottom: 50px;
   font-family: "lato, roboto";
 }
 
 #take-tour:hover{
-  background-color: white !important;
-  color: #236484 !important;
+  background-color: #EEEEEE !important;
+  color: #2D3352 !important;
 }
 
 #donate-button{
   background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
-  color: white !important;
+  color: #EEEEEE !important;
 }
 
 #donate-button:hover{
-  background: white !important;
+  background: #EEEEEE !important;
   color: #F37B1F !important; 
 }
 
@@ -421,7 +421,7 @@ nav li a:hover{
   font-size: 18px;
   font-weight: bold;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
   margin-bottom:-10px;
 }
 
@@ -437,7 +437,7 @@ nav li a:hover{
   font-size: 8px;
   font-family: "lato, roboto";
   font-weight: bold;
-  color: #236484;
+  color: #2D3352;
 }
 
 #name-czar {
@@ -468,13 +468,13 @@ nav li a:hover{
 }
 
 #inviteButton {
-  background-color:#236484 !important;
+  background-color:#2D3352 !important;
   float: left;
   margin-left:10px
 }
 
 #startButton:hover {
-  background:#236484 !important;
+  background:#2D3352 !important;
 }
 
 #inviteButton:hover {
@@ -484,7 +484,7 @@ nav li a:hover{
   font-size: 20px;
   font-weight: bold;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
   margin-bottom: 10px;
 }
 
@@ -503,7 +503,7 @@ nav li a:hover{
   padding-top: 100px;
   font-size: 20px;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
 }
 
 #inner-time-container {
@@ -540,7 +540,7 @@ nav li a:hover{
   border-radius: 5px;
   font-family: "lato, roboto";
   font-weight: bold;
-  color: #236484;
+  color: #2D3352;
   float: right;
 }
 
@@ -578,7 +578,7 @@ nav li a:hover{
 .game-end-answer-text {
   margin:auto;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
   font-size: 16px;
 }
 
@@ -587,13 +587,13 @@ nav li a:hover{
 }
 
 #joinGame:hover {
-  background-color:#236484 !important;
+  background-color:#2D3352 !important;
 }
 #lobby:hover {
   background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
 }
 #lobby{
-  background-color:#236484 !important;
+  background-color:#2D3352 !important;
 }
 
 #how-to-play{
@@ -610,7 +610,7 @@ select {
   font-size: 20px;
   font-weight: bold;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
 }
 
 #question-text {
@@ -619,7 +619,7 @@ select {
   font-size: 20px;
   font-weight: bold;
   font-family: "lato, roboto";
-  color: #236484;
+  color: #2D3352;
 }
 
 .answerCard {
@@ -635,7 +635,7 @@ select {
     font-size: 18px;
     font-weight: bold;
     font-family: "lato, roboto";
-    color: #236484;
+    color: #2D3352;
     vertical-align: top;
 }
 
@@ -647,7 +647,7 @@ select {
     height: 215px;
     padding: 1%;
     margin: 1%;
-    background-color: #236484;
+    background-color: #2D3352;
     border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
@@ -657,15 +657,21 @@ select {
 }
 
 .scrollable {
-  max-height: 250px;
+  max-height: 240px;
   overflow-y: auto;
 }
 
 #tweet-container{
    display: inline-block;
    position: relative;
-   color:aliceblue !important;
+   color:#EEEEEE !important;
    border-radius: 5px;
    padding-top: initial;
 }
 
+.footer-container {
+  margin: auto;
+  color: #EEEEEE;
+  background-color: #2D3352;
+  text-align: center;
+}
