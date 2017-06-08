@@ -1,12 +1,12 @@
 .chatbox {
-  width: 252px;
+  width: 254px;
   position: fixed;
   background-color: #EEEEEE;
   border: 1px solid #EEEEEE;
   bottom: 10px;
   right: 10px;
   z-index: 1003;
-  margin-right: 35px !important;
+  margin-right: 40px !important;
   border-radius: 5px;
 }
 .chatbox .chat-header {

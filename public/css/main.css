@@ -708,3 +708,13 @@ select {
   font-family: "lato, roboto";
   font-size: 30px;
 }
+
+#cards {
+    padding-left: 7px;
+    margin: auto;
+    margin-right: -164px;
+}
+
+#game-end-info {
+  margin-left: 20px;
+}
