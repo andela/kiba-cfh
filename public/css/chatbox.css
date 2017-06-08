@@ -1,16 +1,17 @@
 .chatbox {
   width: 300px;
   position: fixed;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #EEEEEE;
+  border: 1px solid #EEEEEE;
   bottom: 10px;
   right: 10px;
   z-index: 1003;
+  margin-right: 35px;
 }
 .chatbox .chat-header {
-  background-color: #236484;
+  background-color: #F37B1F;
   padding: 6px 15px;
-  color: #fff;
+  color: #EEEEEE;
   max-height: 50px;
 }
 .chatbox .chat-header h3 {
@@ -44,7 +45,7 @@
 .chatbox .chat .chat-message {
   display: inline-block;
   margin: 5px 0px 20px 20px;
-  background-color: #e6e6e6;
+  background-color: #EEEEEE;
   padding: 5px;
 }
 .chatbox .chat-header .fa-chevron-down,
@@ -61,7 +62,7 @@
  }
  .chatbox .chat-begin{
    font-size: 14px;
-   color: #bbb;
+   color: #2D3352;
    margin-bottom: 6px;
  }
 .chatbox .chat-header .fa-chevron-down {
@@ -69,8 +70,8 @@
 }
 .chatbox .chat .chat-message {
   display: inline-block;
-  margin: 0px 0px 20px 20px;
-  background-color: #fff;
+  margin: 5px 0px 20px 20px;
+  background-color: #EEEEEE;
   padding: 5px;
 }
 .chat-message{
@@ -91,7 +92,7 @@
   background-color: #f1f1f1 !important;
   padding: 0px 1px !important;
 }
-
+Add Comment Collapse
 
 
 

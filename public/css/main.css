@@ -1,3 +1,6 @@
+body {
+  background-color: #7086FF;
+}
 #waypoint h1 {
   font-size: 20px;
   font-weight: 800;
@@ -9,8 +12,8 @@
 }
 
 #waypoint a {
-  border: 4px solid #3cafe2;
-  color: #3cafe2;
+  border: 4px solid #2D3352;
+  color: #2D3352;
   background: #fff;
   height: 70px;
   line-height: 70px;
@@ -19,30 +22,30 @@
   position: relative;
 }
 #waypoint a:hover {
-  border-color: #3cafe2;
+  border-color: #2D3352;
   color: #fff;
-  background: #3cafe2;
+  background: #2D3352;
   text-decoration: none;
 }
 #waypoint a:focus {
-  color: #3cafe2;
+  color: #2D3352;
   background: #fff;
   text-decoration: none;
 }
 #waypoint a:active {
   color: #fff;
-  background: #3cafe2;
+  background: #2D3352;
 }
 
 .notifications {
   position: fixed;
   right: 0;
   top: 0;
-  background: #3cafe2;
+  background: #2D3352;
 }
 
 .tline {
-  background: #3cafe2;
+  background: #2D3352;
   width: 48px;
   height: 2px;
   margin: 15px auto;
@@ -182,7 +185,7 @@ p {
 }
 
 .button-collapse {
-  color: #26a69a;
+  color: #2D3352;
 }
 
 .parallax-container {
@@ -200,6 +203,7 @@ p {
 @media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
+    top: 40%;
   }
 
   #index-banner .section {
@@ -284,25 +288,26 @@ footer.page-footer {
 }
 
 .sectionHumanity {
-  background-color: #236484;
-  color: white;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-color: #2D3352;
+  color: #EEEEEE;
+  font-family: "lato, roboto";
 }
 
 p {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 p a {
-  color: #D67C2A;
+  color: #F37B1F;
 }
 .nav-color {
-  background-color: #236484
+  background-color: #2D3352;
+  font-family: "lato, roboto";
 }
 
 .parallax-container {
       height: 680px;
-      background: rgba(0,0,0,0.5);
-      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: rgba(0,0,0,0.3);
+      font-family: "lato, roboto";
     }
 
 .section-parallax {
@@ -310,59 +315,59 @@ p a {
 }
 
 nav li a:hover{
-  color: #D67C2A !important
+  color: #F37B1F !important;
 }
 
 #signup-button {
-  background-color: #D67C2A !important;
-  color: white !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+  color: #EEEEEE !important;
 }
 
 #custom-button {
-  background-color: #D67C2A !important;
-  color: white !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+  color: #EEEEEE !important;
 }
 #signup-button:hover {
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: #EEEEEE !important;
+  color: #F37B1F !important; 
 }
 
 #custom-button:hover {
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: #EEEEEE !important;
+  color: #F37B1F !important; 
 }
 
 #guest-button{
-  background-color: white !important;
-  color: #236484 !important;
+  background-color: #EEEEEE !important;
+  color: #2D3352 !important;
 }
 
 #guest-button:hover{
-  background-color: #236484 !important;
-  color: white !important;
+  background-color: #2D3352 !important;
+  color: #EEEEEE !important;
 }
 
 #take-tour{
-  background-color: #236484 !important;
-  color: white !important;
+  background-color: #2D3352 !important;
+  color: #EEEEEE !important;
   margin-top: 50px;
   margin-bottom: 50px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "lato, roboto";
 }
 
 #take-tour:hover{
-  background-color: white !important;
-  color: #236484 !important;
+  background-color: #EEEEEE !important;
+  color: #2D3352 !important;
 }
 
 #donate-button{
-  background-color: #D67C2A !important;
-  color: white !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+  color: #EEEEEE !important;
 }
 
 #donate-button:hover{
-  background-color: white !important;
-  color: #D67C2A !important; 
+  background: #EEEEEE !important;
+  color: #F37B1F !important; 
 }
 
 .brand-logo{
@@ -389,12 +394,284 @@ nav li a:hover{
   width: 93%;
 }
 
-@media only screen and (max-width: 414px) {
-
-   body { font-size: 10px; }
-   h3{font-size: 15px;}
+#player-container {
+  float: right;
+  max-width: 100%;
+  width: 90%;
+  max-height: 90px;
+  margin-bottom: 8px;
+  background-color: #F8F9FB;
+  border-radius: 3%;
 }
 
-footer {
-   padding-bottom: 20px;
+
+#player-avatar {
+  max-width: 30px;
+  max-height: 30px;
+  margin-top: 10px;
+  margin-left: 10px
+}
+
+#player-container-inner {
+  max-width: 50px;
+  max-height: 40px;
+}
+
+#player-name-inner {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "lato, roboto";
+  color: #2D3352;
+  margin-bottom:-10px;
+}
+
+#player-score-inner {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#the-czar {
+  max-height: 10px;
+  max-width: 10px;
+  margin-top: 10px;
+  font-size: 8px;
+  font-family: "lato, roboto";
+  font-weight: bold;
+  color: #2D3352;
+}
+
+#name-czar {
+  max-height: 100px;
+}
+
+#isPlayer {
+  margin-top:20px
+}
+
+.question {
+  border-radius: 4px;
+  max-width: 100%;
+  width: 100%;
+  max-height: 240px;
+  height: 240px;
+  background-color: #F8F9FB;
+}
+
+#startGame {
+  padding-top: 20px;
+}
+
+#startButton {
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+  float: right;
+  margin-right:10px
+}
+
+#inviteButton {
+  background-color:#2D3352 !important;
+  float: left;
+  margin-left:10px
+}
+
+#startButton:hover {
+  background:#2D3352 !important;
+}
+
+#inviteButton:hover {
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+}
+#finding-players {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "lato, roboto";
+  color: #2D3352;
+  margin-bottom: 10px;
+}
+
+#player-count {
+  font-size: 20px;
+  font-weight: bold;
+  color: #232121 ;
+}
+
+#loading-gif {
+  max-height: 50px;
+  max-width: 50px
+}
+
+.game-end-headline {
+  padding-top: 100px;
+  font-size: 20px;
+  font-family: "lato, roboto";
+  color: #2D3352;
+}
+
+#inner-time-container {
+  max-height: 240px;
+  height: 100%;
+  margin: initial; 
+}
+#time {
+  font-size: 150px;
+  color: #F8F9FB;
+  padding-left: 60px;
+  margin-bottom: -20px;
+}
+.timer-status-round{
+  font-size: 30px;
+  margin: initial;
+  font-family: "lato, roboto";
+  color:#F8F9FB;
+}
+#info-container {
+  font-family:"lato, roboto";
+  color: #F8F9FB;
+}
+
+#czar-blank-inner {
+  font-family:"lato, roboto";
+  font-size: 20px;
+  color:#F8F9FB;
+}
+
+#charity-fact-container {
+  background-color: #F8F9FB;
+  max-width: 254px;
+  border-radius: 5px;
+  font-family: "lato, roboto";
+  font-weight: bold;
+  color: #2D3352;
+  float: right;
+}
+
+#charity-fact-tagline{
+  font-size: 18px;
+  font-family: "lato, roboto";
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#charity-fact {
+  margin-left: 5px;
+  font-family: "lato, roboto";
+}
+
+#make-a-wish {
+  margin-left: 26px;
+}
+
+#inner-info-exit {
+  background-color: #F8F9FB;
+  max-height: 400px;
+  height: 230px;
+  max-width: 583.4px;
+  margin: auto;
+  padding-top:20px;
+  border-radius: 5px;
+  margin-top: 48px;
+}
+
+#inner-text-container {
+  margin-top: 30px
+}
+
+.game-end-answer-text {
+  margin:auto;
+  font-family: "lato, roboto";
+  color: #2D3352;
+  font-size: 16px;
+}
+
+#joinGame{
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+}
+
+#joinGame:hover {
+  background-color:#2D3352 !important;
+}
+#lobby:hover {
+  background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
+}
+#lobby{
+  background-color:#2D3352 !important;
+}
+
+#how-to-play{
+  background-color: #F8F9FB;
+  margin-bottom:-30px;
+}
+
+select {
+  display: block !important;
+}
+
+#shuffleText {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "lato, roboto";
+  color: #2D3352;
+}
+
+#question-text {
+  margin: auto;
+  padding-top: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "lato, roboto";
+  color: #2D3352;
+}
+
+.answerCard {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 14%;
+    height: 215px;
+    padding: 1%;
+    margin: 2%;
+    background-color: #F8F9FB;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "lato, roboto";
+    color: #2D3352;
+    vertical-align: top;
+}
+
+.answerCard:hover{
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 14%;
+    height: 215px;
+    padding: 1%;
+    margin: 2%;
+    background-color: #2D3352;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "lato, roboto";
+    color: #F8F9FB;
+    vertical-align: top;
+}
+
+.scrollable {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+#tweet-container{
+   display: inline-block;
+   position: relative;
+   color:#EEEEEE !important;
+   border-radius: 5px;
+   padding-top: initial;
+}
+
+.footer-container {
+  margin: auto;
+  color: #EEEEEE;
+  background-color: #2D3352;
+  text-align: center;
 }

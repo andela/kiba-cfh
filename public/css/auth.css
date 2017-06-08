@@ -1,18 +1,16 @@
 .auth-container{
   font-family: 'Lora', serif !important;
-  background-image: url('../img/background2.jpg') !important;
-  background-repeat: no-repeat;
 }
 input{
-  border-bottom: 1px solid #236484 !important;
+  border-bottom: 1px solid #2D3352 !important;
   font-size: 15px !important;
 }
 .auth-header{
   max-height: 95px;
-  color: #236484 !important;
+  color: #2D3352 !important;
 }
 .header-text{
-  color: #236484 !important;
+  color: #2D3352 !important;
 }
 .header-text p{
   font-size: 16px !important;
@@ -23,14 +21,14 @@ input{
   margin-bottom: 30px !important;
 }
 .main{
-  background-color: #EFF7FB !important;
+  background-color: #F8F9FB !important;
 }
 .signup-button{
   margin-top: 0px !important;
 }
 .signin-button {
   width: 13.5rem;
-  background-color: #236484 !important;
+  background-color: #2D3352 !important;
   display: inline-block !important;
   padding: 6px 12px !important;
   margin-bottom: 0 !important;
@@ -58,12 +56,12 @@ input{
 }
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:after {
-  background-color: #236484 !important;
+  background-color: #2D3352 !important;
 }
 [type="radio"]:checked+label:after,
 [type="radio"].with-gap:checked+label:before,
 [type="radio"].with-gap:checked+label:after {
-    border: 2px solid #236484 !important;;
+    border: 2px solid #2D3352 !important;;
 }
 .input-radio-style{
   margin-left: 0px;
