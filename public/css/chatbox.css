@@ -1,18 +1,20 @@
 .chatbox {
-  width: 300px;
+  width: 252px;
   position: fixed;
   background-color: #EEEEEE;
   border: 1px solid #EEEEEE;
   bottom: 10px;
   right: 10px;
   z-index: 1003;
-  margin-right: 35px;
+  margin-right: 35px !important;
+  border-radius: 5px;
 }
 .chatbox .chat-header {
   background-color: #F37B1F;
   padding: 6px 15px;
   color: #EEEEEE;
   max-height: 50px;
+  border-radius: 5px;
 }
 .chatbox .chat-header h3 {
   display: inline-block;
@@ -91,6 +93,10 @@
 #chatInput{
   background-color: #f1f1f1 !important;
   padding: 0px 1px !important;
+}
+.emojionearea.emojionearea-inline {
+    height: 34px;
+    border-radius: 5px !important;
 }
 Add Comment Collapse
 

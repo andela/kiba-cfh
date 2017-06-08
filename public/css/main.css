@@ -177,7 +177,11 @@ body {
 }
 nav ul a,
 nav .brand-logo {
-  color: #444;
+  font-size: 18px;
+}
+
+#first-word {
+
 }
 
 p {
@@ -464,13 +468,15 @@ nav li a:hover{
 #startButton {
   background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   float: right;
-  margin-right:10px
+  margin-right:10px;
+  font-family: "lato, roboto";
 }
 
 #inviteButton {
   background-color:#2D3352 !important;
   float: left;
-  margin-left:10px
+  margin-left:10px;
+  font-family: "lato, roboto";
 }
 
 #startButton:hover {
@@ -506,22 +512,33 @@ nav li a:hover{
   color: #2D3352;
 }
 
+#timer-container {
+  height: 240px;
+}
+
 #inner-time-container {
-  max-height: 240px;
-  height: 100%;
-  margin: initial; 
+  background-color: #F8F9FB !important;
 }
 #time {
-  font-size: 150px;
+  font-size: 120px;
   color: #F8F9FB;
-  padding-left: 60px;
-  margin-bottom: -20px;
+  margin-right: 30px;
+  text-align: center;
+  margin-left: 30px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  border-radius: 5px; 
 }
 .timer-status-round{
-  font-size: 30px;
-  margin: initial;
+  font-size: 20px;
+  text-align: center;
+  background-color: #2D3352; 
   font-family: "lato, roboto";
   color:#F8F9FB;
+  margin: initial;
+  margin-right: 30px;
+  margin-left: 30px;
+  border-radius: 5px;
 }
 #info-container {
   font-family:"lato, roboto";
@@ -675,4 +692,19 @@ select {
   background-color: #2D3352;
   text-align: center;
   margin-top: 30px;
+}
+
+#first-word {
+  font-family: "lato, roboto";
+  font-size: 30px;
+}
+
+#second-word {
+  font-family: "lato, roboto";
+  font-size: 30px;
+}
+
+#third-word {
+  font-family: "lato, roboto";
+  font-size: 30px;
 }
