@@ -9,7 +9,12 @@
     "angular-route": "^1.6.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
-    "materialize-social": "*"
+    "angular-animate": "^1.6.4",
+    "ng-materialize": "^0.1.2",
+    "angular-sanitize": "^1.6.4",
+    "angular-toastr": "^2.1.1",
+    "materialize-social": "*",
+    "emojionearea": "^3.1.7"
   },
   "exportsOverride": {
     "bootstrap": {
@@ -22,6 +27,8 @@
     }
   },
   "resolutions": {
+    "angular": "1.6.4",
+    "angular-animate": "^1.6.4",
     "jquery": ">=2.1.1"
   }
 }

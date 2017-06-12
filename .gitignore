@@ -6,6 +6,7 @@ c4h_keys.txt
 .env
 bower_components
 .vscode
+sendgrid.env
 vscode
 .coverdata/
 coverage/
