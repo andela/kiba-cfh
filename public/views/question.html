@@ -84,7 +84,7 @@
         <div  class="collection" ng-if="searchResult.length > 0">
         <div ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult" >
             {{result.name}}
-            <button class="btn" ng-click="addFriend(result)">Add friend</button>
+            <button class="btn" ng-click="addFriend(result)">{{friendAddedText}}</button>
             <!--<button class="btn" ng-click="sendNotification(result)">send invite</button>-->
           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;"><span style="padding-bottom: 5px">+</span></button>
         </div>
@@ -95,14 +95,14 @@
     </div>
   </div>
 <!---->
-<button data-target="notificationModal" class="btn" ng-click="notificationModal()">notification</button>
+<!--<button data-target="notificationModal" class="btn" ng-click="notificationModal()">notification</button>
 <div class="modal" id="notificationModal">
 <div class="modal-content">
   <p ng-repeat="notif in notification">
     {{notif.message}} <a href={{notif.link}} target="#">Join</a>
   </p>
-  </div>
-  </div>
+  </div>-->
+</div>
 
 
 <!-- Materialize Modal to start Game. -->

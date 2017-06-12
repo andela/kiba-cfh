@@ -21,7 +21,7 @@ module.exports = (app, passport, auth) => {
   app.get('/users', users.all);
   app.get('/api/search/users/:searchUsers?', users.findUsers);
 
-  //Notification Route
+  // Notification Route
   app.post('/addNotification', friends.addNotification);
   app.get('/notification/:id', friends.getNotification);
 

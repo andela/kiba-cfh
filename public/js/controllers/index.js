@@ -43,6 +43,7 @@ angular.module('mean.system').controller('IndexController', [
         }
       );
     };
+
     $scope.login = () => {
       const user = {
         email: $scope.email,
@@ -65,6 +66,23 @@ angular.module('mean.system').controller('IndexController', [
       $scope.showOptions = true;
       $scope.global.authenticated = false;
     };
+    $scope.openDropdown = (event) => {
+      event.preventDefault();
+      console.log('working');
+      $('.dropdown-button').dropdown('open');
+    };
+
+    $scope.getNotification = () => {
+      $http({
+        method: 'GET',
+        url: `/notification/${window.user.name}`,
+        header: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        $scope.notification = response.data;
+        console.log($scope.notification);
+      });
+    };
+
     $scope.playAsGuest = () => {
       game.joinGame();
       $location.path('/app');

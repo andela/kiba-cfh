@@ -4,7 +4,9 @@ let Player = require('./player');
 require('console-stamp')(console, 'm/dd HH:MM:ss');
 let mongoose = require('mongoose');
 let User = mongoose.model('User');
-const user = require(`${__dirname  }/../../app/controllers/users.js`);
+const user = require(`${__dirname}/../../app/controllers/users.js`);
+const friend = require('../../app/controllers/friends');
+let userId = {};
 
 let avatars = require(`${__dirname  }/../../app/controllers/avatars.js`).all();
 // Valid characters to use to generate random private game IDs
@@ -33,7 +35,7 @@ module.exports = (io) => {
   const database = firebase.database();
 
   io.sockets.on('connection', function (socket) {
-    console.log(`${socket.id  } Connected`);
+    console.log(`${socket.id} Connected`);
     socket.emit('id', { id: socket.id });
 
     // initialize chat when a new socket is connected
@@ -46,6 +48,23 @@ module.exports = (io) => {
       chatMessages.push(chat);
       database.ref(`chat/${socket.gameID}`).set(chatMessages);
     });
+
+    // socket.emit('notification', (cb) => {
+    //   //const userInvite = userId;
+    //   friend.getNotification((userId, data) => {
+    //     console.log(userId, 'userInvite');
+    //     cb(null, data);
+    //     console.log(data, 'data in emit notification');
+    //   });
+    // });
+
+    // socket.on('user', (data) => {
+    //   const user = data;
+    //   friend.getNotification((userInvite = user, data) => {
+    //     console.log(data, 'userInvite');
+    //     //console.log(data, 'data in emit notification');
+    //   });
+    // });
 
     socket.on('pickCards', (data) => {
       console.log(socket.id, 'picked', data);
@@ -63,7 +82,7 @@ module.exports = (io) => {
         console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
       }
     });
-  
+
 
     socket.on('joinGame', (data) => {
       if (!allPlayers[socket.id]) {

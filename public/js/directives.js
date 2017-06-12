@@ -10,7 +10,7 @@ angular.module('mean.directives', [])
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E', '#F2ADFF', '#398EC4', '#8CFF95'];
         scope.$$childHead.getNotification();
         scope.$$childHead.getFriends();
-        console.log(scope.$$childHead);
+        console.log("scope.$$childHead", scope.$$childHead);
       }
     };
   }).directive('answers', function() {
@@ -75,10 +75,11 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       link: function(scope, elem, attr) {
         scope.showOptions = true;
-        console.log(scope.$$childHead);
         if (scope.$$childHead.global.authenticated === true) {
           scope.showOptions = false;
         }
+        scope.$$childHead.getNotification();
+        console.log(scope.$$childHead.getNotification);
       }
     };
   })
@@ -132,7 +133,6 @@ angular.module('mean.directives', [])
       socket.on('chat message', (chat) => {
         displayChat(chat);
       });
-
       // $('#chatInput').emojioneArea();
 
       $('#chatInput').emojioneArea({

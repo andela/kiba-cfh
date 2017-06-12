@@ -21,7 +21,6 @@ exports.addNotification = (req, callback) => {
 
 exports.getNotification = (req, res) => {
   const notification = req.params.id;
-  console.log(notification, 'id');
   Notification.find({ user: notification })
     .exec((err, notificationAlert) => {
       if (notificationAlert) {
@@ -59,7 +58,6 @@ exports.addFriend = (req, res) => {
 
 exports.getFriend = (req, res) => {
   const friend = req.params.id;
-  console.log(friend, 'new friend');
   Friends.find({senderId: friend })
     .exec((err, friendList) => {
       if (friendList) {

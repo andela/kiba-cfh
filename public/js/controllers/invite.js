@@ -2,6 +2,7 @@ angular.module('mean.system')
   .controller('InviteController', ['$scope', 'game', '$http', 'toastr',
     ($scope, game, $http, toastr) => {
       $scope.searchUsers = '';
+      $scope.friendAddedText = 'Add Friend';
     /**
      * Get all the users from the database
      * @return {void}
@@ -67,7 +68,7 @@ angular.module('mean.system')
             senderId: window.user._id,
           }
         }).then((response) => {
-          console.log(response);
+          $scope.friendAddedText = 'Remove as friend';
           return response;
         });
       }
@@ -78,22 +79,8 @@ angular.module('mean.system')
           header: { 'Content-Type': 'application/json' }
         }).then((response) => {
           $scope.friendList = response.data;
-          console.log($scope.friendList, 'newFriends')
         });
       };
-      $scope.getNotification = () => {
-        // $scope.notification = [];
-        $http({
-          method: 'GET',
-          url: `/notification/${window.user.name}`,
-          header: { 'Content-Type': 'application/json' }
-        }).then((response) => {
-          //for(i -)
-          $scope.notification = response.data;
-          console.log($scope.notification);
-        });
-      };
-
     /**
      * This function checks if the user is not present in the list
      * @param{user} user
