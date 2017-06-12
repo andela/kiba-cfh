@@ -23,9 +23,11 @@ var UserSchema = new Schema({
     github: {},
     google: {}
 });
+
 /**
  * Virtuals
  */
+
 UserSchema.virtual('password').set(function(password) {
     this._password = password;
     this.hashed_password = this.encryptPassword(password);

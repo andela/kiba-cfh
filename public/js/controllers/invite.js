@@ -35,6 +35,65 @@ angular.module('mean.system')
         }
       };
 
+      $scope.sendNotification = (user) => {
+        $http({
+          method: 'POST',
+          url: '/addNotification',
+          headers: { 'Content-Type': 'application/json' },
+          data: {
+            reciever: user.name,
+            link: document.URL,
+            sender: game.players[0].username
+          }
+
+        }).then((response) => {
+          console.log(response);
+          return response;
+        });
+      };
+      $scope.notificationModal = () => {
+        $('#notificationModal').modal();
+      };
+
+      $scope.addFriend = (friend) => {
+        // $scope.friends = [];
+        $http({
+          method: 'POST',
+          url: '/friend',
+          header: { 'Content-Type': 'application/json' },
+          data: {
+            name: friend.name,
+            email: friend.email,
+            senderId: window.user._id,
+          }
+        }).then((response) => {
+          console.log(response);
+          return response;
+        });
+      }
+      $scope.getFriends = () => {
+        $http({
+          method: 'GET',
+          url: `/friend/${window.user._id}`,
+          header: { 'Content-Type': 'application/json' }
+        }).then((response) => {
+          $scope.friendList = response.data;
+          console.log($scope.friendList, 'newFriends')
+        });
+      };
+      $scope.getNotification = () => {
+        // $scope.notification = [];
+        $http({
+          method: 'GET',
+          url: `/notification/${window.user.name}`,
+          header: { 'Content-Type': 'application/json' }
+        }).then((response) => {
+          //for(i -)
+          $scope.notification = response.data;
+          console.log($scope.notification);
+        });
+      };
+
     /**
      * This function checks if the user is not present in the list
      * @param{user} user

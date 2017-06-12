@@ -4,6 +4,7 @@
 const mongoose = require('mongoose'),
   User = mongoose.model('User');
 const avatars = require('./avatars').all();
+// const Notification = mongoose.model('Notification');
 
 /**
  * Auth callback
@@ -193,17 +194,17 @@ exports.user = (req, res, next, id) => {
    * @param {string} req
    * @param {object} res
    */
-  exports.all = (req, res) => {
+exports.all = (req, res) => {
     User.find({}).exec((err, users) => {
-        if (err) {
-            res.render('error', {
+      if (err) {
+          res.render('error', {
               status: 500,
             });
         } else {
-            res.jsonp(users);
+          res.jsonp(users);
         }
     });
-};
+  };
 /**
  *
  *Search for users in the database
@@ -215,11 +216,12 @@ exports.findUsers = (req, res) => {
   User.find({  name: new RegExp(queryString, 'i') }).limit(10)
     .exec((err, users) => {
       if (err) {
-          res.render('error', {
+        res.render('error', {
             status: 500,
           });
       } else {
-          res.jsonp(users);
+        res.jsonp(users);
       }
-  });
+    });
 };
+

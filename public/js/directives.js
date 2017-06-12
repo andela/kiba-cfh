@@ -8,6 +8,9 @@ angular.module('mean.directives', [])
       templateUrl: '/views/player.html',
       link: function(scope, elem, attr){
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E', '#F2ADFF', '#398EC4', '#8CFF95'];
+        scope.$$childHead.getNotification();
+        scope.$$childHead.getFriends();
+        console.log(scope.$$childHead);
       }
     };
   }).directive('answers', function() {
@@ -72,7 +75,7 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       link: function(scope, elem, attr) {
         scope.showOptions = true;
-
+        console.log(scope.$$childHead);
         if (scope.$$childHead.global.authenticated === true) {
           scope.showOptions = false;
         }
@@ -95,7 +98,6 @@ angular.module('mean.directives', [])
         $('.emojionearea-editor').html('');
         $('#chatInput').val('');
       };
-
       // display a chat message
       const displayChat = (chat) => {
         const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

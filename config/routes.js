@@ -6,6 +6,8 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const mail = require('../app/controllers/mail');
+const friends = require('../app/controllers/friends');
+
 module.exports = (app, passport, auth) => {
   // region Route
   app.get('/region.json', (req, res) => {
@@ -18,6 +20,14 @@ module.exports = (app, passport, auth) => {
   app.get('/signout', users.signout);
   app.get('/users', users.all);
   app.get('/api/search/users/:searchUsers?', users.findUsers);
+
+  //Notification Route
+  app.post('/addNotification', friends.addNotification);
+  app.get('/notification/:id', friends.getNotification);
+
+  // Friends route
+  app.post('/friend', friends.addFriend);
+  app.get('/friend/:id', friends.getFriend);
 
   // Setting up the users api
   app.post('/users', users.create);
