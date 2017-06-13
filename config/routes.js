@@ -6,6 +6,8 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const mail = require('../app/controllers/mail');
+const { gameData } = require('../app/controllers/gameData');
+
 module.exports = (app, passport, auth) => {
   // region Route
   app.get('/region.json', (req, res) => {
@@ -131,4 +133,6 @@ module.exports = (app, passport, auth) => {
   app.post('/api/auth/login', jwt.SignInWithJwt);
   app.post('/api/auth/signup', jwt.SignUpWithJwt);
 
+  // save game data after game
+  app.post('/api/games/:id/save', gameData);
 };

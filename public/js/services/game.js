@@ -1,6 +1,5 @@
 angular.module('mean.system')
-  .factory('game', ['socket', '$timeout', function (socket, $timeout) {
-
+  .factory('game', ['socket', '$timeout', '$http', function (socket, $timeout, $http) {
     var game = {
       id: null, // This player's socket ID, so we know who this player is
       gameID: null,
@@ -67,7 +66,6 @@ angular.module('mean.system')
     });
 
     socket.on('gameUpdate', function (data) {
-
       // Update gameID field only if it changed.
       // That way, we don't trigger the $scope.$watch too often
       if (game.gameID !== data.gameID) {
@@ -181,8 +179,29 @@ angular.module('mean.system')
         game.players[game.playerIndex].hand = [];
         game.time = 0;
       }
+      if (data.state === 'game ended') {
+        const players = [];
+        game.players.forEach((player) => {
+          players.push({ player: player.username, points: player.points, playerId: player.socketID });
+        });
+        const gameRecord = {
+          gameID: game.id,
+          gameOwner: game.players[0].username,
+          gamePlayers: players,
+          dateplayed: new Date(),
+          gameWinner: game.players[game.gameWinner].username,
+          gameRounds: game.rounds
+        };
+        if (gameRecord.gameOwner === user.name) {
+          $http.post(`/api/games/${game.id}/save`, gameRecord)
+            .then((res) => {
+              console.log(res);
+            }).catch((err) => {
+              console.log(err);
+            });
+        }
+      }
     });
-
     socket.on('notification', function (data) {
       addToNotificationQueue(data.notification);
     });
