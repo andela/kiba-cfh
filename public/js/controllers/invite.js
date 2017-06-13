@@ -2,7 +2,6 @@ angular.module('mean.system')
   .controller('InviteController', ['$scope', 'game', '$http', 'toastr',
     ($scope, game, $http, toastr) => {
       $scope.searchUsers = '';
-      $scope.friendAddedText = 'Add Friend';
     /**
      * Get all the users from the database
      * @return {void}
@@ -28,6 +27,7 @@ angular.module('mean.system')
         mail.email = user.email;
         if ($scope.invitedEmailList.length <= lengthOfPlayers - 1) {
           $scope.invitedEmailList.push(user.email);
+
           $scope.invitedList.push(mail);
           mail = {};
         } else {
@@ -55,9 +55,27 @@ angular.module('mean.system')
       $scope.notificationModal = () => {
         $('#notificationModal').modal();
       };
+      // $scope.showButton = true;
+      $scope.removeFriend = (friend) => {
+        console.log(friend.email, "friend in removeFriend function");
+        $http({
+          method: 'DELETE',
+          url: '/friend/' + friend.email,
+          // header: { 'Content-Type': 'application/json' },
+          // data: {
+          //   id: friend._id,
+          //   //senderId: window.user._id
+          // }
+        })
+        .then((response) => {
+            // $scope.showButton = false;
+            console.log(response.status, "response");
+          })
+          .catch(error => error);
 
+      }
       $scope.addFriend = (friend) => {
-        // $scope.friends = [];
+        $scope.friends = [];
         $http({
           method: 'POST',
           url: '/friend',
@@ -68,10 +86,22 @@ angular.module('mean.system')
             senderId: window.user._id,
           }
         }).then((response) => {
-          $scope.friendAddedText = 'Remove as friend';
+          $scope.showButton = false;
+          console.log("friend._id", response.data);
           return response;
         });
-      }
+      };
+
+
+      // $scope.friendAdded = (friend) => {
+      //   // $(email).html('Remove as friend');
+      //   if ($scope.friendList.length && $scope.friendList[friend.email]) {
+      //     console.log($scope.friendList, "friendList");
+      //     return true;
+      //   }
+      //   return false;
+      // };
+
       $scope.getFriends = () => {
         $http({
           method: 'GET',
@@ -79,7 +109,17 @@ angular.module('mean.system')
           header: { 'Content-Type': 'application/json' }
         }).then((response) => {
           $scope.friendList = response.data;
+          console.log($scope.friendList, 'friends');
         });
+      };
+
+      $scope.isFriend = (email) => {
+        for (let i = 0; i < $scope.friendList.length; i += 1) {
+          if ($scope.friendList.length && $scope.friendList[i].friendEmail === email) {
+            return true;
+          }
+        }
+        return false;
       };
     /**
      * This function checks if the user is not present in the list
@@ -152,6 +192,7 @@ angular.module('mean.system')
         .then((response) => {
           if (response.data.length > 0) {
             $scope.searchResult = response.data;
+            console.log($scope.searchResult);
             $scope.noUserMatch = null;
           } else {
             $scope.searchResult = [];

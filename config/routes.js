@@ -28,6 +28,7 @@ module.exports = (app, passport, auth) => {
   // Friends route
   app.post('/friend', friends.addFriend);
   app.get('/friend/:id', friends.getFriend);
+  app.delete('/friend/:email', friends.deleteFriend);
 
   // Setting up the users api
   app.post('/users', users.create);

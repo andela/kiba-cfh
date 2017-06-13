@@ -47,7 +47,7 @@ exports.addFriend = (req, res) => {
         console.log('no friend', friends);
         newFriend.save((error) => {
           if (!error) {
-            res.jsonp({ status: 'success', message: 'new friend added!' });
+            res.jsonp({ status: 'success', message: `${friends} added to list!` });
           } else {
             throw error;
           }
@@ -58,7 +58,7 @@ exports.addFriend = (req, res) => {
 
 exports.getFriend = (req, res) => {
   const friend = req.params.id;
-  Friends.find({senderId: friend })
+  Friends.find({ senderId: friend })
     .exec((err, friendList) => {
       if (friendList) {
         const friendAlert = friendList;
@@ -66,4 +66,26 @@ exports.getFriend = (req, res) => {
       }
       return res.json(err);
     });
+};
+
+exports.deleteFriend = (req, res) => {
+  //const friend = req.body.id;
+  //const friendOwner = req.body.senderId;
+  console.log(req.params, "friend in backend deleteFriend");
+  Friends.findByIdAndRemove({ friendEmail: req.params.email })
+    .exec((error) => {
+      if (!error) {
+        return res.json({ sucess: true, message: 'Friend deleted successfully' });
+      }
+      return res.json(error);
+    });
+
+  // Friends.find({ _id: friend })
+  //   .remove()
+  //   .exec((error) => {
+  //     if (!error) {
+  //       return res.json({ sucess: true, message: 'Friend deleted successfully' });
+  //     }
+  //     return res.json(error);
+  //   });
 };

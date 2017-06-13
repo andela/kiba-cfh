@@ -84,7 +84,8 @@
         <div  class="collection" ng-if="searchResult.length > 0">
         <div ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult" >
             {{result.name}}
-            <button class="btn" ng-click="addFriend(result)">{{friendAddedText}}</button>
+            <button ng-hide="isFriend(result.email)" class="btn" ng-click="addFriend(result)">Add Friend</button>
+            <button ng-show="isFriend(result.email)" class="btn" ng-click="removeFriend(result)">Remove Friend</button>
             <!--<button class="btn" ng-click="sendNotification(result)">send invite</button>-->
           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;"><span style="padding-bottom: 5px">+</span></button>
         </div>
