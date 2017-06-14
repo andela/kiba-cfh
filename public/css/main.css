@@ -1,5 +1,9 @@
 body {
-  background-color: #636989;
+  background:linear-gradient(
+      rgba(0,0,0,0.7), 
+      rgba(0,0,0,0.7)
+    ), url('../img/wedonetiree.jpg') !important ;
+  
 }
 #waypoint h1 {
   font-size: 20px;
