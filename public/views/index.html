@@ -14,35 +14,6 @@ $(document).ready(function() {
 </script>
 
 <script></script>
-<!--<div landing id="main-bod" ng-controller="IndexController">-->
-  <!-- Fixed Logo & Menu Bar Start -->
-  <!--<div id="top-part">
-    <div class="wpb-top-bar">
-      <div class="mod-contain" id="navver">
-        <div class="row">-->
-          <!-- Logo -->
-          <!--<div class="wpb-logo-container">
-            <div id="landing-logo">
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span>
-              <span id="third-word">Humanity</span>
-            </div>
-            <div class="col-md-9 wpb-menu-container">
-              <ul class="wpb-main-menu">
-                <li><a onClick="scroll(0,0)">Home</a></li>
-                <li><a onClick="scroll(0,742);">How to Play</a></li>
-                <li><a onClick="scroll(0,1411);">Charity</a></li>
-                <li><a onClick="scroll(0,2021);">About Us</a></li>
-                <span ng-show="showOptions">
-                  <li><a href="#!/signup">Sign Up</a></li>
-                  <li><a href="#!/signin">Sign In</a></li>
-                </span>
-                <span ng-hide="showOptions">
-                  <li><a href="/signout" ng-click="logout()">Sign Out</a></li>
-                </span>
-              </ul>
-            </div>-->
-
 <div landing id="main-bod">
   <div ng-controller="IndexController">
     <div ng-init="load()">
@@ -59,21 +30,18 @@ $(document).ready(function() {
               <li><a onClick="scroll(0,742);">How to Play</a></li>
               <li><a onClick="scroll(0,1411);">Charity</a></li>
               <li><a onClick="scroll(0,2021);">About Us</a></li>
-              <li><div class="kibadropdown">
-                <a class="kibadropbtn"><i class="material-icons">notifications</i></a>
-                  <div class="kibadropdown-content" ng-repeat="notif in notification">
-                    <span>{{notif.message}} <a class="kibajoin" style="color: #D67C2A !important" href={{notif.link}}>Join</a></span>
-                  </div>
-              </div>
+              <li>
+                <div class="kibadropdown">
+                  <a class="kibadropbtn">
+                    <i class="material-icons">notifications</i>
+                    <span id="notificationCount">{{ count }}</span>
+                  </a>
+                    <div class="kibadropdown-content" id="myDropdown" ng-repeat="notification in notification">
+                      <p id="notificationMessage"><a ng-click="deleteNotification(notification._id)" class="kibajoin" style="color: #D67C2A !important" href={{notification.link}}>{{notification.message}}</a>
+                      </p>
+                    </div>
+                </div>
               </li>
-              <!--<li><a ng-click="openDropdown($event)" class='dropdown-button btn-floating' href='#' data-activates='dropdown1'>
-                <i class="material-icons">notifications</i></a>
-              </li>
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li ng-repeat="notif in notification">
-                        {{notif.message}} <a href={{notif.link}} target="#">Join</a>
-                    </li>
-                </ul>-->
               <li><a href="#!/signup" ng-show="showOptions">Sign Up</a></li>
               <li><a href="#!/signin" ng-show="showOptions">Sign In</a></li>
               <li><a href="/signout" ng-hide="showOptions" ng-click="logout()">Sign Out</a></li>

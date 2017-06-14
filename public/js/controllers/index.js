@@ -66,12 +66,7 @@ angular.module('mean.system').controller('IndexController', [
       $scope.showOptions = true;
       $scope.global.authenticated = false;
     };
-    $scope.openDropdown = (event) => {
-      event.preventDefault();
-      console.log('working');
-      $('.dropdown-button').dropdown('open');
-    };
-
+    $scope.notification;
     $scope.getNotification = () => {
       $http({
         method: 'GET',
@@ -79,8 +74,24 @@ angular.module('mean.system').controller('IndexController', [
         header: { 'Content-Type': 'application/json' }
       }).then((response) => {
         $scope.notification = response.data;
-        console.log($scope.notification);
+        $scope.count = 0;
+        for (let i = 0; i < $scope.notification.length; i += 1) {
+          $scope.count += 1;
+         }
+        return $scope.count;
       });
+    };
+
+    $scope.deleteNotification = (id) => {
+      $http({
+        method: 'DELETE',
+        url: `/notification/${id}`,
+      })
+        .then((response) => {
+          $scope.getNotification();
+          return response;
+        })
+        .catch(error => error);
     };
 
     $scope.playAsGuest = () => {

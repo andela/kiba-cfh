@@ -36,6 +36,11 @@ angular.module('mean.system')
         }
       };
 
+      /**
+       * This function sends an in-app notification to user's friends.
+       * @param {object} user
+       *  @return {response}, response gotten from server
+       */
       $scope.sendNotification = (user) => {
         $http({
           method: 'POST',
@@ -48,18 +53,30 @@ angular.module('mean.system')
           }
 
         }).then((response) => {
-          console.log(response);
           return response;
         });
       };
+      /**
+       * This function opens the modal for sending notifications.
+       * @return {void}
+       */
       $scope.notificationModal = () => {
         $('#notificationModal').modal();
       };
-      // $scope.showButton = true;
-      
+
+      /**
+       * This function checks if friend is already in friend list
+       * @param {object} friend
+       * @return {boolean} true/false
+       */
       $scope.existingFriend = (friend) => {
         return $scope.friendList.indexOf(friend) === -1;
       };
+      /**
+       * This function adds users as friends
+       * @param {object} friend
+       * @return {object} response from server
+       */
       $scope.addFriend = (friend) => {
         $scope.friends = [];
         $http({
@@ -73,23 +90,15 @@ angular.module('mean.system')
           }
         }).then((response) => {
           $scope.showButton = false;
-          console.log("friend._id", response.data);
           return response;
         });
       };
 
-
-      // $scope.friendAdded = (friend) => {
-      //   // $(email).html('Remove as friend');
-      //   if ($scope.friendList.length && $scope.friendList[friend.email]) {
-      //     console.log($scope.friendList, "friendList");
-      //     return true;
-      //   }
-      //   return false;
-      // };
-
-
-
+      /**
+       * This function checks if the user is already a friend
+       * @param {string} email
+       * @return {boolean} true/false
+       */
       $scope.isFriend = (email) => {
         for (let i = 0; i < $scope.friendList.length; i += 1) {
           if ($scope.friendList.length && $scope.friendList[i].friendEmail === email) {
@@ -98,6 +107,7 @@ angular.module('mean.system')
         }
         return false;
       };
+
     /**
      * This function checks if the user is not present in the list
      * @param{user} user
@@ -153,7 +163,7 @@ angular.module('mean.system')
               name: $scope.invitedList[i].name,
             }
           }).then((response) => {
-            $scope.emailSentNotification = 'Email successfully sent';
+            $scope.emailSentNotification = 'Invite successfully sent';
             return response;
           }, (error) => {
             $scope.emailSentNotification = `Aww shucks...Could not send invite to
@@ -172,7 +182,6 @@ angular.module('mean.system')
         .then((response) => {
           if (response.data.length > 0) {
             $scope.searchResult = response.data;
-            console.log($scope.searchResult);
             $scope.noUserMatch = null;
           } else {
             $scope.searchResult = [];

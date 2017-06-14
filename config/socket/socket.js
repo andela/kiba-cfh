@@ -48,24 +48,6 @@ module.exports = (io) => {
       chatMessages.push(chat);
       database.ref(`chat/${socket.gameID}`).set(chatMessages);
     });
-
-    // socket.emit('notification', (cb) => {
-    //   //const userInvite = userId;
-    //   friend.getNotification((userId, data) => {
-    //     console.log(userId, 'userInvite');
-    //     cb(null, data);
-    //     console.log(data, 'data in emit notification');
-    //   });
-    // });
-
-    // socket.on('user', (data) => {
-    //   const user = data;
-    //   friend.getNotification((userInvite = user, data) => {
-    //     console.log(data, 'userInvite');
-    //     //console.log(data, 'data in emit notification');
-    //   });
-    // });
-
     socket.on('pickCards', (data) => {
       console.log(socket.id, 'picked', data);
       if (allGames[socket.gameID]) {
@@ -123,15 +105,6 @@ module.exports = (io) => {
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
     });
-
-    // socket.on('resolveRegions', (result) => {
-    //   if (allGames[socket.gameID]) {
-    //     const beginGame = allGames[socket.gameID];
-    //     // beginGame.resolveRegions(result.region);
-    //     console.log('setting game', socket.gameID);
-    //   }
-    //   return result.region;
-    // });
   });
 
   var joinGame = function (socket, data) {

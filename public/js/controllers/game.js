@@ -135,7 +135,6 @@ angular.module('mean.system')
           $scope.getFriends();
         })
         .catch(error => error);
-
     };
     $scope.shuffleCards = () => {
       const card = $(`#${event.target.id}`);

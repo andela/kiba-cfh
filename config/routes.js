@@ -24,7 +24,7 @@ module.exports = (app, passport, auth) => {
   // Notification Route
   app.post('/addNotification', friends.addNotification);
   app.get('/notification/:id', friends.getNotification);
-
+  app.delete('/notification/:id', friends.deleteNotification);
   // Friends route
   app.post('/friend', friends.addFriend);
   app.get('/friend/:id', friends.getFriend);
@@ -141,5 +141,4 @@ module.exports = (app, passport, auth) => {
   // JWT API endpoint
   app.post('/api/auth/login', jwt.SignInWithJwt);
   app.post('/api/auth/signup', jwt.SignUpWithJwt);
-
 };

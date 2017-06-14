@@ -25,10 +25,19 @@ exports.getNotification = (req, res) => {
     .exec((err, notificationAlert) => {
       if (notificationAlert) {
         const notificationMessage = notificationAlert;
-        console.log(notificationMessage, 'message');
         return res.json(notificationMessage);
       }
       return res.json(err);
+    });
+};
+exports.deleteNotification = (req, res) => {
+  const notification = req.params.id;
+  Notification.findByIdAndRemove({ _id: notification })
+    .exec((error) => {
+      if (!error) {
+        return res.json({ success: true, message: 'Notification deleted successfully' });
+      }
+      return res.json(error);
     });
 };
 
@@ -41,10 +50,8 @@ exports.addFriend = (req, res) => {
   Friends.find({ senderId: req.body.senderId, friendEmail: req.body.email })
     .exec((err, friends) => {
       if (friends.length) {
-        console.log('friend', friends);
         res.jsonp({ status: 'error', message: 'friend already exists' });
       } else {
-        console.log('no friend', friends);
         newFriend.save((error) => {
           if (!error) {
             res.jsonp({ status: 'success', message: `${friends} added to list!` });
@@ -73,17 +80,8 @@ exports.deleteFriend = (req, res) => {
   Friends.findByIdAndRemove({ _id: friend })
     .exec((error) => {
       if (!error) {
-        return res.json({ sucess: true, message: 'Friend deleted successfully' });
+        return res.json({ success: true, message: 'Friend deleted successfully' });
       }
       return res.json(error);
     });
-
-  // Friends.find({ _id: friend })
-  //   .remove()
-  //   .exec((error) => {
-  //     if (!error) {
-  //       return res.json({ sucess: true, message: 'Friend deleted successfully' });
-  //     }
-  //     return res.json(error);
-  //   });
 };
