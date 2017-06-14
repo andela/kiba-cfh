@@ -20,13 +20,12 @@ angular.module('mean.system').controller('IndexController', [
     $cookies
   ) => {
     $scope.global = Global;
-    // $scope.errorMsg = '';
     if ($cookies.get('token')) {
       $scope.global.authenticated = true;
     } else {
       $scope.global.authenticated = false;
     }
-    const apiCall = (url) => {
+    const authenticateUser = (url) => {
       const newUser = {
         name: $scope.fullname,
         email: $scope.email,
@@ -44,11 +43,11 @@ angular.module('mean.system').controller('IndexController', [
     };
     $scope.signup = () => {
       $scope.errorMsg = '';
-      apiCall('api/auth/signup');
+      authenticateUser('api/auth/signup');
     };
     $scope.login = () => {
       $scope.errorMsg = '';
-      apiCall('api/auth/login');
+      authenticateUser('api/auth/login');
     };
     $scope.logout = () => {
       $cookies.remove('token');

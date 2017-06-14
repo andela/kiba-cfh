@@ -42,18 +42,15 @@
           <div ng-class="{'sign-error' : errorMsg}">
             {{errorMsg}}
           </div>
-          <form class="col s10 offset-s1 center form-style" method="post" novalidate>
+          <form class="col s10 offset-s1 center form-style" method="post" name="signUp" novalidate>
             <div class="input-field col s6">
-              <input id="name" name="name" type="text" placeholder="Full Name*" class="auth-input" ng-model="fullname">
+              <input id="name" name="name" type="text" placeholder="Full Name*" required class="auth-input" ng-model="fullname">
             </div>
             <div class="input-field col s6">
-              <input id="email" type="email" name="email" class="auth-input" ng-model="email" placeholder="Email*">
+              <input id="email" type="email" name="email" class="auth-input" required ng-model="email" placeholder="Email*">
             </div>
-            <div class="input-field col s6">
-              <input id="password" type="password" class="auth-input" name="password" ng-model="password" placeholder="Password*">
-            </div>
-            <div class="input-field col s6">
-              <input id="password" type="password" class="auth-input" placeholder="Confirm Password*">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="auth-input" required name="password" ng-model="password" placeholder="Password*">
             </div>
             <div class="row">
               <div class="col s12 center">
@@ -74,7 +71,7 @@
               </div>
             </div>
             <div class="col s6 offset-s3 center">
-              <button type="submit" class="submit btn signin-button" ng-click="signup()">SIGN UP</button>
+              <button type="submit" class="submit btn signin-button" ng-disabled="signUp.$invalid" ng-click="signup()">SIGN UP</button>
             </div>
           </form>
         </div>
