@@ -57,23 +57,20 @@ angular.module('mean.system')
       };
       // $scope.showButton = true;
       $scope.removeFriend = (friend) => {
-        console.log(friend.email, "friend in removeFriend function");
+        //console.log(friend, "friend in removeFriend function");
         $http({
           method: 'DELETE',
-          url: '/friend/' + friend.email,
-          // header: { 'Content-Type': 'application/json' },
-          // data: {
-          //   id: friend._id,
-          //   //senderId: window.user._id
-          // }
+          url: `/friend/${friend}`,
         })
         .then((response) => {
-            // $scope.showButton = false;
-            console.log(response.status, "response");
+            console.log(response.data);
           })
           .catch(error => error);
 
       }
+      $scope.existingFriend = (friend) => {
+        return $scope.friendList.indexOf(friend) === -1;
+      };
       $scope.addFriend = (friend) => {
         $scope.friends = [];
         $http({
@@ -131,6 +128,9 @@ angular.module('mean.system')
           addUser(user);
         }
       };
+      $scope.notificationModal = () => {
+        $('#notificationModal').modal();
+      }
 
     /**
      * This function checks for existing user in the invited email list array

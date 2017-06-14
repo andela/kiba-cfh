@@ -69,10 +69,8 @@ exports.getFriend = (req, res) => {
 };
 
 exports.deleteFriend = (req, res) => {
-  //const friend = req.body.id;
-  //const friendOwner = req.body.senderId;
-  console.log(req.params, "friend in backend deleteFriend");
-  Friends.findByIdAndRemove({ friendEmail: req.params.email })
+  const friend = req.params.id;
+  Friends.findByIdAndRemove({ _id: friend })
     .exec((error) => {
       if (!error) {
         return res.json({ sucess: true, message: 'Friend deleted successfully' });
