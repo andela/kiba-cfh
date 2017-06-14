@@ -116,6 +116,27 @@ angular.module('mean.system')
       game.leaveGame();
       $location.path('/');
     };
+    $scope.getFriends = () => {
+      $http({
+        method: 'GET',
+        url: `/friend/${window.user._id}`,
+        header: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        $scope.friendList = response.data;
+        console.log($scope.friendList, 'friends');
+      });
+    };
+    $scope.removeFriend = (friend) => {
+      $http({
+        method: 'DELETE',
+        url: `/friend/${friend}`,
+      })
+        .then((response) => {
+          $scope.getFriends();
+        })
+        .catch(error => error);
+
+    };
     $scope.shuffleCards = () => {
       const card = $(`#${event.target.id}`);
       card.addClass('animated flipOutY');
@@ -220,10 +241,13 @@ angular.module('mean.system')
       console.log('joining custom game');
       game.joinGame('joinGame', $location.search().game);
     } else if ($location.search().custom) {
-  game.joinGame('joinGame', null, true);
-} else {
-  game.joinGame();
-}
+      game.joinGame('joinGame', null, true);
+    } else {
+      game.joinGame();
+    }
+    $scope.notificationModal = () => {
+      $('#notificationModal').modal();
+    };
 
     $http.get('/region.json')
       .then((res) => {
@@ -245,7 +269,7 @@ angular.module('mean.system')
     $scope.startGame = () => {
       $('.modal').modal();
       $scope.beginGame = (regionId) => {
-          $q
+        $q
             .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
             .then((response) => {
               console.log(response);

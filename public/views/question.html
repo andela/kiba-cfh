@@ -96,15 +96,7 @@
     </div>
   </div>
 <!---->
-<button data-target="notificationModal" class="btn" ng-click="notificationModal()">notification</button>
-<div class="modal" id="notificationModal">
-<div class="modal-content">
-  <div ng-repeat="friends in friendList">
- {{friends.friendName}}
-   <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit"ng-disabled="existingFriend(friends)"  ng-click="removeFriend(friends._id)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;"><span style="padding-bottom: 5px">-</span></button>
-  </div>
-  </div>
-</div>
+
 
 
 <!-- Materialize Modal to start Game. -->

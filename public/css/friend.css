@@ -1,0 +1,27 @@
+.material-icons.md-light { color: rgba(255, 255, 255, 1);
+ cursor: pointer;
+  }
+  .mybutton{
+    position: absolute;
+    left: 80%;
+    margin-bottom: 90px;
+    background-color:#236484;
+  }
+  .mybutton:hover{
+    background-color: #D67C2A;
+  }
+.myfriend{
+  padding: 5px;
+}
+.modal {
+  width: 40%;
+}
+#notificationModal {
+  background-image: url(../img/CommentNationBackground.jpeg);
+  height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

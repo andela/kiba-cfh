@@ -8,9 +8,8 @@ angular.module('mean.directives', [])
       templateUrl: '/views/player.html',
       link: function(scope, elem, attr){
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E', '#F2ADFF', '#398EC4', '#8CFF95'];
-        // scope.$$childHead.getNotification();
         scope.$$childHead.getFriends();
-        // console.log("scope.$$childHead", scope.$$childHead);
+        //console.log('$$childhead', scope.$$childHead.getFriends());
       }
     };
   }).directive('answers', function() {
@@ -55,13 +54,17 @@ angular.module('mean.directives', [])
             }
           }
         });
+
       }
     };
   }).directive('question', function() {
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) {
+      }
+
+
     };
   })
   .directive('timer', function(){
@@ -79,7 +82,7 @@ angular.module('mean.directives', [])
           scope.showOptions = false;
         }
         scope.$$childHead.getNotification();
-        console.log(scope.$$childHead.getNotification);
+        //console.log(scope.$$childHead.getNotification);
       }
     };
   })

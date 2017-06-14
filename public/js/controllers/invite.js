@@ -56,18 +56,7 @@ angular.module('mean.system')
         $('#notificationModal').modal();
       };
       // $scope.showButton = true;
-      $scope.removeFriend = (friend) => {
-        //console.log(friend, "friend in removeFriend function");
-        $http({
-          method: 'DELETE',
-          url: `/friend/${friend}`,
-        })
-        .then((response) => {
-            console.log(response.data);
-          })
-          .catch(error => error);
-
-      }
+      
       $scope.existingFriend = (friend) => {
         return $scope.friendList.indexOf(friend) === -1;
       };
@@ -99,16 +88,7 @@ angular.module('mean.system')
       //   return false;
       // };
 
-      $scope.getFriends = () => {
-        $http({
-          method: 'GET',
-          url: `/friend/${window.user._id}`,
-          header: { 'Content-Type': 'application/json' }
-        }).then((response) => {
-          $scope.friendList = response.data;
-          console.log($scope.friendList, 'friends');
-        });
-      };
+
 
       $scope.isFriend = (email) => {
         for (let i = 0; i < $scope.friendList.length; i += 1) {
