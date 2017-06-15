@@ -7,20 +7,20 @@
         <span id="third-word">Humanity</span>
       </a>
       <ul class="right hide-on-med-and-down main-navigation">
-        <li><a onClick="scroll(0,0)">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a onClick="scroll(0,742);">How to Play</a></li>
         <li><a onClick="scroll(0,1411);">Charity</a></li>
         <li><a onClick="scroll(0,2021);">About Us</a></li>
-        <li><a href="#!/signup" >Sign Up</a></li>
-        <li><a href="#!/signin" >Sign In</a></li>
+        <li><a href="#!/signup">Sign Up</a></li>
+        <li><a href="#!/signin">Sign In</a></li>
       </ul>
       <ul id="nav-mobile" class="side-nav grey darken-4 white-text">
         <li><a onClick="scroll(0,0)">Home</a></li>
         <li><a onClick="scroll(0,742);">How to Play</a></li>
         <li><a onClick="scroll(0,1411);">Charity</a></li>
         <li><a onClick="scroll(0,2021);">About Us</a></li>
-        <li><a href="#!/signup" >Sign Up</a></li>
-        <li><a href="#!/signin" >Sign In</a></li>
+        <li><a href="#!/signup">Sign Up</a></li>
+        <li><a href="#!/signin">Sign In</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
     </div>
@@ -42,14 +42,15 @@
         </div>
         <div class="row">
           <div ng-class="{'sign-error' : errorMsg}">
-             {{ errorMsg }}
+            {{ errorMsg }}
           </div>
           <form class="col s8 offset-s2 center form-style" method="post" name="signIn" novalidate>
             <div class="input-field col s12">
               <input id="email" type="email" name="email" class="placeholder-text" required ng-model="email" placeholder="Email">
             </div>
             <div class="input-field col s12">
-              <input id="password" type="password" id="password" name="password" required class="placeholder-text" ng-model="password" placeholder="Password">
+              <input id="password" type="password" id="password" name="password" required class="placeholder-text" ng-model="password"
+                placeholder="Password">
             </div>
             <div class="col s6 offset-s3 center">
               <button type="submit" class="submit btn signin-button main-sign-btn" ng-disabled="signIn.$invalid" ng-click="login()">SIGN IN</button>
@@ -80,6 +81,9 @@
           </div>
         </div>
       </div>
-    </div><!--row-->
-  </div><!--/Landing start container-->
-</div><!-- /auth container -->
+    </div>
+    <!--row-->
+  </div>
+  <!--/Landing start container-->
+</div>
+<!-- /auth container -->

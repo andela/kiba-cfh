@@ -95,6 +95,7 @@ body {
 .img3 {
   opacity: 0;
   transform: translateY(-100px);
+  margin-left: 85px;
 }
 
 .slideIn1 {
@@ -202,6 +203,8 @@ p {
   line-height: 0;
   height: auto;
   color: rgba(255, 255, 255, 0.9);
+  font-family: "lato roboto";
+  font-size: 18px;
 }
 
 .parallax-container .section {
@@ -298,11 +301,14 @@ footer.page-footer {
 .sectionHumanity {
   background-color: #2D3352;
   color: #EEEEEE;
-  font-family: "lato, roboto";
+  font-family: "lato roboto";
+  font-size: 18px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 p {
-  font-family: "lato, roboto";
+  font-family: "lato roboto";
 }
 p a {
   color: #F37B1F;
@@ -383,7 +389,10 @@ nav li a:hover{
 }
 
 #how-to-play{
-  padding-top: 50px
+  padding-top: 50px;
+  font-family: "lato roboto";
+  font-size: 18px;
+  color: #2D3352;
 }
 
 #writing{
@@ -704,11 +713,15 @@ nav .nav-wrapper i {
   line-height: 37px;
 }
 .footer-container {
-  margin: auto;
+  margin: initial !important;
   color: #EEEEEE;
   background-color: #2D3352;
+  font-family: "lato roboto";
+  font-size: 18px;
   text-align: center;
-  margin-top: 30px;
+  padding-left: 30px !important;
+  padding-right:30px !important;
+  padding-bottom: 20px;
 }
 
 #first-word {
@@ -765,4 +778,14 @@ nav .nav-wrapper i {
 #selectRegion{
   font-family: "lato roboto";
   font-size: 16px;
+}
+#video {
+  margin-top: 30px !important;
+}
+
+#donateBox {
+  margin-left: -50px;
+}
+#game-nav {
+  padding-right: 45px;
 }

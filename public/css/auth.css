@@ -1,7 +1,5 @@
 .auth-container{
   font-family: 'Lora', serif !important;
-  background-image: url('../img/background2.jpg') !important;
-  background-repeat: no-repeat;
 }
 input{
   border-bottom: 1px solid #236484 !important;
@@ -82,9 +80,7 @@ input{
   border: 0;
   border-top: 1px solid #eee;
 }
-.auth-input{
-  height: 0.9rem !important;
-}
+
 .main-sign-btn{
   margin-top: 30px !important;
   margin-left: -15px;
