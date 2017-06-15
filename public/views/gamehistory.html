@@ -1,0 +1,29 @@
+<div ng-show="selected">
+  <div class="no-data dashboard" ng-show="gameHistory.length === 0">
+    No games completed yet.
+  </div>
+  <div class="dashboard" ng-show="gameHistory.length > 0">
+    <table class="table table-inverse dashboard-table bordered centered">
+      <thead>
+        <tr>
+          <th> S/No </th>
+          <th> Date Played </th>
+          <th> Winner </th>
+          <th> Players </th>
+          <th> No of Rounds </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="gameInstance in gameHistory track by $index">
+          <td> {{$index + 1}} </td>
+          <td> {{gameInstance.dateplayed | date}} </td>
+          <td> {{gameInstance.gameWinner}} </td>
+          <td>
+            <span ng-repeat="player in gameInstance.gamePlayers">{{player.player}}, </span>
+          </td>
+          <td> {{gameInstance.gameRounds}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
