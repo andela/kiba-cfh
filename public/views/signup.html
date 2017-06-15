@@ -23,49 +23,7 @@
         <li><a href="#!/signin" >Sign In</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
-    </div>
   </nav>
-
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" ng-controller="IndexController" id="homer">
-  <div class="background-opacity"></div>
-  <div class="modified-container">
-    <div class="row" id="main-text">
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign Up with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
-      </div>
-      <p id="create">Or create a username/password and select an avatar:</p>
-
-      <div class="sign-body">
-        <div class="more-sign">
-          <div class="sign-error">
-            {{errorMsg}}
-          </div>
-          <form class="signup form-horizontal" method="post">
-            <div class="control-group">
-              <label for="name" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="name" type="text" name="name" ng-model="fullname"  placeholder="Full name" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="email" name="email" ng-model="email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" ng-model="password" placeholder="Password" required novalidate />
-              </div>
-
   <!-- Fixed Logo & Nav Bar End -->
 
   <!-- Sign Up Start -->
@@ -81,25 +39,19 @@
           <hr class="kiba-hr">
         </div>
         <div class="row">
-          <div class="sign-error">
-             {{errorMsg}}
+          <div ng-class="{'sign-error' : errorMsg}">
+            {{errorMsg}}
           </div>
-          <form class="col s10 offset-s1 center form-style" method="post">
+          <form class="col s10 offset-s1 center form-style" method="post" name="signUp" novalidate>
             <div class="input-field col s6">
-              <input id="name" name="name" type="text" required novalidate placeholder="Full Name*" class="auth-input" ng-model="fullname">
+              <input id="name" name="name" type="text" placeholder="Full Name*" required class="auth-input" ng-model="fullname">
             </div>
             <div class="input-field col s6">
-              <input id="email" type="email" name="email" class="auth-input" required novalidate ng-model="email" placeholder="Email*">
+              <input id="email" type="email" name="email" class="auth-input" required ng-model="email" placeholder="Email*">
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12">
               <input id="password" type="password" class="auth-input" required name="password" ng-model="password" placeholder="Password*">
-
             </div>
-            <div class="input-field col s6">
-              <input id="password" type="password" class="auth-input" required placeholder="Confirm Password*">
-            </div>
-            <div class="form-actions">
-              <button id="sign-up-btn-other" type='submit' ng-click="signup()">Sign Up</button>
             <div class="row">
               <div class="col s12 center">
                 <div class="col s8 center header-text">
@@ -119,7 +71,7 @@
               </div>
             </div>
             <div class="col s6 offset-s3 center">
-              <button type="submit" class="submit btn signin-button" ng-click="signup()">SIGN UP</button>
+              <button type="submit" class="submit btn signin-button" ng-disabled="signUp.$invalid" ng-click="signup()">SIGN UP</button>
             </div>
           </form>
         </div>

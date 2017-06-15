@@ -90,21 +90,20 @@ input{
   margin-left: -15px;
 }
 .sign-error{
-  color: #ffffff;
-  font-size: 16px;
+  color: red;
+  font-size: 17px;
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background-color: #FF0000;
   margin-top: 20px;
-  -moz-animation: cssAnimation 0s ease-in 15s forwards;
+  -moz-animation: cssAnimation 0s ease-in 10s forwards;
   /* Firefox */
-  -webkit-animation: cssAnimation 0s ease-in 15s forwards;
+  -webkit-animation: cssAnimation 0s ease-in 10s forwards;
   /* Safari and Chrome */
-  -o-animation: cssAnimation 0s ease-in 15s forwards;
+  -o-animation: cssAnimation 0s ease-in 10s forwards;
   /* Opera */
-  animation: cssAnimation 0s ease-in 15s forwards;
+  animation: cssAnimation 0s ease-in 10s forwards;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
