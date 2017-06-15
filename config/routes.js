@@ -127,6 +127,9 @@ module.exports = (app, passport, auth) => {
   // Home route
   app.get('/play', index.play);
   app.get('/', index.render);
+
+  // Intro route
+  app.get('/gametour', index.gameTour);
   // mail route
   app.post('/api/invite', mail.gameInvite);
   // JWT API endpoint

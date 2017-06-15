@@ -1,0 +1,298 @@
+<div id="app-container" ng-controller="GameTourController">
+  <div class="navbar-fixed">
+    <nav class="navbar-fixed nav-color main-navigation" role="navigation">
+      <div class="nav-wrapper">
+        <a id="logo-container" href="http://localhost:3000/#" class="brand-logo  white-text">
+            <span id="first-word">Cards</span>
+            <span id="second-word"> for</span>
+            <span id="third-word">Humanity</span>
+          </a>
+        <ul class="right hide-on-med-and-down main-navigation">
+
+          <li><a href="#">Donate</a></li>
+          <li><a id="abandon-game-button" ng-click="abandonGame()">Abandon Game</a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav grey darken-4 white-text">
+          <li><a href="#">Donate</a></li>
+          <li><a id="abandon-game-button" ng-click="abandonGame()">Abandon Game</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  <div class="container ">
+    <div id="gameplay-container">
+      <div id="upper-gameplay-container">
+        <div class="row">
+          <div id="menu-timeremaining-container">
+            <div id="timer-container" class="col l3 m3">
+        <div ng-show="Time">
+                  <div id="inner-timer-container">
+                 <p id="timer-status-round" class="timer-status-round">Time Remaining</p>
+  <div id="time"  class="ng-binding">17</div>
+</div>
+</div>
+<div id="charity-widget-container" ng-show="gameOver">
+  <script type="text/javascript" src="https://www.crowdrise.com/widgets/donate/fundraiser/121142/?callback=userDonationCb"></script>
+  </div>
+            </div>
+            <div id="question-container-outer" class="col l6 m6">
+              <!--<question>-->
+                  <div id="question-container-inner">
+  <div class="question">
+    <div ng-show="showQuestion">
+    <p id="question-text" class="center ng-binding" style=""><span id="question">For my next trick, I will pull <u></u> out of <u></u>.</span></p>
+    </div>
+    <div class="center">
+        <div ng-show="awaitingPlayers">
+      <div id="startGame" class="">
+        <div id="finding-players">Finding Players</div>
+        <div id="player-count-container">
+          <div>
+            <p id="player-count">3 / 12 players available</p>
+          </div>
+        </div>
+        <div id="loading-container">
+          <div><img ng-src="../img/gears.gif" id="loading-gif" src="./Cards for Humanity - Development_files/gears.gif"></div>
+        </div>
+      </div>
+
+      <a class="waves-effect waves-light btn" id="startButton" data-target="showModal"  >Start Game</a>
+        <a data-target="invitePlayersModal" class="waves-effect waves-light btn"  id="inviteButton" >Invite Players</a>
+    </div>
+    </div>
+    <!-- Game Over Stuff -->
+    <div ng-show="gameOver">
+    <div id="game-end-info" class="center">
+      <div id=" people-left-game-top ">
+        <div class="game-end-headline ">What the!? The game ended because too many people left!, Our sincere apologies.</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Materialize Modal to start Game. -->
+<div id="shuffleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+  </div>
+</div>
+<!-- Modal Structure -->
+<div class="modal" id="showModal">
+  <!-- ngIf: hasEnoughPlayers -->
+
+  <!-- ngIf: !hasEnoughPlayers --><div class="modal-content ng-scope" ng-if="!hasEnoughPlayers">
+    <p>You need at least 3 players to start game</p>
+  </div><!-- end ngIf: !hasEnoughPlayers -->
+</div>
+<!-- Materialize-CSS Modal Trigger -->
+<div ng-controller="InviteController" class="ng-scope">
+  <!-- Modal Structure -->
+  <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal" style="font-size: 17px; border-bottom: 1px solid rgb(35, 100, 132);">
+    <div class="modal-content">
+      <h4>Send Invites</h4>
+      <!-- ngIf: emailSentNotif -->
+      <div class="row">
+        <input type="text" ng-model="searchUsers" ng-style="myObj" ng-keyup="findUsers()" placeholder="Search for users here..." class="col m9 ng-pristine ng-untouched ng-valid ng-empty">&nbsp;
+        <button class="waves-effect waves-light btn col m2 pull-right" type="submit" ng-click="sendMail()">INVITE</button>
+      </div>
+      <!-- ngRepeat: names in invitedEmailList -->
+      <!-- ngIf: noUserMatch -->
+      <!-- ngIf: searchResult.length > 0 -->
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-light-blue darken-3 btn-flat" data-dismiss="modal">Close</a>
+    </div>
+  </div>
+</div>
+<div>
+<div id="game-end-container" ng-show="gameOver">
+  <div id="inner-info-exit" class="center">
+    <div class="game-end-answer-text">
+      <h4>What would you like to do now?</h4>
+      You might consider donating to charity to atone for the horrifying answers you've submitted. Donating will also place a lovely
+      crown on your avatar's head.
+    </div>
+       
+    <div id="inner-text-containers">
+         <div id="gameover">
+      <a href="#" class="waves-effect waves-light btn" id="joinGame">
+        <div id="join-new-game">
+          Join a New Game
+        </div>
+      </a>
+      <a href="#" class="waves-effect waves-light btn" id="lobby">
+        <div id="exit-match">
+          Return to Lobby
+        </div>
+      </a>
+    </div>
+     </div>
+  </div>
+</div>
+</div>
+<!---->
+<!--</question>-->
+            </div>
+            <div id="social-bar-container" class="col l3 m3 scrollable">
+              <!--<player>-->
+                  <!-- ngRepeat: player in game.players --><div id="player-container" class="ng-scope">
+  <div class="row">
+    <div id="above-czar-container" class="col m3">
+      <div id="avatar">
+        <span ng-show="isPremium($index)" class="ng-hide">
+        <img ng-src="img/king.png" id="king" src="./Cards for Humanity - Development_files/king.png">
+      </span>
+        <img ng-src="/img/chosen/FA04.png" id="player-avatar" class="responsive-img" src="./Cards for Humanity - Development_files/FA04.png">
+      </div>
+    </div>
+    <div class="col m9" id="name-czar">
+      <div>
+        <div id=" player-container-inner ">
+          <div id="player-name ">
+            <h4 id="player-name-inner" class="ng-binding">Victoria</h4>
+          </div>
+          <div id="player-score " class="col m6">
+            <h2 id="player-score-inner" class="ng-binding">0 / 5</h2>
+          </div>
+          <div ng-show="true" id="player-star " class="col m3 ng-hide">
+            <img src="../img/11.png " class="responsive-img" id="isPlayer">
+            <!-- ngIf: !isPlayerSet && isPlayer($index) -->
+          </div>
+          <div id="czar-container " ng-show="currentCzar($index) " class="col m3 ng-hide">
+            <p id="the-czar">CZAR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end ngRepeat: player in game.players --><div id="player-container">
+  <div class="row">
+    <div id="above-czar-container" class="col m3">
+      <div id="avatar">
+        <span ng-show="isPremium($index)" class="ng-hide">
+        <img ng-src="img/king.png" id="king" src="./Cards for Humanity - Development_files/king.png">
+      </span>
+        <img ng-src="/img/chosen/FA04.png" id="player-avatar" class="responsive-img" src="./Cards for Humanity - Development_files/FA04.png">
+      </div>
+    </div>
+    <div class="col m9" id="name-czar">
+      <div>
+        <div id=" player-container-inner ">
+          <div id="player-name ">
+            <h4 id="player-name-inner" class="ng-binding">KIba CFH</h4>
+          </div>
+          <div id="player-score " class="col m6">
+            <h2 id="player-score-inner" class="ng-binding">0 / 5</h2>
+          </div>
+          <div ng-show="isPlayer($index) " id="player-star " class="col m3 ng-hide">
+            <img src="../img/11.png" class="responsive-img" id="isPlayer">
+            <!-- ngIf: !isPlayerSet && isPlayer($index) -->
+          </div>
+          <div id="czar-container " ng-show="true " class="col m3 ng-hide">
+            <p id="the-czar"><span id="show-czar">CZAR</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div id="player-container">
+  <div class="row">
+    <div id="above-czar-container" class="col m3">
+      <div id="avatar">
+        <span ng-show="isPremium($index)" class="ng-hide">
+        <img ng-src="img/king.png" id="king" src="./Cards for Humanity - Development_files/king.png">
+      </span>
+        <img ng-src="/img/chosen/FA04.png" id="player-avatar" class="responsive-img" src="./Cards for Humanity - Development_files/FA04.png">
+      </div>
+    </div>
+    <div class="col m9" id="name-czar">
+      <div>
+        <div id=" player-container-inner ">
+          <div id="player-name ">
+            <h4 id="player-name-inner" class="ng-binding">Bayo</h4>
+          </div>
+          <div id="player-score " class="col m6">
+            <h2 id="player-score-inner" class="ng-binding">2 / 5</h2>
+          </div>
+          <div ng-show="isPlayer($index) " id="player-star " class="col m3 ng-hide">
+            <img src="../img/11.png" class="responsive-img" id="isPlayer">
+            <!-- ngIf: !isPlayerSet && isPlayer($index) -->
+          </div>
+          <div id="czar-container " ng-show="currentCzar($index) " class="col m3 ng-hide">
+            <p id="the-czar">CZAR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end ngRepeat: player in game.players -->          
+</div>
+          </div>
+        </div>
+        <div ng-show="showAnswer">
+      <div id="cards-container" class="">
+  <div id="cards" class="hand">
+
+    <!-- ngRepeat: card in game.players[game.playerIndex].hand --><div ng-style="{&#39;cursor&#39;:&#39;pointer&#39;}" class="answerCard ng-scope" id="answers" ng-click="pickCard(card)"   ng-animate="{enter:&#39;animated fadeInUp&#39;, leave: &#39;animated fadeInOut&#39;}" style="cursor: pointer;">
+      <span class="ng-binding">Swiftly achieving orgasm.</span>
+
+    </div><!-- end ngRepeat: card in game.players[game.playerIndex].hand --><div ng-style="{&#39;cursor&#39;:&#39;pointer&#39;}" class="answerCard ng-scope" id="answers" ng-click="pickCard(card)"  ng-animate="{enter:&#39;animated fadeInUp&#39;, leave: &#39;animated fadeInOut&#39;}" style="cursor: pointer;">
+      <span class="ng-binding">The Jews.</span>
+
+    </div><!-- end ngRepeat: card in game.players[game.playerIndex].hand --><div ng-style="{&#39;cursor&#39;:&#39;pointer&#39;}" class="answerCard ng-scope" id="answers" ng-click="pickCard(card)" ng-animate="{enter:&#39;animated fadeInUp&#39;, leave: &#39;animated fadeInOut&#39;}" style="cursor: pointer;">
+      <span class="ng-binding">The terrorists.</span>
+
+    </div><!-- end ngRepeat: card in game.players[game.playerIndex].hand --><div ng-style="{&#39;cursor&#39;:&#39;pointer&#39;}" class="answerCard ng-scope" id="answers" ng-click="pickCard(card)" ng-animate="{enter:&#39;animated fadeInUp&#39;, leave: &#39;animated fadeInOut&#39;}" style="cursor: pointer;">
+      <span class="ng-binding">Leveling up.</span>
+
+    </div><!-- end ngRepeat: card in game.players[game.playerIndex].hand --><div ng-style="{&#39;cursor&#39;:&#39;pointer&#39;}" class="answerCard ng-scope" id="answers" ng-click="pickCard(card)" ng-animate="{enter:&#39;animated fadeInUp&#39;, leave: &#39;animated fadeInOut&#39;}" style="cursor: pointer;">
+      <span class="ng-binding">Glenn Beck being harried by a swarm of buzzards.</span>
+
+    </div><!-- end ngRepeat: card in game.players[game.playerIndex].hand -->
+
+    <!-- ngRepeat: answer in game.table -->
+</div>
+
+
+</div>
+</div>
+
+
+
+<div id="czar-blank-container" ng-show="isCzar() &amp;&amp; game.table.length===0 &amp;&amp; game.state !== &#39;game dissolved&#39; &amp;&amp; game.state !== &#39;awaiting players&#39;" class="ng-hide">
+  <div id="czar-blank-inner" class="center">
+    You are the Card Czar. <br>
+    <span id="smaller-text">Players are choosing their answers. Prepare to select a winner.</span>
+  </div>
+  <div id="charity-fact-container">
+    <div id="charity-fact-tagline">
+      <p>Did you know?</p>
+    </div>
+
+    <div id="charity-fact">
+      <p class="ng-binding">To qualify for a wish, a child with a life-threatening medical condition must be older than 2½ years and younger than 18 (at the time of referral) and must not have received a wish from another wish-granting organization.</p>
+    </div>
+
+  </div>
+</div></answers>
+      </div>
+    </div>
+  </div>
+  <div id="chatbox" class="chatbox">
+    <div class="chat-header">
+      <h5>ChatBox<span id="chatCount"></span>
+        <fa class="fa-chevron-down fa" id="endChat"></fa>
+        <fa class="fa-chevron-up fa" id="startChat"></fa>
+      </h5>
+    </div>
+    <div class="chat-content" id="chatContent">
+      <div id="chatInner" chatbox="">
+        <div class="chat-begin">This is the beginning of the game's chat</div>
+      </div>
+    </div>
+    <div class="input-field emoji-picker-container message-area">
+      <input type="text" class="form-control" id="chatInput" placeholder="Type a message and press enter...">
+    </div>
+  </div>

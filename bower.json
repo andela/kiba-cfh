@@ -9,6 +9,8 @@
     "angular-route": "^1.6.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
+    "intro.js": "^2.4.0",
+    "angular-intro.js": "^3.2.4",
     "angular-animate": "^1.6.4",
     "ng-materialize": "^0.1.2",
     "angular-sanitize": "^1.6.4",
