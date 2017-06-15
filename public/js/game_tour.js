@@ -1,28 +1,37 @@
 /* global introJs */
-angular.module('mean.system')
-  .controller('GameTourController', ['$scope', '$window', function($scope, $window) {
-
+angular.module('mean.system',)
+  .controller('GameTourController', ['$scope', 'game', '$window', function($scope, game, $window) {
+    $scope.game = game;
+    $scope.$on('$locationChangeSuccess', () => {
+      if ($scope.gameTour) {
+        $scope.gameTour.exit();
+      }
+    });
     $scope.gameTour = introJs();
     $scope.awaitingPlayers = true;
+    $scope.showQuestion = false;
+    $scope.showAnswer = false;
+    $scope.Time = false;
+    $scope.gameOver = false;
     $scope.gameTour.setOption('showBullets', true);
     $scope.gameTour.setOptions({
       steps: [{
-        intro: 'Welcome to Cards for Humanity game,To enjoy this game then you need to learn the game, ride with me to play like me.'
+        intro: 'Welcome to the game Cards for Humanity, You want to rock this game then you need to learn the game, ride with me to play like me.'
       },
       {
         element: '#finding-players',
-        intro: 'This game needs a minimum of 3 players to start. You have to wait for the minimum number of players to join the game.'
+        intro: 'Game needs a minimum of 3 players to start. You have to wait for the minimum number of players to join the game.'
       },
       {
-        element: '#player-container',
+        element: '#isPlayer',
         intro: 'This is you, that icon to help you identify yourself amongst other players.'
       },
       {
-        element: '#start-game',
+        element: '#startButton',
         intro: 'Once the minimum required players have joined, you or any other user can start the game by clicking on the start game button.'
       },
       {
-        element: '#invite-player',
+        element: '#inviteButton',
         intro: 'Invite other players to join you in the game'
       },
       {
@@ -39,22 +48,27 @@ angular.module('mean.system')
         intro: 'Choose an answer to the current question. After time out, CZAR then select a favorite answer. whoever submitted CZARs favorite answer wins the round.'
       },
       {
-        element: '#the-czar',
+        element: '#show-czar',
         intro: 'Check the CZAR icon to know the next CZAR. As a Czar, you wait for all players to submit their answers after which you select your favorite answer'
       },
       {
-        element: '#inner-text-container',
+        element: '#gameover',
         intro: 'After a game ends, you can join a new a game or return to Lobby',
         position: 'top'
       },
       {
         element: '#charity-widget-container',
         intro: 'Click here to donate to charity at the end of the game.',
-        position: 'top'
+        position: 'right'
       },
       {
         element: '#abandon-game-button',
         intro: 'You can click this icon to abandon a game at any time.'
+      },
+      {
+        element: '#chatbox',
+        intro: 'You can chat here with other users anytime.',
+        position: 'top'
       },
       {
         element: '#home',
@@ -64,8 +78,17 @@ angular.module('mean.system')
       ]
     });
 
+    const isGameCustom = () => {
+      const custom = $window.location.href.indexOf('custom') >= 0;
+      return (custom);
+    };
+
     const tourComplete = () => {
-      $window.location = '#!/';
+      if (isGameCustom()) {
+        $window.location = '/app?custom';
+      } else {
+        $window.location = '#!/';
+      }
     };
 
     const beforeTourChange = (targetElement) => {
@@ -74,15 +97,19 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
+              $scope.showQuestion = false;
+              $scope.showAnswer = false;
+              $scope.Time = false;
             });
             break;
           }
-        case 'player-container':
+        case 'isPlayer':
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
-              $scope.showOtherPlayers = true;
-              $scope.showStartButton = false;
+              $scope.showQuestion = false;
+              $scope.showAnswer = false;
+              $scope.Time = false;
             });
             break;
           }
@@ -90,78 +117,74 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
-              $scope.showOtherPlayers = true;
-              $scope.showStartButton = false;
             });
             break;
           }
-        case 'start-game':
+        case 'startButton':
           {
             $scope.$apply(() => {
-              $scope.awaitingPlayers = false;
-              $scope.showOtherPlayers = true;
-              $scope.showStartButton = true;
-              $scope.showTime = false;
+              $scope.awaitingPlayers = true;
               $scope.showQuestion = false;
+              $scope.showAnswer = false;
+              $scope.Time = false;
             });
             break;
           }
-        case 'invite-player':
+        case 'inviteButton':
           {
             $scope.$apply(() => {
-              $scope.awaitingPlayers = false;
-              $scope.showOtherPlayers = true;
-              $scope.showStartButton = true;
-              $scope.showTime = false;
+              $scope.awaitingPlayers = true;
               $scope.showQuestion = false;
-              $scope.showInviteButton = true;
+              $scope.showAnswer = false;
+              $scope.Time = false;
             });
             break;
           }
         case 'question':
           {
             $scope.$apply(() => {
-              $scope.showStartButton = false;
-              $scope.showTime = true;
+              $scope.awaitingPlayers = false;
               $scope.showQuestion = true;
+              $scope.showAnswer = true;
+              $scope.Time = true;
             });
             break;
           }
         case 'cards':
           {
             $scope.$apply(() => {
-              $scope.showCzar = false;
+              $scope.showAnswer = true;
+              $scope.Time = true;
             });
             break;
           }
-        case 'time-card':
+        case 'inner-timer-container':
           {
             $scope.$apply(() => {
               $scope.showQuestion = true;
-              $scope.gameEnd = false;
+              $scope.showQuestion = true;
+              $scope.Time = true;
             });
             break;
           }
-        case 'the-czar':
+        case 'show-czar':
           {
             $scope.$apply(() => {
-              $scope.showCzar = true;
+              $scope.gameOver = false;
+              $scope.awaitingPlayers = false;
+              $scope.Time = true;
+              $scope.showQuestion = true;
+              $scope.showAnswer = true;
             });
             break;
           }
-        case 'inner-text-container':
+        case 'gameover':
           {
             $scope.$apply(() => {
               $scope.showQuestion = false;
-              $scope.gameEnd = true;
-              $scope.showChatBody = false;
-            });
-            break;
-          }
-        case 'chat':
-          {
-            $scope.$apply(() => {
-              $scope.showChatBody = true;
+              $scope.showAnswer = false;
+              $scope.Time = false;
+              $scope.gameOver = true;
             });
             break;
           }
