@@ -41,18 +41,18 @@
           <hr class="kiba-hr">
         </div>
         <div class="row">
-          <div class="sign-error">
-             {{errorMsg}}
+          <div ng-class="{'sign-error' : errorMsg}">
+             {{ errorMsg }}
           </div>
-          <form class="col s8 offset-s2 center form-style" method="post">
+          <form class="col s8 offset-s2 center form-style" method="post" name="signIn" novalidate>
             <div class="input-field col s12">
-              <input id="email" type="email" class="placeholder-text" ng-model="email" required novalidate placeholder="Email*">
+              <input id="email" type="email" name="email" class="placeholder-text" required ng-model="email" placeholder="Email">
             </div>
             <div class="input-field col s12">
-              <input id="password" type="password" class="placeholder-text" ng-model="password" required novalidate placeholder="Password*">
+              <input id="password" type="password" id="password" name="password" required class="placeholder-text" ng-model="password" placeholder="Password">
             </div>
             <div class="col s6 offset-s3 center">
-              <button type="submit" class="submit btn signin-button main-sign-btn" ng-click="login()">SIGN IN</button>
+              <button type="submit" class="submit btn signin-button main-sign-btn" ng-disabled="signIn.$invalid" ng-click="login()">SIGN IN</button>
             </div>
           </form>
         </div>
