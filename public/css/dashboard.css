@@ -1,0 +1,22 @@
+#buttonLink {
+  margin: 15px 50px;
+  color: #4a148c
+}
+.active {
+  color: white !important;
+  background: linear-gradient(to bottom right, #FDA53A, #F37B1F);
+}
+.dashboard {
+  margin: auto;
+  width: 800px;
+  background: #fff;
+  border-radius: 5px;
+  font-family: "lato roboto";
+  font-weight: bold;
+}
+
+.dash {
+  font-family: "lato roboto" !important;
+  font-size: 18px !important;
+  color: #fff !important;
+}

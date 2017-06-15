@@ -25,3 +25,11 @@ exports.render = function(req, res) {
 exports.gameTour = (req, res) => {
   res.redirect('/#!/gametour');
 };
+
+exports.dashboard = (req, res) => {
+  if (req.user) {
+    res.redirect('/#!/dashboard');
+  } else {
+    res.redirect('/#!/');
+  }
+};

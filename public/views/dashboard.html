@@ -1,0 +1,31 @@
+<div id="app-container">
+  <div class="navbar-fixed">
+    <nav class="navbar-fixed nav-color main-navigation" role="navigation" id="dashboard-nav">
+      <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo  white-text">
+            <span id="first-word">Cards</span>
+            <span id="second-word"> for</span>
+            <span id="third-word">Humanity</span>
+          </a>
+        <ul class="right hide-on-med-and-down main-navigation">
+
+          <li><a href="#!/donate">Donate</a></li>
+          <li>
+            <button id="tweet-container" href="https://twitter.com/share" class="waves-effect waves-light btn" data-url="http://cfh.io"
+              data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App"><i class="fa fa-twitter left" aria-hidden="true"></i>Tweet</button>
+          </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse text-darken-4 grey-text"><i class="material-icons white-text">menu</i></a>
+      </div>
+    </nav>
+  </div>
+  <div class="container ">
+    <div class="center-align dash">
+      <dashboard-tabs>
+        <leader-board></leader-board>
+        <game-history></game-history>
+        <donations></donations>
+      </dashboard-tabs>
+    </div>
+  </div>
+</div>

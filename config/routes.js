@@ -7,6 +7,7 @@ const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const mail = require('../app/controllers/mail');
 const { gameData } = require('../app/controllers/gameData');
+const logs = require('./logs');
 
 module.exports = (app, passport, auth) => {
   // region Route
@@ -138,4 +139,11 @@ module.exports = (app, passport, auth) => {
 
   // save game data after game
   app.post('/api/games/:id/save', gameData);
+
+  // Dashboard route
+  app.get('/dashboard', index.dashboard);
+  // Game Logs endpoint
+  app.get('/api/leaderboard', logs.getLeaderBoard);
+  app.get('/api/games/history', logs.getHistory);
+  app.get('/api/donations', logs.getDonations);
 };

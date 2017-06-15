@@ -1,0 +1,6 @@
+<div class="tabbable">
+  <div>
+    <a id="buttonLink" href="" class="btn btn-large white" ng-repeat="pane in panes" ng-class="{active:pane.selected}" ng-click="select(pane)">{{pane.title}}</a>
+  </div>
+  <div class="center-align" class="tab-content" ng-transclude></div>
+</div>
