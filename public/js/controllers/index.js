@@ -70,6 +70,36 @@ angular.module('mean.system').controller('IndexController', [
       }
       return false;
     };
+    $scope.notification = [];
+    socket.on('get notification', (data) => {
+      if (data.recieverId === window.user._id) {
+        $scope.notification.push(data);
+        $scope.count += 1;
+      }
+    });
+
+    $scope.refreshNotifications = () => {
+      $http({
+        method: 'GET',
+        url: `/notification/${window.user._id}`,
+        header: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        $scope.notification = response.data;
+        $scope.count = response.data.length;
+      });
+    };
+
+    $scope.deleteNotification = (id) => {
+      $http({
+        method: 'DELETE',
+        url: `/notification/${id}`
+      })
+        .then((response) => {
+          $scope.refreshNotifications();
+          return response;
+        })
+        .catch(error => error);
+    };
     $scope.avatars = [];
     AvatarService.getAvatars().then((data) => {
       $scope.avatars = data;

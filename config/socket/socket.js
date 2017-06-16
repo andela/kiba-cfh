@@ -1,6 +1,7 @@
 const firebase = require('firebase');
 var Game = require('./game');
 var Player = require('./player');
+const Friend = require('../../app/controllers/friends');
 require("console-stamp")(console, "m/dd HH:MM:ss");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
@@ -100,6 +101,25 @@ module.exports = (io) => {
     socket.on('disconnect', function () {
       console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
       exitGame(socket);
+    });
+    socket.on('send notification', (data, cb) => {
+      io.sockets.emit('get notification', {
+        reciever: data.reciever,
+        recieverId: data.recieverId,
+        link: data.link,
+        message: `${data.sender} invites you to play a game`,
+        count: 1
+      });
+      Friend.addNotification({
+        reciever: data.recieverId,
+        sender: data.sender,
+        link: data.link
+      }, (response) => {
+        if (response.status === 'success') {
+          cb(null, response);
+        }
+      }
+      );
     });
 
     // socket.on('resolveRegions', (result) => {
