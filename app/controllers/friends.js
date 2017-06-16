@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Notification = mongoose.model('Notification');
 const Friends = mongoose.model('Friends');
 
-exports.addNotification = (req, callback) => {
+exports.addNotification = (req, res) => {
   const newNotification = new Notification({
-    user: req.body.reciever,
-    message: `${req.body.sender} invites you to play a game.`,
+    user: req.reciever,
+    message: `${req.sender} invites you to play a game.`,
     type: 'invite',
-    sender: req.body.sender,
-    link: req.body.link
+    sender: req.sender,
+    link: req.link
   });
   newNotification.save((err) => {
     if (!err) {
-      callback.jsonp({ status: 'success', message: 'notification is saved' });
+      res({ status: 'success', message: 'notification is saved', recieverId: req.reciever });
     } else {
       throw err;
     }
@@ -21,9 +21,11 @@ exports.addNotification = (req, callback) => {
 
 exports.getNotification = (req, res) => {
   const notification = req.params.id;
+  console.log(notification, 'notif');
   Notification.find({ user: notification })
     .exec((err, notificationAlert) => {
       if (notificationAlert) {
+        console.log(notificationAlert);
         const notificationMessage = notificationAlert;
         return res.json(notificationMessage);
       }

@@ -1,6 +1,6 @@
 angular.module('mean.system')
-  .controller('InviteController', ['$scope', 'game', '$http', 'toastr',
-    ($scope, game, $http, toastr) => {
+  .controller('InviteController', ['$scope','socket', 'game', '$http', 'toastr',
+    ($scope, socket, game, $http, toastr) => {
       $scope.searchUsers = '';
     /**
      * Get all the users from the database
@@ -42,20 +42,14 @@ angular.module('mean.system')
        *  @return {response}, response gotten from server
        */
       $scope.sendNotification = (user) => {
-        $http({
-          method: 'POST',
-          url: '/addNotification',
-          headers: { 'Content-Type': 'application/json' },
-          data: {
-            reciever: user.name,
-            link: document.URL,
-            sender: game.players[0].username
-          }
-
-        }).then((response) => {
-          return response;
+        socket.emit('send notification', {
+          reciever: user.name,
+          link: document.URL,
+          sender: game.players[0].username,
+          recieverId: user._id,
         });
       };
+
       /**
        * This function opens the modal for sending notifications.
        * @return {void}
@@ -120,7 +114,7 @@ angular.module('mean.system')
       };
       $scope.notificationModal = () => {
         $('#notificationModal').modal();
-      }
+      };
 
     /**
      * This function checks for existing user in the invited email list array
@@ -152,6 +146,7 @@ angular.module('mean.system')
      */
       $scope.sendMail = () => {
         for (let i = 0; i < $scope.invitedList.length; i += 1) {
+          $scope.sendNotification($scope.invitedList[i]);
           $http({
             method: 'POST',
             url: '/api/invite',

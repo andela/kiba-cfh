@@ -5,7 +5,7 @@ require('console-stamp')(console, 'm/dd HH:MM:ss');
 let mongoose = require('mongoose');
 let User = mongoose.model('User');
 const user = require(`${__dirname}/../../app/controllers/users.js`);
-const friend = require('../../app/controllers/friends');
+const Friend = require('../../app/controllers/friends');
 let userId = {};
 
 let avatars = require(`${__dirname  }/../../app/controllers/avatars.js`).all();
@@ -56,6 +56,25 @@ module.exports = (io) => {
         console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
       }
     });
+    socket.on('send notification', (data, cb) => {
+      io.sockets.emit('get notification', {
+        reciever: data.reciever,
+        recieverId: data.recieverId,
+        link: data.link,
+        message: `${data.sender} invites you to play a game`,
+        count: 1
+      });
+      Friend.addNotification({
+        reciever: data.recieverId,
+        sender: data.sender,
+        link: data.link
+      }, (response) => {
+        if (response.status === 'success') {
+          cb(null, response);
+        }
+      }
+    );
+  });
 
     socket.on('pickWinning', (data) => {
       if (allGames[socket.gameID]) {

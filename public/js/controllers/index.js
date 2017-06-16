@@ -66,29 +66,33 @@ angular.module('mean.system').controller('IndexController', [
       $scope.showOptions = true;
       $scope.global.authenticated = false;
     };
-    $scope.notification;
-    $scope.getNotification = () => {
+
+    $scope.notification = [];
+    socket.on('get notification', (data) => {
+      if (data.recieverId === window.user._id) {
+        $scope.notification.push(data);
+        $scope.count += 1;
+      }
+    });
+
+    $scope.refreshNotifications = () => {
       $http({
         method: 'GET',
-        url: `/notification/${window.user.name}`,
+        url: `/notification/${window.user._id}`,
         header: { 'Content-Type': 'application/json' }
       }).then((response) => {
         $scope.notification = response.data;
-        $scope.count = 0;
-        for (let i = 0; i < $scope.notification.length; i += 1) {
-          $scope.count += 1;
-         }
-        return $scope.count;
+        $scope.count = response.data.length;
       });
     };
 
     $scope.deleteNotification = (id) => {
       $http({
         method: 'DELETE',
-        url: `/notification/${id}`,
+        url: `/notification/${id}`
       })
         .then((response) => {
-          $scope.getNotification();
+          $scope.refreshNotifications();
           return response;
         })
         .catch(error => error);

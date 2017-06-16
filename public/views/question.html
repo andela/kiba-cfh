@@ -64,13 +64,13 @@
   <!-- Invite Players Modal Content -->
   <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal">
     <div class="modal-content">
-      <h4>Send Invites</h4>
+      <h6>Add friends and send invites!</h6>
       <div ng-if="emailSentNotification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">
         <p>{{emailSentNotification}}</p>
         </div>
         <div class="row">
           <input type="text" ng-model="searchUsers" ng-style="invitePlayersModal" ng-keyup="findUsers()" placeholder="Search for users here..." class="col m9"/>&nbsp;
-          <button class="waves-effect waves-light btn col m2 pull-right" style="background-color: #236484" type="submit" ng-click="sendMail()">INVITE</button>
+          <button class="waves-effect waves-light btn col m2 pull-right" style="background-color: #236484" type="submit" ng-click="sendMail()">Invite</button>
         </div>
         <div ng-repeat="names in invitedEmailList" class="chip">
           {{names}}
@@ -84,10 +84,12 @@
         <div  class="collection" ng-if="searchResult.length > 0">
         <div ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult" >
             {{result.name}}
-            <button ng-hide="isFriend(result.email)" class="btn" ng-click="addFriend(result)">Add Friend</button>
-            <button ng-show="isFriend(result.email)" class="btn" ng-click="removeFriend(result)">Remove Friend</button>
-            <!--<button class="btn" ng-click="sendNotification(result)">send invite</button>-->
-          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:20px; margin-top:-5%;"><span style="padding-bottom: 5px">+</span></button>
+            <!--<button ng-hide="isFriend(result.email)" class="btn" ng-click="addFriend(result)">Add Friend</button>
+            <button ng-show="isFriend(result.email)" class="btn" ng-click="removeFriend(result)">Remove Friend</button>-->
+            <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="addFriend(result)" style="margin: auto; float: right; margin-right:-16px; margin-top:-9%;"><span style="padding-bottom: 5px"><i class="material-icons">people</i></span>
+            </button>
+           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="sendNotification(result)" style="margin: auto; float: right; margin-right:35px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">notifications</i></span></button>
+          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:90px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">email</i></span></button>
         </div>
       </div>
     </div>

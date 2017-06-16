@@ -31,15 +31,20 @@ $(document).ready(function() {
               <li><a onClick="scroll(0,1411);">Charity</a></li>
               <li><a onClick="scroll(0,2021);">About Us</a></li>
               <li>
-                <div class="kibadropdown">
+                <div ng-show="global.authenticated" class="kibadropdown">
                   <a class="kibadropbtn">
                     <i class="material-icons">notifications</i>
-                    <span id="notificationCount">{{ count }}</span>
+                    <span id="notificationCount">{{ count || 0}}</span>
                   </a>
-                    <div class="kibadropdown-content" id="myDropdown" ng-repeat="notification in notification">
-                      <p id="notificationMessage"><a ng-click="deleteNotification(notification._id)" class="kibajoin" style="color: #D67C2A !important" href={{notification.link}}>{{notification.message}}</a>
+                  <div class="allContent">
+                    <div class="kibadropdown-content" class="myDropdown" ng-repeat="notification in notification">
+                      <p class="notificationMessage">
+                        <a ng-click="deleteNotification(notification._id)" class="kibajoin" style="color: #D67C2A !important"
+                        href={{notification.link}}>{{notification.message}}
+                        </a>
                       </p>
                     </div>
+                  </div>
                 </div>
               </li>
               <li><a href="#!/signup" ng-show="showOptions">Sign Up</a></li>

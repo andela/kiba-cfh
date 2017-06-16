@@ -80,7 +80,8 @@ angular.module('mean.directives', [])
         if (scope.$$childHead.global.authenticated === true) {
           scope.showOptions = false;
         }
-        scope.$$childHead.getNotification();
+        //scope.$$childHead.getNotification();
+        scope.$$childHead.refreshNotifications();
       }
     };
   })

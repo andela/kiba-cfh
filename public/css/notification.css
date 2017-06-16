@@ -7,23 +7,38 @@
 
 .kibadropdown-content {
   width:300px !important;
-  margin-left: -200px;
   background: #fff;
   margin-top: -15px;
   display: none;
+  padding: 1px;
 }
-
+.allContent{
+  max-height: 250px;
+  width: 300px;
+  overflow: auto;
+  margin-left: -200px;
+  margin-top: 14px;
+ }
 .kibajoin{
   color: black;
   font-size: 12px !important;
 }
 
-.kibadropdown:hover .kibadropdown-content {
+/* Links inside the dropdown */
+.kibadropdown-content a {
+    color: black;
+    padding: 5px 8px;
+    text-decoration: none;
+    display: inline;
+}
+
+ .kibadropdown:hover .kibadropdown-content {
   display: block;
 }
 
 .kibadropbtn{
   margin-bottom: -80px;
+  padding: 0px !important;
 }
 
 #notificationCount{
@@ -36,4 +51,25 @@
   position: relative;
   top: -73px;
   margin-bottom: 0px;
+}
+
+button.kiba-accordion {
+    background-color: transparent !important;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0px;
+    /*width: 40%;*/
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.kiba-panel {
+    padding: 0px 18px;
+    background-color: white;
+    display: none;
+    color: black;
+
 }
