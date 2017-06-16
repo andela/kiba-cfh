@@ -1,30 +1,40 @@
 <div id="question-container-inner">
-  <div class="card longBlack">
-    <span ng-bind-html="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
-    <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
-    <div id="startGame" ng-show="game.state === 'awaiting players'">
-      <div id="finding-players">Finding Players</div>
-      <div id="player-count-container">
-        <div id="player-count">{{game.players.length}} / 6 </div>
-        <div id="the-word-players"> Players </div>
+  <div class="question">
+    <p ng-bind-html="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"
+      id="question-text" class="center"></p>
+
+    <div class="center" id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
+    <div class="center">
+      <div id="startGame" ng-show="game.state === 'awaiting players'">
+        <div id="finding-players">Finding Players</div>
+        <div id="player-count-container">
+          <div>
+            <p id="player-count">{{game.players.length}} / 12 players available</p>
+          </div>
+        </div>
+        <div id="loading-container">
+          <div><img ng-src="../img/gears.gif" id="loading-gif" /></div>
+        </div>
       </div>
-      <div id="loading-container">
-        <div id="loading-gif"><img ng-src="../img/loader.gif" /></div>
+
+      <a class="waves-effect waves-light btn" id="startButton" data-target="showModal" class="btn" ng-click="showModal()" ng-show="game.state === 'awaiting players'">Start Game</a>
+      <div ng-controller="InviteController">
+        <a data-target="invitePlayersModal" class="waves-effect waves-light btn" ng-click="openModal()" id="inviteButton" ng-show="game.state === 'awaiting players'">Invite Players</a>
       </div>
     </div>
     <!-- Game Over Stuff -->
-    <div id="game-end-info">
-      <div id="people-left-game-top" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
-        <div class="game-end-headline">What the!? The game ended because too many people left! </div>
-        Our sincere apologies.
+    <div id="game-end-info" class="center">
+      <div id=" people-left-game-top " ng-show="game.state==='game dissolved' && game.gameWinner===- 1 ">
+        <div class="game-end-headline ">What the!? The game ended because too many people left!, Our sincere apologies.</div>
+
       </div>
-      <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex">
-        <div class="game-end-headline">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you
+      <div ng-show="game.state === 'game ended' && game.gameWinner === game.playerIndex ">
+        <div class="game-end-headline ">Congratulations! You won the game, {{game.players[game.playerIndex].username | upperFirstLetter}}!</div>We hope you
         feel special. If you'd like to share that special feeling with the world, consider donating to charity. Or just horde
         it all for youself.
       </div>
-      <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex">
-        <div class="game-end-headline">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
+      <div ng-show="game.state === 'game ended' && game.gameWinner !== game.playerIndex ">
+        <div class="game-end-headline ">Aw, shucks! {{game.players[game.gameWinner].username | upperFirstLetter }} won the game!</div>
         That makes you a loser, unfortunately.
       </div>
     </div>
@@ -32,7 +42,6 @@
 </div>
   <!-- Materialize Modal to start Game. -->
   <!-- Modal Trigger -->
-  <button data-target="showModal" class="btn" ng-show="(game.playerIndex === 0 || game.joinOverride)" ng-click="showModal()">Start Game</button>
   <!-- Modal Structure -->
           <div class="modal" id="showModal">
         <div class="modal-content" ng-if="hasEnoughPlayers">
@@ -58,51 +67,12 @@
       <p>You need at least 3 players to start game</p>
     </div>
    </div>
-<!-- Invite Players Modal Trigger -->
-  <div ng-controller="InviteController">
-    <a class="waves-effect waves-light btn" data-target="invitePlayersModal" style="background-color: #236484" ng-click="openModal()">Invite Players</a>
-  <!-- Invite Players Modal Content -->
-  <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal">
-    <div class="modal-content">
-      <h6>Add friends and send invites!</h6>
-      <div ng-if="emailSentNotification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">
-        <p>{{emailSentNotification}}</p>
-        </div>
-        <div class="row">
-          <input type="text" ng-model="searchUsers" ng-style="invitePlayersModal" ng-keyup="findUsers()" placeholder="Search for users here..." class="col m9"/>&nbsp;
-          <button class="waves-effect waves-light btn col m2 pull-right" style="background-color: #236484" type="submit" ng-click="sendMail()">Invite</button>
-        </div>
-        <div ng-repeat="names in invitedEmailList" class="chip">
-          {{names}}
-           <i ng-click="deleteUser(names)" ng-style="deleteUserButton" data-dismiss="chip">x</i>
-        </div>
-        <div ng-if="noUserMatch">
-            <p>
-              {{noUserMatch}}
-            </p>
-        </div>
-        <div  class="collection" ng-if="searchResult.length > 0">
-        <div ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult" >
-            {{result.name}}
-            <!--<button ng-hide="isFriend(result.email)" class="btn" ng-click="addFriend(result)">Add Friend</button>
-            <button ng-show="isFriend(result.email)" class="btn" ng-click="removeFriend(result)">Remove Friend</button>-->
-            <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="addFriend(result)" style="margin: auto; float: right; margin-right:-16px; margin-top:-9%;"><span style="padding-bottom: 5px"><i class="material-icons">people</i></span>
-            </button>
-           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="sendNotification(result)" style="margin: auto; float: right; margin-right:35px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">notifications</i></span></button>
-          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:90px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">email</i></span></button>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a class="modal-action modal-close waves-effect waves-light-blue darken-3 btn-flat" data-dismiss="modal">Close</a>
-    </div>
-  </div>
 <!---->
 
 
 
 <!-- Materialize Modal to start Game. -->
-<div id="shuffleModal" class="modal fade" role="dialog">
+<div id="shuffleModal" class="modal modal-size fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
@@ -114,10 +84,72 @@
           <img src='../img/card.jpg' style='width: 100px;' class='animated flipInX' id='shufflecard3' />
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" id="close" data-dismiss="modal" style="display:none; ">Close</button>
-      </div>
     </div>
   </div>
 </div>
 
+<!-- Materialize-CSS Modal Trigger -->
+<div ng-controller="InviteController">
+  <!-- Modal Structure -->
+  <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal">
+    <div class="modal-content">
+      <h4>Send Invites</h4>
+      <div ng-if="emailSentNotif" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">
+        <p>{{emailSentNotif}}</p>
+      </div>
+      <div class="row">
+        <input type="text" ng-model="searchUsers" ng-style="myObj" ng-keyup="findUsers()" placeholder="Search for users here..."
+          class="col m9" />&nbsp;
+        <button class="waves-effect waves-light btn col m2 pull-right" id="inviteButton" type="submit" ng-click="sendMail()">INVITE</button>
+      </div>
+      <div ng-repeat="names in invitedEmailList" class="chip">
+        {{names}}
+        <i ng-click="deleteUser(names)" class="close material-icons" data-dismiss="chip">x</i>
+      </div>
+      <div ng-if="noUserMatch">
+        <p>
+          {{noUserMatch}}
+        </p>
+      </div>
+      <div class="collection" ng-if="searchResult.length > 0">
+        <p ng-style="searchedNamesList" class="collection-item" ng-repeat="result in searchResult">
+          {{result.name}}
+          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="addFriend(result)" style="margin: auto; float: right; margin-right:-16px; margin-top:-9%;"><span style="padding-bottom: 5px"><i class="material-icons">people</i></span>
+            </button>
+           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type= "submit" ng-click="sendNotification(result)" style="margin: auto; float: right; margin-right:35px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">notifications</i></span></button>
+          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" id="{{getUserId(result.email)}}" type= "submit" ng-disabled="existingUser(result)" ng-click="isUserInInviteeList(result)" style="margin: auto; float: right; margin-right:90px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">email</i></span></button>
+        </p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-light-blue darken-3 btn-flat" data-dismiss="modal">Close</a>
+    </div>
+  </div>
+</div>
+</div>
+<div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
+  <div id="inner-info-exit" class="center">
+    <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
+      <h4>What would you like to do now?</h4>
+      You might consider donating to charity to atone for the horrifying answers you've submitted. Donating will also place a lovely
+      crown on your avatar's head.
+    </div>
+    <div class="game-end-answer-text" ng-show="game.state === 'game ended' || game.gameWinner !== -1">
+      <h4>What would you like to do now?</h4>
+      Help yourself to another game or help a child in need? Donating will also place a lovely crown on your avatar's head.
+    </div>
+    <div id='inner-text-container'>
+      <a href='/#!/app' class="waves-effect waves-light btn" id="joinGame">
+        <div id="join-new-game" ng-click="game.joinGame('joinNewGame')">
+          Join a New Game
+        </div>
+      </a>
+      <a href='/' class="waves-effect waves-light btn" id="lobby">
+        <div id="exit-match">
+          Return to Lobby
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<!---->

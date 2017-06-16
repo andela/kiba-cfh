@@ -7,6 +7,8 @@ const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const mail = require('../app/controllers/mail');
 const friends = require('../app/controllers/friends');
+const { gameData } = require('../app/controllers/gameData');
+
 
 module.exports = (app, passport, auth) => {
   // region Route
@@ -136,9 +138,15 @@ module.exports = (app, passport, auth) => {
   // Home route
   app.get('/play', index.play);
   app.get('/', index.render);
+
+  // Intro route
+  app.get('/gametour', index.gameTour);
   // mail route
   app.post('/api/invite', mail.gameInvite);
   // JWT API endpoint
   app.post('/api/auth/login', jwt.SignInWithJwt);
   app.post('/api/auth/signup', jwt.SignUpWithJwt);
+
+  // save game data after game
+  app.post('/api/games/:id/save', gameData);
 };

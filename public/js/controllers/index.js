@@ -20,46 +20,35 @@ angular.module('mean.system').controller('IndexController', [
     $cookies
   ) => {
     $scope.global = Global;
-    $scope.errorMsg = '';
     if ($cookies.get('token')) {
       $scope.global.authenticated = true;
     } else {
       $scope.global.authenticated = false;
     }
-    $scope.signup = () => {
+    const authenticateUser = (url) => {
       const newUser = {
         name: $scope.fullname,
         email: $scope.email,
         password: $scope.password
       };
-      $http.post('api/auth/signup', newUser).then(
-        (response) => {
-          const token = response.data.token;
-          $cookies.put('token', token);
-          $location.path('/');
-        },
-        (response) => {
-          $scope.errorMsg = response.data.message;
-        }
-      );
-    };
-
-    $scope.login = () => {
-      const user = {
-        email: $scope.email,
-        password: $scope.password
-      };
-      $http.post('/api/auth/login', user).then(
+      $http.post(url, newUser).then(
         (response) => {
           const token = response.data.token;
           $cookies.put('token', token);
           $scope.showOptions = false;
           $location.path('/');
-        },
-        (response) => {
+        }).catch((response) => {
           $scope.errorMsg = response.data.message;
-        }
-      );
+        });
+    };
+    $scope.signup = () => {
+      $scope.errorMsg = '';
+      authenticateUser('api/auth/signup');
+    };
+
+    $scope.login = () => {
+      $scope.errorMsg = '';
+      authenticateUser('api/auth/login');
     };
     $scope.logout = () => {
       $cookies.remove('token');
