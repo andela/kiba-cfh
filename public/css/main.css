@@ -203,7 +203,7 @@ p {
   line-height: 0;
   height: auto;
   color: rgba(255, 255, 255, 0.9);
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 18px;
 }
 
@@ -301,27 +301,27 @@ footer.page-footer {
 .sectionHumanity {
   background-color: #2D3352;
   color: #EEEEEE;
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 18px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
 p {
-  font-family: "lato roboto";
+  font-family: "roboto";
 }
 p a {
   color: #F37B1F;
 }
 .nav-color {
   background-color: #2D3352;
-  font-family: "lato, roboto";
+  font-family: "roboto";
 }
 
 .parallax-container {
       height: 680px;
       background: rgba(0,0,0,0.3);
-      font-family: "lato, roboto";
+      font-family: "roboto";
     }
 
 .section-parallax {
@@ -366,7 +366,7 @@ nav li a:hover{
   color: #EEEEEE !important;
   margin-top: 50px;
   margin-bottom: 50px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
 }
 
 #take-tour:hover{
@@ -390,7 +390,7 @@ nav li a:hover{
 
 #how-to-play{
   padding-top: 50px;
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 18px;
   color: #2D3352;
 }
@@ -437,7 +437,7 @@ nav li a:hover{
 #player-name-inner {
   font-size: 18px;
   font-weight: bold;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
   margin: initial;
   margin-top: 10px;
@@ -448,14 +448,14 @@ nav li a:hover{
   font-weight: bold;
   margin: initial;
   margin-top: 10px;
-  font-family: "lato roboto";
+  font-family: "roboto";
   
 }
 
 #the-czar {
   margin-top: 10px;
   font-size: 12px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   font-weight: bold;
   color: #2D3352;
   margin-left: -10px;
@@ -487,14 +487,14 @@ nav li a:hover{
   background:linear-gradient(to bottom right, #FDA53A, #F37B1F) !important;
   float: right;
   margin-right:10px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
 }
 
 #inviteButton {
   background-color:#2D3352 !important;
   float: left;
   margin-left:10px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
 }
 
 #startButton:hover {
@@ -507,7 +507,7 @@ nav li a:hover{
 #finding-players {
   font-size: 20px;
   font-weight: bold;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
   margin-bottom: 10px;
 }
@@ -526,7 +526,7 @@ nav li a:hover{
 .game-end-headline {
   padding-top: 100px;
   font-size: 16px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
   font-weight: normal;
 }
@@ -552,7 +552,7 @@ nav li a:hover{
   font-size: 20px;
   text-align: center;
   background-color: #2D3352; 
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color:#F8F9FB;
   margin: initial;
   margin-right: 30px;
@@ -560,12 +560,12 @@ nav li a:hover{
   border-radius: 5px;
 }
 #info-container {
-  font-family:"lato, roboto";
+  font-family:"roboto";
   color: #F8F9FB;
 }
 
 #czar-blank-inner {
-  font-family:"lato, roboto";
+  font-family:"roboto";
   font-size: 20px;
   color:#F8F9FB;
 }
@@ -574,7 +574,7 @@ nav li a:hover{
   background-color: #F8F9FB;
   max-width: 254px;
   border-radius: 5px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   font-weight: bold;
   color: #2D3352;
   float: right;
@@ -582,14 +582,14 @@ nav li a:hover{
 
 #charity-fact-tagline{
   font-size: 18px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   margin-left: 5px;
   margin-bottom: 10px;
 }
 
 #charity-fact {
   margin-left: 5px;
-  font-family: "lato, roboto";
+  font-family: "roboto";
 }
 
 #make-a-wish {
@@ -613,7 +613,7 @@ nav li a:hover{
 
 .game-end-answer-text {
   margin:auto;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
   font-size: 16px;
 }
@@ -645,7 +645,7 @@ select {
   text-align: center;
   font-size: 18px;
   font-weight: normal;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
 }
 
@@ -654,7 +654,7 @@ select {
   padding-top: 100px;
   font-size: 20px;
   font-weight: bold;
-  font-family: "lato, roboto";
+  font-family: "roboto";
   color: #2D3352;
 }
 
@@ -670,7 +670,7 @@ select {
     border-radius: 5px;
     font-size: 18px;
     font-weight: bold;
-    font-family: "lato, roboto";
+    font-family: "roboto";
     color: #2D3352;
     vertical-align: top;
 }
@@ -687,7 +687,7 @@ select {
     border-radius: 5px;
     font-size: 18px;
     font-weight: bold;
-    font-family: "lato, roboto";
+    font-family: "roboto";
     color: #F8F9FB;
     vertical-align: top;
 }
@@ -716,7 +716,7 @@ nav .nav-wrapper i {
   margin: initial !important;
   color: #EEEEEE;
   background-color: #2D3352;
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 18px;
   text-align: center;
   padding-left: 30px !important;
@@ -725,17 +725,17 @@ nav .nav-wrapper i {
 }
 
 #first-word {
-  font-family: "lato, roboto";
+  font-family: "roboto";
   font-size: 30px;
 }
 
 #second-word {
-  font-family: "lato, roboto";
+  font-family: "roboto";
   font-size: 30px;
 }
 
 #third-word {
-  font-family: "lato, roboto";
+  font-family: "roboto";
   font-size: 30px;
 }
 
@@ -753,7 +753,7 @@ nav .nav-wrapper i {
   background-color: darkred;
   border-radius: 5px;
   font-size: 18px;
-  font-family: "lato roboto";
+  font-family: "roboto";
   margin: initial;
   padding: initial;
   padding-left: 20px;
@@ -771,12 +771,12 @@ nav .nav-wrapper i {
 }
 
 #showModal {
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 16px;
   color: #2D3352;
 }
 #selectRegion{
-  font-family: "lato roboto";
+  font-family: "roboto";
   font-size: 16px;
 }
 #video {
