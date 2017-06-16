@@ -1,6 +1,6 @@
 /* global introJs */
-angular.module('mean.system',)
-  .controller('GameTourController', ['$scope', 'game', '$window', function($scope, game, $window) {
+angular.module('mean.system', )
+  .controller('GameTourController', ['$scope', 'game', '$window', '$cookies', function ($scope, game, $window, $cookies) {
     $scope.game = game;
     $scope.$on('$locationChangeSuccess', () => {
       if ($scope.gameTour) {
@@ -84,8 +84,10 @@ angular.module('mean.system',)
     };
 
     const tourComplete = () => {
-      if (isGameCustom()) {
-        $window.location = '/app?custom';
+      const location = $cookies.get('location');
+      if (location) {
+        $window.location = location;
+        $cookies.remove('location');
       } else {
         $window.location = '#!/';
       }

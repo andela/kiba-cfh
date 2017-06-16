@@ -54,6 +54,12 @@ angular.module('mean.system').controller('IndexController', [
       $scope.showOptions = true;
       $scope.global.authenticated = false;
     };
+    $scope.playGuest = () => {
+      $cookies.put('location', '/play');
+    };
+    $scope.playFriend = () => {
+      $cookies.put('location', '/play?custom');
+    };
     $scope.playAsGuest = () => {
       game.joinGame();
       $location.path('/app');
