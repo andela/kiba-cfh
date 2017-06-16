@@ -47,11 +47,11 @@
             </h3>
             <div class="row center" ng-show="showOptions">
               <a href="#!/signup" id="signup-button" class="btn btn-large waves-effect waves-light grey darken-4">Sign Up</a>
-              <a href="/play" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play As Guest</a>
+              <a  ng-click='playGuest()' href="/gametour" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play As Guest</a>
             </div>
             <div class="row center" ng-hide="showOptions">
-              <a href="/play" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Strangers</a>
-              <a href="/play?custom" id="custom-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Friends</a>
+              <a ng-click='playGuest()' href="/gametour" id="guest-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Strangers</a>
+              <a href="/gametour" ng-click="playFriend()" id="custom-button" class="btn btn-large waves-effect waves-light grey darken-4">Play With Friends</a>
             </div>
             <br><br>
           </div>
