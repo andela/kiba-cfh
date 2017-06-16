@@ -1,6 +1,6 @@
 angular.module('mean.system')
-  .controller('InviteController', ['$scope', 'game', '$http', 'toastr',
-    ($scope, game, $http, toastr) => {
+  .controller('InviteController', ['$scope','socket', 'game', '$http', 'toastr',
+    ($scope,socket, game, $http, toastr) => {
       $scope.searchUsers = '';
       /**
        * Get all the users from the database
@@ -59,7 +59,7 @@ angular.module('mean.system')
        * This function deletes a user from an array of users to be invited.
        * @param{email} email
        * @return{void} deletes users from the invite list
-  
+
        */
       $scope.deleteUser = (email) => {
         const userIndex = $scope.invitedEmailList.indexOf(email);
