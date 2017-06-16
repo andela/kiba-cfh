@@ -8,6 +8,7 @@ const index = require('../app/controllers/index');
 const mail = require('../app/controllers/mail');
 const { gameData } = require('../app/controllers/gameData');
 const logs = require('./logs');
+const friends = require('../app/controllers/friends');
 
 module.exports = (app, passport, auth) => {
   // region Route
@@ -146,4 +147,11 @@ module.exports = (app, passport, auth) => {
   app.get('/api/leaderboard', logs.getLeaderBoard);
   app.get('/api/games/history', logs.getHistory);
   app.get('/api/donations', logs.getDonations);
+  app.post('/addNotification', friends.addNotification);
+  app.get('/notification/:id', friends.getNotification);
+  app.delete('/notification/:id', friends.deleteNotification);
+  // Friends route
+  app.post('/friend', friends.addFriend);
+  app.get('/friend/:id', friends.getFriend);
+  app.delete('/friend/:id', friends.deleteFriend);
 };

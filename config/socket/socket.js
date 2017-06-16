@@ -5,6 +5,8 @@ const Friend = require('../../app/controllers/friends');
 require("console-stamp")(console, "m/dd HH:MM:ss");
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+const user = require(`${__dirname}/../../app/controllers/users.js`);
+let userId = {};
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
