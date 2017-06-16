@@ -82,8 +82,8 @@ angular.module('mean.system')
     };
 
     $scope.showSecond = card => (
-        game.curQuestion.numAnswers > 1 && $scope.pickedCards[1] === card.id
-      );
+      game.curQuestion.numAnswers > 1 && $scope.pickedCards[1] === card.id
+    );
 
     $scope.isCzar = () => game.czar === game.playerIndex;
 
@@ -115,6 +115,26 @@ angular.module('mean.system')
     $scope.abandonGame = () => {
       game.leaveGame();
       $location.path('/');
+    };
+    $scope.getFriends = () => {
+      $http({
+        method: 'GET',
+        url: `/friend/${window.user._id}`,
+        header: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        $scope.friendList = response.data;
+        console.log($scope.friendList, 'friends');
+      });
+    };
+    $scope.removeFriend = (friend) => {
+      $http({
+        method: 'DELETE',
+        url: `/friend/${friend}`,
+      })
+        .then((response) => {
+          $scope.getFriends();
+        })
+        .catch(error => error);
     };
     $scope.shuffleCards = () => {
       const card = $(`#${event.target.id}`);
@@ -187,7 +207,7 @@ angular.module('mean.system')
 
             setTimeout(() => {
               var link = document.URL;
-              var txt ='Give the following link to your friends so they can join your game: ';
+              var txt = 'Give the following link to your friends so they can join your game: ';
               $('#lobby-how-to-play').text(txt);
               $('#oh-el').css({
                 'text-align': 'center',
@@ -220,10 +240,10 @@ angular.module('mean.system')
       console.log('joining custom game');
       game.joinGame('joinGame', $location.search().game);
     } else if ($location.search().custom) {
-  game.joinGame('joinGame', null, true);
-} else {
-  game.joinGame();
-}
+      game.joinGame('joinGame', null, true);
+    } else {
+      game.joinGame();
+    }
 
     $http.get('/region.json')
       .then((res) => {
@@ -245,12 +265,12 @@ angular.module('mean.system')
     $scope.startGame = () => {
       $('.modal').modal();
       $scope.beginGame = (regionId) => {
-          $q
-            .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
-            .then((response) => {
-              console.log(response);
-              game.startGame();
-            });
+        $q
+          .all([$scope.findQuestions(regionId), $scope.findAnswers(regionId)])
+          .then((response) => {
+            console.log(response);
+            game.startGame();
+          });
       };
     };
     $scope.selectOption = {
