@@ -121,7 +121,6 @@
 </div>
 </div>-->
 <div ng-controller="InviteController">
-  <a class="waves-effect waves-light btn" data-target="invitePlayersModal" style="background-color: #236484" ng-click="openModal()">Invite Players</a>
   <!-- Invite Players Modal Content -->
   <div class="modal modal-fixed-footer" ng-style="invitePlayersModal" id="invitePlayersModal">
     <div class="modal-content">
@@ -148,7 +147,7 @@
           {{result.name}}
           <!--<button ng-hide="isFriend(result.email)" class="btn" ng-click="addFriend(result)">Add Friend</button>
             <button ng-show="isFriend(result.email)" class="btn" ng-click="removeFriend(result)">Remove Friend</button>-->
-          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type="submit" ng-click="addFriend(result)" style="margin: auto; float: right; margin-right:-16px; margin-top:-9%;"><span style="padding-bottom: 5px"><i class="material-icons">people</i></span>
+          <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type="submit" ng-click="addFriend(result)" style="margin: auto; float: right; margin-right:-16px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">people</i></span>
             </button>
           <button class="btn-floating waves-effect" ng-style="invitePlayersButton" type="submit" ng-click="sendNotification(result)"
             style="margin: auto; float: right; margin-right:35px; margin-top:-10%;"><span style="padding-bottom: 5px"><i class="material-icons">notifications</i></span></button>
